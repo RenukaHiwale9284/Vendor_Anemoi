@@ -1,0 +1,1045 @@
+<!-- <button pButton label="downoad" (click)="Download()"></button> -->
+<form [formGroup]="clientForm1" autocomplete="off">
+  <p-dialog
+    [modal]="true"
+    class="projectDialog"
+    [(visible)]="newProjectDialog"
+    [breakpoints]="{ '100%': '75vw', '640px': '100%' }"
+    [style]="{ width: '80%', margin: '0px 20px', zoom: '80%' }"
+    (onHide)="onClickCancel()"
+    (onShow)="!editClientForm ? onShow() : null"
+  >
+    <ng-template pTemplate="header">
+      <h2 style="color: #415385; font-size: 34px">
+        {{ editClientForm ? "Edit project" : "Create new project" }}
+      </h2>
+    </ng-template>
+    <ng-template pTemplate="content">
+      <p-tabView [(activeIndex)]="index">
+        <!-- 1st Tab -->
+
+        <p-tabPanel class="thirdTab" header="Client details">
+          <!-- CLIENT DATA FORM -->
+          <div class="title">
+            <h3>Client Details</h3>
+          </div>
+
+          <div class="p-fluid grid">
+            <div class="field col-12 md:col-4">
+              <span>
+                <label for="clientName"
+                  >Client Name <span style="color: red">*</span></label
+                >
+                <input
+                  type="text"
+                  id="clientName"
+                  formControlName="clientName"
+                  pInputText
+                  placeholder="Enter"
+                  class="input"
+                />
+                <small style="color: red">
+                  <app-print-error
+                    [clientName]="clientForm1.get('clientName')"
+                  ></app-print-error>
+                </small>
+                <!-- <small
+                  *ngIf="
+                    !clientForm1.get('clientName')?.valid &&
+                    clientForm1.get('clientName')?.touched
+                  "
+                >
+                  <span style="color: red"> This field is required. <br>  Atleast 3 letters are required.</span>
+                  
+                </small> -->
+              </span>
+            </div>
+            <div class="field col-12 md:col-4">
+              <span>
+                <label for="industry"
+                  >Industry / Sector <span style="color: red">*</span></label
+                >
+                <p-dropdown
+                  [required]="true"
+                  [showClear]="true"
+                  styleClass="input indusrtyDropdown"
+                  [options]="industryNames"
+                  formControlName="industry"
+                  optionLabel="industryName"
+                  optionValue="industryName"
+                  placeholder="Select"
+                  [filter]="true"
+                  filterBy="industryName"
+                ></p-dropdown>
+                <small
+                  *ngIf="
+                    !clientForm1.get('industry')?.valid &&
+                    clientForm1.get('industry')?.touched
+                  "
+                >
+                  <span style="color: red">This field is required. </span>
+                </small>
+              </span>
+            </div>
+
+            <div class="field col-12 md:col-4" style="padding-top: 3%">
+              <button
+                class="p-button-sm p-button-outlined addLOB"
+                type="button"
+                pButton
+                icon="pi pi-plus-circle plus_icon"
+                (click)="onClickAddIndustry()"
+                title="Add Industry"
+              ></button>
+            </div>
+          </div>
+
+          <hr style="width: 100%; margin-bottom: 30px" />
+
+          <div>
+            <h3>Business Owner Details</h3>
+          </div>
+
+          <div class="p-fluid grid">
+            <div class="field col-12 md:col-4">
+              <span>
+                <label for="clientName"
+                  >First Name <span style="color: red">*</span></label
+                >
+                <input
+                  type="text"
+                  id="clientName"
+                  formControlName="firstName"
+                  pInputText
+                  placeholder="Enter"
+                  required
+                  class="input"
+                />
+                <span>
+                  <small style="color: red; font-size: 16px">
+                    <app-print-error
+                      [firstName]="clientForm1.get('firstName')"
+                    ></app-print-error>
+                  </small>
+                </span>
+              </span>
+            </div>
+            <div class="field col-12 md:col-4">
+              <span>
+                <label for="clientName"
+                  >Last Name <span style="color: red">*</span></label
+                >
+                <input
+                  type="text"
+                  id="clientName"
+                  formControlName="lastName"
+                  pInputText
+                  placeholder="Enter"
+                  required
+                  class="input"
+                />
+                <span>
+                  <small style="color: red; font-size: 16px">
+                    <app-print-error
+                      [firstName]="clientForm1.get('lastName')"
+                    ></app-print-error>
+                  </small>
+                </span>
+              </span>
+            </div>
+            <div class="field col-12 md:col-4">
+              <span>
+                <label for="clientName"
+                  >Email <span style="color: red">*</span></label
+                >
+                <input
+                  type="email"
+                  id="clientName"
+                  formControlName="email"
+                  pInputText
+                  placeholder="Enter"
+                  required
+                  class="input"
+                />
+              </span>
+              <span>
+                <small style="color: red; font-size: 16px">
+                  <app-print-error
+                    [email]="clientForm1.get('email')"
+                  ></app-print-error>
+                </small>
+              </span>
+            </div>
+          </div>
+          <br />
+          <div class="firstScreenButton">
+            <div *ngIf="!editClientForm" style="float: right; margin-top: 10px">
+              <button
+                pButton
+                class="p-button-sm p-button-outlined pbuttonclass45 mr-2"
+                label="Cancel"
+                icon="pi pi-times-circle"
+                (click)="onClickCancel()"
+              ></button>
+
+              <button
+                pButton
+                pTooltip="Next"
+                tooltipPosition="top"
+                icon="pi pi-chevron-right"
+                class="p-button-sm p-button-outlined editButton11 mr-2"
+                (click)="openNext()"
+              ></button>
+            </div>
+
+            <div *ngIf="editClientForm" style="float: right; margin-top: 10px">
+              <button
+                pButton
+                class="p-button-sm p-button-outlined pbuttonclass45 mr-2"
+                label="Cancel"
+                icon="pi pi-times-circle"
+                (click)="onClickCancel()"
+              ></button>
+
+              <button
+                pTooltip="Next"
+                tooltipPosition="top"
+                pButton
+                icon="pi pi-chevron-right"
+                class="p-button-sm p-button-outlined editButton11 mr-2"
+                (click)="openNext()"
+              ></button>
+            </div>
+          </div>
+        </p-tabPanel>
+
+        <!-- 2nd Tab -->
+        <p-tabPanel class="thirdTab" header="Project details">
+          <!-- Project data form -->
+
+          <div class="title">
+            <h3>Project Details</h3>
+          </div>
+          <div class="p-fluid grid">
+            <div class="field col-12 md:col-4">
+              <span>
+                <label for="projectName"
+                  >Project Name <span style="color: red">*</span></label
+                >
+                <input
+                  type="text"
+                  id="projectName"
+                  formControlName="projectName"
+                  pInputText
+                  class="input"
+                />
+                <small style="color: red; font-size: 16px">
+                  <app-print-error
+                    [clientName]="clientForm1.get('projectName')"
+                  ></app-print-error>
+                </small>
+              </span>
+            </div>
+            <div class="field col-12 md:col-4">
+              <span>
+                <label for="projectCode">Project Code</label>
+                <input
+                  type="text"
+                  id="projectCode"
+                  formControlName="projectCode"
+                  pInputText
+                  class="input"
+                />
+                <small style="color: red; font-size: 16px">
+                  <app-print-error
+                    [projectCode]="clientForm1.get('projectCode')"
+                  ></app-print-error>
+                </small>
+              </span>
+            </div>
+          </div>
+          <div class="p-fluid grid">
+            <div class="field col-12 md:col-4">
+              <span>
+                <label for="partner">Partner Name </label>
+
+                <input
+                  type="email"
+                  id="partnerName"
+                  formControlName="partnerName"
+                  pInputText
+                  class="input"
+                />
+                <small style="color: red; font-size: 16px">
+                  <app-print-error
+                    [firstName]="clientForm1.get('partnerName')"
+                  ></app-print-error>
+                </small>
+              </span>
+            </div>
+            <div class="field col-12 md:col-4">
+              <span>
+                <label for="manager">Manager Name </label>
+
+                <input
+                  type="email"
+                  id="partnerName"
+                  formControlName="managerName"
+                  pInputText
+                  class="input"
+                />
+
+                <small style="color: red; font-size: 16px">
+                  <app-print-error
+                    [firstName]="clientForm1.get('managerName')"
+                  ></app-print-error>
+                </small>
+              </span>
+            </div>
+            <div class="field col-12 md:col-4">
+              <span>
+                <label for="businessUser"
+                  >Business/Client User <span style="color: red">*</span></label
+                >
+
+                <p-multiSelect
+                  [showClear]="true"
+                  styleClass="input"
+                  [options]="allUsers"
+                  [showClear]="true"
+                  formControlName="businessUser"
+                  defaultLabel="Select"
+                  optionLabel="email"
+                  optionValue="email"
+                  [required]="true"
+                ></p-multiSelect>
+                <small
+                  *ngIf="
+                    !clientForm1.get('businessUser')?.valid &&
+                    clientForm1.get('businessUser')?.touched
+                  "
+                >
+                  <span style="color: red"> This field is required. </span>
+                </small>
+              </span>
+            </div>
+          </div>
+
+          <div *ngIf="!editClientForm" style="float: right; margin-top: 10px">
+            <button
+              pButton
+              class="p-button-sm p-button-outlined pbuttonclass46 mr-2"
+              label="Cancel"
+              icon="pi pi-times-circle"
+              (click)="onClickCancel()"
+            ></button>
+
+            <button
+              pTooltip="Previous"
+              tooltipPosition="top"
+              pButton
+              icon="pi pi-chevron-left"
+              class="p-button-sm p-button-outlined editButton12 mr-2"
+              (click)="openPrev()"
+            ></button>
+            <button
+              pTooltip="Next"
+              tooltipPosition="top"
+              pButton
+              icon="pi pi-chevron-right"
+              class="p-button-sm p-button-outlined editButton13 mr-2"
+              (click)="openNext()"
+            ></button>
+          </div>
+
+          <div *ngIf="editClientForm" style="float: right; margin-top: 10px">
+            <button
+              pButton
+              class="p-button-sm p-button-outlined pbuttonclass46 mr-2"
+              label="Cancel"
+              icon="pi pi-times-circle"
+              (click)="onClickCancel()"
+            ></button>
+
+            <button
+              pButton
+              pTooltip="Previous"
+              tooltipPosition="top"
+              icon="pi pi-chevron-left"
+              class="p-button-sm p-button-outlined editButton12 mr-2"
+              (click)="openPrev()"
+            ></button>
+            <button
+              pButton
+              pTooltip="Next"
+              tooltipPosition="top"
+              icon="pi pi-chevron-right"
+              class="p-button-sm p-button-outlined editButton13 mr-2"
+              (click)="openNext()"
+            ></button>
+          </div>
+        </p-tabPanel>
+
+        <!-- 3rd Tab -->
+        <!-- {{targetProducts}} -->
+
+        <p-tabPanel class="thirdTab" header="Vendor mapping">
+          <div class="title">
+            <h3>Vendor Mapping</h3>
+          </div>
+          <span *ngIf="!projectEditable">
+            <p-pickList
+              #picklist
+              [source]="sourceProducts"
+              [target]="targetProducts"
+              sourceHeader="Available Vendors"
+              targetHeader="Selected Vendors"
+              [dragdrop]="false"
+              [responsive]="true"
+              [sourceStyle]="{ height: '10rem' }"
+              [targetStyle]="{ height: '10rem' }"
+              filterBy="vendorName"
+              sourceFilterPlaceholder="Search by name"
+              targetFilterPlaceholder="Search by name"
+              styleClass="picklist"
+            >
+              <ng-template let-product pTemplate="item">
+                <div class="product-item">
+                  <div class="image-container"></div>
+                  <div class="product-list-detail">
+                    <h4 class="vendorName">{{ product.vendorName }}</h4>
+                  </div>
+                </div>
+              </ng-template>
+            </p-pickList>
+          </span>
+          <span *ngIf="projectEditable">
+            <p-pickList
+              #picklist
+              [source]="sourceProducts"
+              [target]="targetProducts"
+              sourceHeader="Available Vendors"
+              targetHeader="Selected Vendors"
+              [dragdrop]="false"
+              [responsive]="true"
+              [sourceStyle]="{ height: '10rem' }"
+              [targetStyle]="{ height: '10rem' }"
+              filterBy="vendorName"
+              sourceFilterPlaceholder="Search by name"
+              targetFilterPlaceholder="Search by name"
+              styleClass="picklist"
+              (onMoveToSource)="onClickMoveToSource($event)"
+              (onMoveAllToSource)="onClickMoveToSource($event)"
+              (onMoveToTarget)="onClickMoveToTarget($event)"
+              (onMoveAllToTarget)="onClickMoveToTarget($event)"
+            >
+              <ng-template let-product pTemplate="item">
+                <div class="product-item">
+                  <div class="image-container"></div>
+                  <div class="product-list-detail">
+                    <h4 class="vendorName">{{ product.vendorName }}</h4>
+                  </div>
+                </div>
+              </ng-template>
+            </p-pickList>
+          </span>
+          <!-- {{detaggedVendors}}
+{{sourceProducts}} -->
+          <div
+            *ngIf="!editClientForm"
+            style="float: right; margin-top: 30px; margin-bottom: 30px"
+          >
+            <button
+              pButton
+              class="p-button-sm p-button-outlined pbuttonclass44 mr-2"
+              label="Cancel"
+              icon="pi pi-times-circle"
+              (click)="onClickCancel()"
+            ></button>
+
+            <button
+              pTooltip="Previous"
+              tooltipPosition="top"
+              pButton
+              icon="pi pi-chevron-left"
+              class="p-button-sm p-button-outlined editButton14 mr-2"
+              (click)="openPrev()"
+            ></button>
+            <button
+              pTooltip="Next"
+              tooltipPosition="top"
+              pButton
+              icon="pi pi-chevron-right"
+              class="p-button-sm p-button-outlined editButton15 mr-2"
+              (click)="openNext()"
+            ></button>
+          </div>
+
+          <div *ngIf="editClientForm" style="float: right; margin-top: 10px">
+            <button
+              pButton
+              class="p-button-sm p-button-outlined pbuttonclass44 mr-2"
+              label="Cancel"
+              icon="pi pi-times-circle"
+              (click)="onClickCancel()"
+            ></button>
+
+            <button
+              pTooltip="Previous"
+              tooltipPosition="top"
+              pButton
+              icon="pi pi-chevron-left"
+              class="p-button-sm p-button-outlined editButton14 mr-2"
+              (click)="openPrev()"
+            ></button>
+            <button
+              pButton
+              pTooltip="Next"
+              tooltipPosition="top"
+              icon="pi pi-chevron-right"
+              class="p-button-sm p-button-outlined editButton15 mr-2"
+              (click)="openNext()"
+            ></button>
+          </div>
+
+          <!-- <p-card styleClass="hiddenCard"></p-card> -->
+        </p-tabPanel>
+
+        <!-- 4th Tab -->
+        <p-tabPanel class="thirdTab" header="RFP details">
+          <!-- rfp data form -->
+
+          <div class="title">
+            <h3>RFP Details</h3>
+          </div>
+          <div class="grid">
+            <div class="field col-12 md:col-4 p-fluid">
+              <span>
+                <label for="rfpName"
+                  >RFP Name <span style="color: red">*</span></label
+                >
+                <input
+                  type="text"
+                  id="rfpName"
+                  formControlName="rfpName"
+                  pInputText
+                  class="input"
+                />
+                <small style="color: red; font-size: 16px">
+                  <app-print-error
+                    [clientName]="clientForm1.get('rfpName')"
+                  ></app-print-error>
+                </small>
+                <!-- <small
+                  *ngIf="
+                    !clientForm1.get('rfpName')?.valid &&
+                    clientForm1.get('rfpName')?.touched
+                  "
+                >
+                  <span style="color: red"> This field is required. 
+                    <br>Atleast 3 Characters are required. </span>
+                </small> -->
+              </span>
+            </div>
+            <div class="field col-12 md:col-4" style="margin-left: 100px">
+              <span *ngIf="!editClientForm">
+                <label for="uploadRfp"
+                  >Upload RFP <span style="color: red">*</span></label
+                >
+                <br />
+
+                <input
+                  class="p-inputtext-sm input"
+                  type="file"
+                  accept=".pdf"
+                  pInputText
+                  id="dos"
+                  name="file"
+                  formControlName="file"
+                  required="true"
+                  autofocus
+                  style="width: 100%"
+                  (change)="selectFile($event)"
+                  #inputFile
+                /><small
+                  *ngIf="
+                    !clientForm1.get('file')?.valid &&
+                    clientForm1.get('file')?.touched
+                  "
+                >
+                  <span style="color: red"> This field is required. </span>
+                </small>
+                <!-- <button pButton label="Upload" (click)="onUpload(projectData)"></button> -->
+              </span>
+
+              <span *ngIf="editClientForm">
+                <label for="uploadRfp"
+                  >Upload RFP <span style="color: red">*</span></label
+                >
+                <br />
+
+                <input
+                  class="p-inputtext-sm input"
+                  type="file"
+                  accept=".pdf"
+                  pInputText
+                  id="dos"
+                  name="file"
+                  formControlName="file"
+                  required
+                  autofocus
+                  style="width: 100%"
+                  (change)="selectFile1($event)"
+                  #inputFile
+                />
+                <b>Previous Attached File: </b>
+                <a
+                  ><u
+                    ><i
+                      (click)="Download(newprojectData)"
+                      style="color: blue; cursor: pointer"
+                      >{{ uploadedRfp }}
+                    </i></u
+                  ></a
+                >
+              </span>
+            </div>
+          </div>
+
+          <div class="p-fluid grid">
+            <div class="field col-12 md:col-4">
+              <span>
+                <label for="description"
+                  >Description <span style="color: red">*</span></label
+                >
+
+                <textarea
+                  pInputTextarea
+                  formControlName="description"
+                  class="input"
+                ></textarea>
+                <br />
+                <small style="color: red; font-size: 16px">
+                  <app-print-error
+                    [description]="clientForm1.get('description')"
+                  ></app-print-error>
+                </small>
+                <!-- <small
+                  *ngIf="
+                    !clientForm1.get('description')?.valid &&
+                    clientForm1.get('description')?.touched
+                  "
+                >
+                  <span style="color: red">This Field is Required. <br>
+                    Atleast 10 words are required.
+                  </span>
+                </small> -->
+              </span>
+            </div>
+
+            <div class="field col-12 md:col-4" style="margin-left: 100px">
+              <!-- <span *ngIf="editClientForm">
+                <label for="description">All Versions</label> <br />
+                <span *ngFor="let data of docData.slice().reverse()">
+                  <h5 class="versionCard">
+                    <span style="float: left">{{
+                      data.uploadedDate | date : "dd-MMM yyyy, h:mm:ss aa"
+                    }}</span>
+                    <span style="float: right"
+                      ><i
+                        class="pi pi-download"
+                        style="cursor: pointer"
+                        (click)="onClickDownload(data.projectId, data.version)"
+                      ></i
+                    ></span>
+                  </h5>
+                  <br />
+                </span>
+              </span> -->
+            </div>
+          </div>
+
+          <div *ngIf="!editClientForm" style="float: right; margin-top: 10px">
+            <button
+              pButton
+              class="p-button-sm p-button-outlined editButton16 mr-2"
+              label="Cancel"
+              icon="pi pi-times-circle"
+              (click)="onClickCancel()"
+            ></button>
+            <!-- <button
+                pButton
+                label="Save as Draft"
+                class="p-button-sm pbuttonclass1 mr-2"
+                icon="pi pi-arrow-circle-down"
+                (click)="SaveDraftProjectForm3()"
+              ></button> -->
+            <button
+              [disabled]="
+                !clientForm1.controls['clientName'].valid ||
+                !clientForm1.controls['firstName'].valid ||
+                !clientForm1.controls['lastName'].valid ||
+                !clientForm1.controls['email'].valid ||
+                !clientForm1.controls['industry'].valid ||
+                !clientForm1.controls['projectName'].valid ||
+                !clientForm1.controls['projectCode'].valid ||
+                !clientForm1.controls['partnerName'].valid ||
+                !clientForm1.controls['managerName'].valid ||
+                !clientForm1.controls['businessUser'].valid ||
+                !clientForm1.controls['rfpName'].valid ||
+                !clientForm1.controls['file'].valid ||
+                !clientForm1.controls['description'].valid
+              "
+              pButton
+              label="Save"
+              class="p-button-sm pbuttonclass29 mr-2"
+              icon="pi pi-check-circle"
+              (click)="onClickSaveClient()"
+            ></button>
+
+            <button
+              pTooltip="Previous"
+              tooltipPosition="top"
+              pButton
+              icon="pi pi-chevron-left"
+              class="p-button-sm p-button-outlined editButton16 mr-2"
+              (click)="openPrev()"
+            ></button>
+          </div>
+
+          <div *ngIf="editClientForm" style="float: right; margin-top: 10px">
+            <button
+              pButton
+              class="p-button-sm p-button-outlined editButton16 mr-2"
+              label="Cancel"
+              icon="pi pi-times-circle"
+              (click)="onClickCancel()"
+            ></button>
+
+            <button
+              [disabled]="
+                !clientForm1.controls['clientName'].valid ||
+                !clientForm1.controls['firstName'].valid ||
+                !clientForm1.controls['lastName'].valid ||
+                !clientForm1.controls['email'].valid ||
+                !clientForm1.controls['industry'].valid ||
+                !clientForm1.controls['projectName'].valid ||
+                !clientForm1.controls['projectCode'].valid ||
+                !clientForm1.controls['partnerName'].valid ||
+                !clientForm1.controls['managerName'].valid ||
+                !clientForm1.controls['businessUser'].valid ||
+                !clientForm1.controls['rfpName'].valid ||
+                !clientForm1.controls['description'].valid
+              "
+              pButton
+              label="Save Changes"
+              class="p-button-sm pbuttonclass33 mr-2"
+              icon="pi pi-check-circle"
+              (click)="onClickUpdateClient()"
+            ></button>
+
+            <button
+              pTooltip="Previous"
+              tooltipPosition="top"
+              pButton
+              icon="pi pi-chevron-left"
+              class="p-button-sm p-button-outlined editButton16 mr-2"
+              (click)="openPrev()"
+            ></button>
+          </div>
+        </p-tabPanel>
+
+        <!-- 5th Tab -->
+        <p-tabPanel
+          *ngIf="projectEditable"
+          class="fifth"
+          header="Detagged vendors"
+        >
+          <!-- <span *ngFor="let data of allDetaggedVendors">
+            {{data.vendorName}} : {{data.reason}} <br>
+          </span> -->
+
+          <div class="title">
+            <h3>Detagged Vendors</h3>
+          </div>
+          <br />
+          <p-table
+            styleClass="p-datatable-sm balancesheettable"
+            #dt
+            [value]="allDetaggedVendors"
+            [rows]="5"
+            [paginator]="true"
+            responsiveLayout="scroll"
+            [rowHover]="true"
+            dataKey="id"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+            [showCurrentPageReport]="true"
+          >
+            <ng-template pTemplate="header">
+              <tr class="myTable">
+                <th pSortableColumn="projectName">Sr No.</th>
+                <th pSortableColumn="clientName">Vendor name</th>
+                <th pSortableColumn="industry">Reason</th>
+                <th pSortableColumn="firstName">Detagged by</th>
+                <th pSortableColumn="email">Detagged on</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-data let-rowIndex="rowIndex">
+              <tr class="tableRows">
+                <td>{{ rowIndex + 1 }}</td>
+                <td>{{ data.vendorName }}</td>
+                <td>{{ data.reason }}</td>
+                <td>{{ data.detaggedBy }}</td>
+                <td>{{ data.createdOn | date : "EEE, dd-MMM yyyy" }}</td>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="summary">
+              <div class="flex align-items-center justify-content-between">
+                In total there are
+                {{ allDetaggedVendors ? allDetaggedVendors.length : 0 }}
+                Vendors.
+              </div>
+            </ng-template>
+          </p-table>
+        </p-tabPanel>
+      </p-tabView>
+    </ng-template>
+  </p-dialog>
+</form>
+
+<form [formGroup]="addIndustryForm" autocomplete="off">
+  <div>
+    <p-dialog
+      header="Enter Industry / Sector :"
+      [(visible)]="flagAdding"
+      [style]="{ width: '30%', margin: '0px 20px' }"
+      (onHide)="onClickCancle1()"
+      [modal]="true"
+      [closable]="false"
+    >
+      <div class="p-fluid grid">
+        <div class="field col-12 md:col-12">
+          <!-- <label for="clientName">Enter Industry / Sector:</label> -->
+          <span>
+            <!-- <span style="color: red;">*</span> -->
+            <input
+              type="text"
+              id="industry"
+              formControlName="industry"
+              pInputText
+              placeholder="Enter"
+              required
+            />
+            <small
+              *ngIf="
+                !addIndustryForm.get('industry')?.valid &&
+                addIndustryForm.get('industry')?.touched
+              "
+            >
+              <span style="color: red"> field is required </span>
+            </small>
+
+            <small *ngIf="addIndustryForm.get('industry')?.hasError('pattern')">
+              <span style="color: red">Invalid Characters .</span>
+            </small>
+          </span>
+        </div>
+      </div>
+      <div class="footer">
+        <button
+          pButton
+          label="Cancel"
+          class="p-button-sm cancelButton"
+          icon="pi pi-times-circle"
+          (click)="onClickCancle1()"
+        ></button>
+        <button
+          [disabled]="!addIndustryForm.valid"
+          pButton
+          label="Save"
+          class="p-button-sm pbuttonclassSave"
+          icon="pi pi-check-circle"
+          (click)="onClickSaveIndustry()"
+        ></button>
+      </div>
+    </p-dialog>
+  </div>
+</form>
+
+<br />
+
+<div class="roles">
+  <h1>Projects</h1>
+</div>
+<hr />
+<span class="p-input-icon-left">
+  <i class="pi pi-search"></i>
+  <input
+    type="text"
+    pInputText
+    (input)="dt.filterGlobal($any($event.target).value, 'contains')"
+    class="p-inputtext-sm"
+    placeholder="Search"
+  />
+</span>
+
+<span style="float: right">
+  <button
+    pButton
+    label="Create new project"
+    icon="pi pi-plus-circle plus_icon"
+    (click)="onClickAddProject()"
+    class="p-button-sm addVendor"
+  ></button>
+</span>
+
+<!-- To show all project details -->
+<div style="margin-top: 10px">
+  <p-table
+    styleClass="p-datatable-sm balancesheettable"
+    #dt
+    [value]="clientInfo"
+    [rows]="5"
+    [paginator]="true"
+    responsiveLayout="scroll"
+    [rowHover]="true"
+    dataKey="id"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [showCurrentPageReport]="true"
+    [globalFilterFields]="[
+      'clientName',
+      'industry',
+      'projectName',
+      'partnerName',
+      'managerName',
+      'rfpName',
+      'createdOn',
+      'firstName',
+      'lastName',
+      'email',
+      'createdBy',
+      'modifiedBy'
+    ]"
+  >
+    <ng-template pTemplate="header">
+      <tr class="myTable">
+        <th pSortableColumn="projectName">Project name</th>
+        <th pSortableColumn="clientName">Client name</th>
+        <th pSortableColumn="industry">Industry/sector</th>
+        <th pSortableColumn="firstName">Business owner</th>
+        <th pSortableColumn="email">Email id</th>
+        <th pSortableColumn="managerName">Manager</th>
+        <th pSortableColumn="partnerName">Partner</th>
+        <th pSortableColumn="vendorName">RFP name</th>
+        <th>RFP doc</th>
+        <th pSortableColumn="createdBy">Created by</th>
+        <th pSortableColumn="createdOn">Created on</th>
+        <th pSortableColumn="modifiedBy">Edited by</th>
+        <th pSortableColumn="editedOn">Edited on</th>
+        <th>Action</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-data>
+      <tr class="tableRows">
+        <td>{{ data.projectName }}</td>
+        <td>{{ data.clientName }}</td>
+        <td>{{ data.industry }}</td>
+        <td>{{ data.firstName }} {{ data.lastName }}</td>
+        <td>
+          {{ data.email }}
+        </td>
+
+        <td>{{ data.managerName }}</td>
+        <td>{{ data.partnerName }}</td>
+        <td>{{ data.rfpName }}</td>
+        <td (click)="Download(data)">
+          <img
+            src="assets/Icon/document-download-outline.svg"
+            style="width: 1rem; height: 1rem"
+            alt=""
+            pTooltip="Download"
+            tooltipPosition="top"
+          />
+        </td>
+        <td>{{ data.createdBy }}</td>
+        <td>{{ data.createdOn | date : "EEE, dd-MMM yyyy" }}</td>
+        <td>{{ data.modifiedBy }}</td>
+        <td>{{ data.editedOn | date : "EEE, dd-MMM yyyy" }}</td>
+        <td>
+          <button
+            pTooltip="Edit"
+            tooltipPosition="top"
+            pButton
+            icon="pi pi-pencil"
+            (click)="editProject(data)"
+            class="p-button-sm p-button-outlined newActionButton"
+            style="margin-right: 2rem !important"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <div class="flex align-items-center justify-content-between">
+        In total there are {{ clientInfo ? clientInfo.length : 0 }} Project.
+      </div>
+    </ng-template>
+  </p-table>
+</div>
+<!-- <p-card styleClass="cardd"></p-card> -->
+<!-- </div> -->
+
+<!-- dialog box to add reason for detagging vendor -->
+<p-dialog
+  [(visible)]="reasonToDetagDialog"
+  [modal]="true"
+  styleClass="detagReasonDialog"
+  [closable]="false"
+>
+  <ng-template pTemplate="header">
+    <h3>Reason For Detagging</h3>
+  </ng-template>
+  <textarea
+    pInputTextarea
+    [(ngModel)]="reasonForDetag"
+    class="reasonArea"
+    #reasonTextArea="ngModel"
+  ></textarea>
+  <div
+    *ngIf="
+      reasonTextArea.touched &&
+      (reasonForDetag.length < 3 || reasonForDetag.length > 255)
+    "
+    style="color: red"
+  >
+    Reason must be between 3 and 255 characters.
+  </div>
+  <ng-template pTemplate="footer">
+    <button
+      [disabled]="
+        reasonForDetag.length < 3 || reasonForDetag.length > 255 ? true : false
+      "
+      class="p-button-sm okButton"
+      pButton
+      label="OK"
+      (click)="onClickOk()"
+    ></button>
+    <button
+      class="p-button-sm okButton"
+      pButton
+      label="Cancel"
+      (click)="onClickCancelDetagDialog()"
+    ></button>
+  </ng-template>
+</p-dialog>
+
+<!-- Notification msg's -->
+<p-toast></p-toast>
+<p-confirmDialog
+  header="Confirmation"
+  icon="pi pi-exclamation-triangle"
+></p-confirmDialog>
+<!-- Spinner -->
+<ng-container *ngIf="isLoading">
+  <div class="spinner"></div>
+  <app-spinner></app-spinner>
+</ng-container>

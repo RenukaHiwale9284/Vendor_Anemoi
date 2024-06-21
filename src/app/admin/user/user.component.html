@@ -1,0 +1,470 @@
+<!-- To add New User Details -->
+<form [formGroup]="userForm" autocomplete="off">
+  <p-dialog
+  [modal]="true"
+    class="userDialog"
+    [(visible)]="addUserDialogBox"
+    [breakpoints]="{ '960px': '75vw', '640px': '100vw' }"
+    [style]="{ width: '80vw', margin: '0px 20px' }"
+    (onHide)="onClickCancle()"
+  >
+    <ng-template pTemplate="header">
+      <div class="newroles">
+        <h1>{{ userFormEditable ? "Edit user" : "Create new user" }}</h1>
+      </div>
+    </ng-template>
+
+    <ng-template pTemplate="content" class="content">
+      <div class="p-fluid grid">
+        <div class="field col-12 md:col-3">
+          <span>
+            <label for="firstName"
+              >First Name <span style="color: red">*</span></label
+            >
+            <input
+              type="text"
+              id="firstName"
+              formControlName="firstName"
+              pInputText
+              placeholder="Enter"
+              required
+            />
+            <small>
+              <app-print-error
+                [firstName]="userForm.get('firstName')"
+              ></app-print-error>
+            </small>
+            <small
+              *ngIf="
+                !userForm.get('firstName')?.valid &&
+                userForm.get('firstName')?.touched
+              "
+            >
+              <span style="color: red">
+                Numbers and special characters are not allowed
+              </span>
+              <br />
+              <span style="color: red">
+                Minimum number of letters required 3-155
+              </span>
+            </small>
+          </span>
+        </div>
+        <div class="field col-12 md:col-3">
+          <span>
+            <label for="lastName"
+              >Last Name <span style="color: red">*</span></label
+            >
+            <input
+              type="text"
+              id="lastName"
+              formControlName="lastName"
+              pInputText
+              placeholder="Enter"
+              required
+            />
+            <small>
+              <app-print-error
+                [firstName]="userForm.get('lastName')"
+              ></app-print-error>
+            </small>
+            <small
+                *ngIf="
+                  !userForm.get('lastName')?.valid &&
+                  userForm.get('lastName')?.touched
+                "
+              >
+                <span style="color: red">
+                  Numbers and special characters are not allowed
+                </span>
+                <br />
+                <span style="color: red">
+                  Minimum number of letters required 3-155
+                </span>
+              </small>
+          </span>
+        </div>
+        <div class="field col-12 md:col-3">
+          <span>
+            <label for="emailId"
+              >Email ID <span style="color: red">*</span></label
+            >
+            <input
+              type="email"
+              id="emailId"
+              formControlName="email"
+              pInputText
+              placeholder="Enter"
+              required
+            />
+            <small
+              *ngIf="
+                !userForm.get('email')?.valid && userForm.get('email')?.touched
+              "
+            >
+              <span style="color: red">
+                Please enter valid email address.
+              </span>
+            </small>
+          </span>
+        </div>
+        <div class="field col-12 md:col-3">
+          <span>
+            <label for="accessItems"
+              >Mobile Number <span style="color: red">*</span></label
+            >
+            <input
+              type="text"
+              id="mobileNumber"
+              formControlName="mobileNumber"
+              pInputText
+              placeholder="Enter"
+              required
+            />
+            <small>
+              <app-print-error
+                [contactNumberControl]="userForm.get('mobileNumber')"
+              ></app-print-error>
+            </small>
+            <!-- <small
+                *ngIf="
+                  !userForm.get('mobileNumber')?.valid &&
+                  userForm.get('mobileNumber')?.touched
+                "
+              >
+                <span style="color: red">
+                  Mobile number should be start with either 6, 7 , 8 or 9 only.
+                </span>
+                <br />
+                <span style="color: red">
+                  Mobile number should be 10 digits.
+                </span>
+              </small> -->
+          </span>
+        </div>
+      </div>
+      <div class="p-fluid grid">
+        <!-- <div class="field col-12 md:col-3">
+            <span>
+              <label for="accessItems">Access Item</label>
+              <input
+                type="text"
+                id="accessItems"
+                formControlName="accessItem"
+                pInputText
+                placeholder="Enter"
+              />
+            </span>
+          </div> -->
+        <div class="field col-12 md:col-3">
+          <span>
+            <label for="role">Role <span style="color: red">*</span></label>
+            <p-dropdown
+              [showClear]="true"
+              [required]="true"
+              styleClass="dropdown"
+              [options]="roles1"
+              formControlName="role"
+              optionLabel="roleName"
+              optionValue="roleName"
+              placeholder="Select"
+              [filter]="true"
+              filterBy="roleName"
+              appendTo="body"
+            ></p-dropdown>
+            <small
+              *ngIf="
+                !userForm.get('role')?.valid && userForm.get('role')?.touched
+              "
+            >
+              <span style="color: red"> This field is required </span>
+            </small>
+          </span>
+        </div>
+        <div class="field col-12 md:col-3">
+          <span>
+            <label for="manager"
+              >Manager</label
+            >
+            <!-- <p-dropdown
+              [showClear]="true"
+              styleClass="dropdown"
+              [options]="managers"
+              formControlName="manager"
+              optionLabel="name"
+              optionValue="name"
+              placeholder="Select"
+              [filter]="true"
+              filterBy="name"
+              appendTo="body"
+            ></p-dropdown> -->
+
+            <input
+            type="email"
+            id="partnerName"
+            formControlName="manager"
+            pInputText
+          />
+            <small
+              *ngIf="
+                !userForm.get('manager')?.valid &&
+                userForm.get('manager')?.touched
+              "
+            >
+              <!-- <span style="color: red"> This field is required </span> -->
+              <span style="color: red"> Invalid Characters </span>
+            </small>
+          </span>
+        </div>
+        <div class="field col-12 md:col-3">
+          <span>
+            <label for="partner"
+              >Partner</label
+            >
+            <!-- <p-dropdown
+              [showClear]="true"
+              styleClass="dropdown"
+              [options]="partners"
+              formControlName="partner"
+              optionLabel="name"
+              optionValue="name"
+              placeholder="Select"
+              [filter]="true"
+              filterBy="name"
+              appendTo="body"
+            ></p-dropdown> -->
+            <input
+            type="email"
+            id="partnerName"
+            formControlName="partner"
+            pInputText
+          />
+            <small
+              *ngIf="
+                !userForm.get('partner')?.valid &&
+                userForm.get('partner')?.touched
+              "
+            >
+              <!-- <span style="color: red"> This field is required </span> -->
+              <span style="color: red"> Invalid Characters </span>
+
+            </small>
+          </span>
+        </div>
+      </div>
+      <div class="p-fluid grid">
+        <div class="field col-12 md:col-3">
+          <label for="status">Status </label> <br />
+          <p-inputSwitch
+            required="true"
+            styleClass="dropdown "
+            [(ngModel)]="checked"
+            (onChange)="handleChange($event)"
+            [ngModelOptions]="{ standalone: true }"
+          ></p-inputSwitch> &nbsp; 
+          <span style="font-size: large;">{{ checked ? 'Active' : 'Inactive' }}</span>
+        </div>
+      </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+      <div style="margin-top: 10px"></div>
+
+      <span *ngIf="userFormEditable">
+        <button
+          pButton
+          [disabled]="!userForm.valid"
+          icon="pi pi-check-circle"
+          label="Update"
+          class="p-button-sm pbuttonclass"
+          (click)="onClickUpdate()"
+        ></button>
+      </span>
+      <span *ngIf="!userFormEditable">
+        <button
+          [disabled]="!userForm.valid"
+          pButton
+          icon="pi pi-check-circle"
+          label="Save"
+          class="p-button-sm pbuttonclass"
+          (click)="onClickSave()"
+        ></button>
+      </span>
+      <button
+        pButton
+        icon="pi pi-times-circle"
+        label="Cancel"
+        (click)="onClickCancle()"
+        class="p-button-sm p-button-outlined editButton2"
+      ></button>
+    </ng-template>
+  </p-dialog>
+</form>
+
+<!-- To upload user Details -->
+<p-dialog
+  [(visible)]="uploadDialog"
+  [breakpoints]="{ '960px': '75vw', '640px': '100vw' }"
+  [style]="{ width: '40vw', margin: '0px 20px' }"
+>
+  <div style="margin-top: 10px">
+    <input
+      style="width: 100%"
+      class="p-inputtext-sm"
+      type="file"
+      pInputText
+      id="dos"
+      name="file"
+      required
+      autofocus
+      (change)="selectFile($event)"
+    />
+  </div>
+  <div style="margin-top: 40px">
+    <button
+      pButton
+      pRipple
+      label="Upload"
+      icon="pi pi-upload"
+      class="p-button-sm pbutton"
+      [disabled]="!selectedFiles"
+      (click)="uploadFile()"
+      style="float: right"
+    ></button>
+  </div>
+</p-dialog>
+
+<div class="roles">
+  <h1>Users</h1>
+  <hr>
+
+</div>
+
+<span class="p-input-icon-left">
+  <i class="pi pi-search"></i>
+  <input
+    type="text"
+    pInputText
+    class="p-inputtext-sm"
+    (input)="dt.filterGlobal($any($event.target).value, 'contains')"
+    placeholder="Search"
+  />
+</span>
+<span>
+  <button
+  pTooltip="Delete User"
+  tooltipPosition="top"
+  pButton
+  class="p-button-sm p-button-outlined deleteButton1"
+  
+  (click)="deleteUser()"
+  [disabled]="!selectedUser || !selectedUser.length"
+><img src="assets/Icon/delete-fill.svg" style="height: 1.2rem ;" alt=""></button>&nbsp; &nbsp;
+<button
+  pButton
+  label="Create new user"
+  icon="pi pi-plus-circle"
+  (click)="onClickAddUser()"
+  class="p-button-sm pbuttonclass"
+></button>
+
+
+
+</span>
+
+  
+
+<!-- to view all Users -->
+<div class="card" style="margin-top: 20px">
+  <p-table
+    styleClass="p-datatable-sm  balancesheettable"
+    #dt
+    [value]="allUsers"
+    [rows]="5"
+    [paginator]="true"
+    [rowHover]="true"
+    [(selection)]="selectedUser"
+    [scrollable]="true"
+    dataKey="id"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [showCurrentPageReport]="true"
+    [globalFilterFields]="[
+      'firstName',
+      'lastName',
+      'role.roleName',
+      'email',
+      'mobileNumber',
+      'manager',
+      'partner',
+      'userStatus',
+      'createdBy'
+    ]"
+  >
+    <ng-template pTemplate="header">
+      <tr class="myTable">
+        <th><p-tableHeaderCheckbox></p-tableHeaderCheckbox></th>
+        <th pSortableColumn="firstName">First name</th>
+        <th pSortableColumn="lastName">Last name</th>
+        <th pSortableColumn="role">Role</th>
+        <th pSortableColumn="email">Email id</th>
+        <th pSortableColumn="mobileNumber">Mobile number</th>
+        <th pSortableColumn="manager">Manager</th>
+        <th pSortableColumn="partner">Partner</th>
+        <th pSortableColumn="status">Status</th>
+        <th pSortableColumn="createdBy" >Created by</th>
+        <th pSortableColumn="createdOn" >Created on</th>
+        <th pSortableColumn="editedBy">Edited by</th>
+        <th pSortableColumn="editedOn" >Edited on</th>
+        <th style="width:4rem">Action</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-user>
+      <tr>
+        <td>
+          <p-tableCheckbox [value]="user"></p-tableCheckbox>
+        </td>
+        <td>{{ user.firstName }}</td>
+        <td>{{ user.lastName }}</td>
+        <td>{{ user.role.roleName }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.mobileNumber }}</td>
+        <td>{{ user.manager }}</td>
+        <td>{{ user.partner }}</td>
+        <td>  <span [class]="getStatusClass(user.status)">{{ user.userStatus }}</span></td>
+        <td>{{ user.createdBy }}</td>
+        <td>{{ user.createdOn | date : "EEE, dd-MMM yyyy" }}</td>
+        <td>{{ user.editedBy }}</td>
+        <td>{{ user.editedOn | date : "EEE, dd-MMM yyyy" }}</td>
+        <td>
+          <button
+            pTooltip="Edit User"
+            tooltipPosition="top"
+            pButton
+            pRipple
+            icon="pi pi-pencil"
+            class="p-button-sm p-button-outlined  newActionButton"
+            (click)="editUser(user)"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+    <!-- <ng-template pTemplate="summary">
+      <div class="flex align-items-center justify-content-between">
+        In total there are {{ allUsers ? allUsers.length : 0 }} Users.
+      </div>
+    </ng-template> -->
+  </p-table>
+</div>
+
+<!-- Notification msg's -->
+<p-toast></p-toast>
+<p-confirmDialog
+  header="Confirmation"
+  icon="pi pi-exclamation-triangle"
+></p-confirmDialog>
+
+<!-- Spinner -->
+<ng-container *ngIf="isLoading">
+  <div class="spinner"></div>
+  <app-spinner></app-spinner>
+</ng-container>

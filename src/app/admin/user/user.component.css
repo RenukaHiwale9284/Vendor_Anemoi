@@ -1,0 +1,222 @@
+
+
+::ng-deep .pbutton {
+  background-color: #d93954;
+  border-color: white;
+}
+
+.pbutton:hover {
+  background-color: #d30628;
+  border-color: white;
+}
+
+::ng-deep .userDialog {
+  color: #e68897;
+}
+
+.search {
+  float: right;
+}
+
+.roles,
+h1 {
+  color: #415385;
+  font-size: 26px;
+}
+
+.roles{
+  margin-top: 20px;
+}
+
+.newroles {
+  color: #415385;
+  font-size: 34px;
+  
+}
+
+::ng-deep .accesscard {
+  background-color: #f3f3f3;
+}
+
+.access,
+h3 {
+  color: #3a3a3a;
+  font-size: 22px;
+  ;
+  font-weight: bold;
+  padding-top: 5px;
+}
+
+.myTable::ng-deep * {
+  background-color: #817b75 !important;
+}
+
+::ng-deep .buttons {
+  margin-bottom: 20px;
+  float: right;
+}
+
+::ng-deep .pbuttonclass {
+  background-color: #817b75;
+  color: white;
+  float: right;
+  margin-right: 10px !important;
+  margin-top: 9px !important;
+  border: none;
+  height: 37px;
+}
+
+::ng-deep .pbuttonclass1 {
+  background-color: #817b75;
+  color: white;
+  float: right;
+  /* margin-right: 4rem !important; */
+  border: none;
+  ;
+}
+
+.pbuttonclass1:hover {
+  background-color: #817b75;
+  color: white;
+}
+.pbuttonclass:hover {
+  background-color: #817b75;
+  color: white;
+}
+
+.editButton {
+  margin: 0px 10px;
+}
+::ng-deep .editButton1 {
+  border-color: #7b7b7b !important;
+  color: #7b7b7b !important;
+  margin-top: 8px !important;
+}
+::ng-deep .editButton2 {
+  border-color: #7b7b7b !important;
+  color: #7b7b7b !important;
+  margin-top: 10px !important;
+  height: 37px;
+}
+::ng-deep input {
+  margin-top: 5px !important;
+  
+}
+
+::ng-deep .dropdown {
+  margin-top: 0px !important;
+  vertical-align: middle !important;
+
+}
+::ng-deep .dropdown1 {
+  margin-top: 2rem !important;
+
+}
+::ng-deep .p-inputswitch.p-inputswitch-checked .p-inputswitch-slider {
+  background: #d04a02;
+}
+
+
+tr:nth-child(even) {
+  background-color: #f3f3f3;
+}
+
+
+::ng-deep .deleteButton1 {
+
+  float: right;
+  margin-right: 10px !important;
+  margin-top: 10px !important;
+  border: none;
+  height: 37px;
+
+  border-color: #d04a02 !important;
+  color: #d04a02 !important;
+  margin-top: 8px !important;
+}
+::ng-deep .balancesheettable {
+  border-radius: 0px;
+  border: 2px solid #9aa4be !important;
+  overflow: hidden !important;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 4px;
+
+}
+
+::ng-deep small {
+  color: red !important;
+}
+
+.spinner {
+  /* backdrop-filter: blur(2px); */
+  background-color: rgba(184, 167, 167, 0.2);
+  content: " ";
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+app-spinner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.status-badge {
+  padding: 4px 15px;
+  color: #fff;
+  border-radius: 20px;
+  display: block;
+  width: 100px;
+  text-align: center;
+}
+
+.status-badge-active {
+  background: #2d8531;
+}
+
+.status-badge-pending {
+  background:red;
+}
+
+.status-badge-progress {
+  background: #f7bc0c;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.input-box {
+  flex: 1;
+}
+
+.button-container {
+  display: flex;
+  float: right;
+}
+
+::ng-deep .right-button {
+  margin-left: 10px;
+  float: right !important;
+}
+
+.field {
+  display: block;
+  align-items: center;
+}
+
+/* .status-container {
+  display: flex;
+  align-items: center;
+} */
+
+/* .status-text {
+  font-size: large;
+  margin-left: 10px;
+} */

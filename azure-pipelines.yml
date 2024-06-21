@@ -1,0 +1,196 @@
+# UI Pipeline
+parameters:
+  - name: ENVVG
+    displayName: Select Environment To Deploy
+    type: string
+    default: UAT
+    values:
+    - DEV
+    - UAT
+    - PROD
+
+  - name: blackduck
+    displayName: Do you want to scan for BlackDuck?(Click on it)
+    type: boolean
+    default: false
+    
+trigger: none
+# - master
+
+# DEFINE VARIABLES
+variables:
+- name: build_agent_pool
+  value: windows-latest
+
+- name: build_content_path
+  value: "$(Build.SourcesDirectory)/dist/vendor-ui"
+  
+- name: env
+  ${{ if eq(parameters.ENVVG, 'DEV') }}:
+    value: dev
+  ${{ if eq(parameters.ENVVG, 'UAT') }}:
+    value: uat
+  ${{ if eq(parameters.ENVVG, 'PROD') }}:
+    value: prod
+
+- name: deployment_environment
+  ${{ if eq(parameters.ENVVG, 'DEV') }}:
+    value: VEM_VM
+  ${{ if eq(parameters.ENVVG, 'UAT') }}:
+    value:  VEM_VM
+  ${{ if eq(parameters.ENVVG, 'PROD') }}:
+    value: VEM_prod_VM
+
+- name: dist_path
+  ${{ if eq(parameters.ENVVG, 'DEV') }}:
+    value: 'C:\CICD\devFrontend'
+  ${{ if eq(parameters.ENVVG, 'UAT') }}:
+    value: 'C:\CICD\Frontend'
+  ${{ if eq(parameters.ENVVG, 'PROD') }}:
+    value: 'C:\nginx\html'
+
+- name: BACKEND_URL
+  value: $(${{ parameters.ENVVG }}_BACKEND_URL)  
+- name: IDAM_LOGIN_URL
+  value: $(${{ parameters.ENVVG }}_IDAM_LOGIN_URL)
+- name: IDAM_REPONSE_TYPE
+  value: $(${{ parameters.ENVVG }}_IDAM_REPONSE_TYPE)  
+- name: IDAM_CLIENT_ID
+  value: $(${{ parameters.ENVVG }}_IDAM_CLIENT_ID)  
+- name: IDAM_REDIRECT_URL
+  value: $(${{ parameters.ENVVG }}_IDAM_REDIRECT_URL)  
+- name: IDAM_SCOP
+  value: $(${{ parameters.ENVVG }}_IDAM_SCOP) 
+- name: IDAM_GRANT_TYPE
+  value: $(${{ parameters.ENVVG }}_IDAM_GRANT_TYPE)
+- name: IDAM_SECRET
+  value: $(${{ parameters.ENVVG }}_IDAM_SECRET)
+- name: IDAM_ACCESS_TOKEN
+  value: $(${{ parameters.ENVVG }}_IDAM_ACCESS_TOKEN)
+- name: IDAM_USER_INFO
+  value: $(${{ parameters.ENVVG }}_IDAM_USER_INFO)
+
+- name: PB_WORKSPACE_ID
+  value: $(${{ parameters.ENVVG }}_PB_WORKSPACE_ID)
+- name: PB_REPORT_ID
+  value: $(${{ parameters.ENVVG }}_PB_REPORT_ID)
+- name: PB_TENANT_ID
+  value: $(${{ parameters.ENVVG }}_PB_TENANT_ID)
+- name: PB_CLIENT_ID
+  value: $(${{ parameters.ENVVG }}_PB_CLIENT_ID)
+- name: PB_CLIENT_SECRET
+  value: $(${{ parameters.ENVVG }}_PB_CLIENT_SECRET)
+- name: PB_SCOP
+  value: $(${{ parameters.ENVVG }}_PB_SCOP)
+- name: PB_RESOURCE
+  value: $(${{ parameters.ENVVG }}_PB_RESOURCE)
+- name: PB_GRANT_TYPE
+  value: $(${{ parameters.ENVVG }}_PB_GRANT_TYPE)
+
+- group: Vem_lib
+
+stages:
+- ${{ if eq(parameters.blackduck, false) }}:
+  - stage: BUILD
+    displayName: 'Build ${{ parameters.ENVVG }}'
+    pool: 
+      vmImage: $(build_agent_pool)
+    jobs:
+      - job: Build
+        displayName: "Build UI"
+        workspace:
+          clean: all
+        steps:
+          - checkout: self
+          - task: qetza.replacetokens.replacetokens-task.replacetokens@3
+            displayName: 'Replace Tokens in Manifests'
+            inputs:
+              rootDirectory: '$(Build.SourcesDirectory)/src/environments/'
+              targetFiles: 'environment.prod.ts, environment.ts'
+              escapeType: none
+              verbosity: detailed
+
+
+          - task: NodeTool@0
+            inputs:
+              versionSpec: '16.x'
+            displayName: 'Install Node.js'          
+
+          - task: Npm@1
+            displayName: 'angular install'
+            inputs:
+              command: custom
+              customCommand: 'install -g @angular/cli@14.2.10'  
+
+          - task: Npm@1
+            displayName: 'npm install '
+            inputs:
+              command: custom
+              customCommand: 'install --legacy-peer-deps' 
+          
+          - task: Npm@1
+            displayName: 'build project'
+            inputs:
+              command: custom
+              customCommand: 'run ng build'
+
+          - task: PublishPipelineArtifact@1
+            inputs:
+              targetPath: $(build_content_path)
+              artifactName: build_ui_$(env)
+            displayName: "Publish pipeline artifact"
+
+  - stage: Deploy
+    dependsOn: Build
+    displayName: 'deploy ${{ parameters.ENVVG }}'
+    pool: 
+      vmImage: $(build_agent_pool)
+    jobs:
+    - deployment: VM_VEM
+      displayName: Deploy to VM
+      workspace:
+        clean: all
+      environment: 
+        name: $(deployment_environment)
+        resourceType: VirtualMachine
+      strategy:
+        runOnce:
+          deploy:   
+            steps:
+              
+              - task: DownloadPipelineArtifact@2
+                inputs:
+                  artifact: build_ui_$(env)
+                  path: $(System.DefaultWorkingDirectory)/build_ui_$(env)
+
+              - powershell: |
+                  Write-Host "Remove Old Content"
+                  Remove-Item -path '$(dist_path)\**' -Recurse -Force -EA SilentlyContinue -Verbose;
+
+                  Write-Host "Copy UI code to VM Path"      
+                  Copy-Item '$(System.DefaultWorkingDirectory)/build_ui_$(env)/*' '$(dist_path)' -Recurse 
+
+- ${{ if eq(parameters.blackduck, true) }}:
+  - stage: BlackDuck
+    displayName: 'BlackDuck ${{ parameters.ENVVG }}'
+    pool: 
+      vmImage: $(build_agent_pool)
+    jobs:
+      - job: BlackDuck
+        displayName: "BlackDuck Scan"
+        workspace:
+          clean: all
+        steps:
+          - checkout: self
+
+          - task: synopsys-detect.synopsys-detect.synopsys-detect-task.SynopsysDetectTask@8
+            displayName: 'Black Duck - Synopsys Detect for your build '
+            inputs:
+              BlackDuckService: 'black_duck'
+              DetectArguments: |
+                --detect.diagnostic=true
+                --detect.project.name="IN-VEM"
+                --detect.project.version.name="$(bd_version)"
+                --detect.project.codelocation.suffix="UI"
+                --detect.output.path="C:\Users\VssAdministrator\blackduck"
+            #continueOnError: true

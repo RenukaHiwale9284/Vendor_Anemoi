@@ -1,0 +1,117 @@
+.roles,h1{
+  color: #415385;
+  font-size: 26px;
+  
+}
+
+::ng-deep .balancesheettable {
+  border-radius: 0px;
+  border: 2px solid #9aa4be !important;
+  overflow: hidden !important;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 4px;
+}
+
+.spinner {
+  background-color: rgba(184, 167, 167, 0.2);
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+
+.pbuttonclass3{
+  background-color: #817b75;
+  color: white;
+  border: none;
+  float: right;
+}
+.pbuttonclass3:hover{
+  background-color: #817b75;
+  border: none;
+}
+.busibessCancelButton{
+  color: #817b75;
+  border: 1px solid #817b75;
+  float: left;
+}
+.busibessCancelButton:hover{
+  border: 1px solid #817b75 !important;
+  color: #817b75 !important; 
+}
+
+::ng-deep .cancelButton33 {
+  border-color: #817b75 !important;
+  color: #817b75 !important;
+  height: 39px;
+  /* margin-top: 8px !important; */
+}
+::ng-deep .editButtonVendor {
+  border-color: #817b75 !important;
+  color: #817b75 !important;
+  margin-top: 8px !important;
+}
+
+app-spinner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+} 
+
+.addVendor{
+  background-color: #817b75;
+  border: none;
+}
+.addVendor:hover{
+  background-color: #817b75;
+  border: none;
+}
+tr:nth-child(even) {
+  background-color: #f3f3f3;
+}
+th{
+  background-color: #9aa4be !important;
+}
+
+.pbuttonclass{
+  background-color: #817b75;
+  color: white;
+  border: none;
+}
+.pbuttonclass:hover{
+  background-color: #817b75;
+  border: none;
+  color: white;
+}
+
+label{
+  font-weight: bold;
+}
+
+::ng-deep .input {
+  margin-top: 10px !important;
+  height: 2.7rem !important;
+}
+::ng-deep .mobileInput {
+  height: 2.7rem !important;
+}
+::ng-deep .addLOB3{
+  border-color: #817b75 !important;
+  color: #817b75 !important;
+  margin-top: 30px !important;
+}
+
+
+small{
+  color: red;
+}

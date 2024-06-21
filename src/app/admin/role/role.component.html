@@ -1,0 +1,492 @@
+<!-- <span style="width: 100%; height: 7vh; background-color: orange;"> Role Management</span> -->
+<!-- <h4 class="heading">Role Management</h4> -->
+<span class="container">
+  <div class="roles"></div>
+<br />
+<!-- To add New Role Details -->
+<form [formGroup]="roleForm" autocomplete="off">
+  <p-dialog
+    class="userDialog"
+    [(visible)]="addRoleDialogBox"
+    [style]="{ width: '80%', margin: '0px 20px' }"
+    (onHide)="onClickCancle()"
+  >
+    <ng-template pTemplate="header">
+      <div class="newroles">
+        <h1>{{ roleFormEditable ? "Edit Role" : "Create New  Role" }}</h1>
+
+        <!-- <h1 *ngIf="roleFormEditable?'Create New Role' : 'Edit Role'"></h1> -->
+        <!-- <h1 *ngIf="roleFormEditable">Edit Role</h1> -->
+      </div>
+    </ng-template>
+    <ng-template pTemplate="content" class="content">
+      <div class="p-fluid grid">
+        <div class="field col-12 md:col-3">
+          <span>
+            <label  for="roleName">Name <span style="color: red;">*</span></label>
+            <input
+              type="text"
+              id="roleName"
+              formControlName="roleName"
+              pInputText
+              placeholder="Enter"
+              required
+              style="margin-top: 8px;"
+            />
+            <small>
+              <app-print-error
+                [roleControl]="roleForm.get('roleName')"
+              ></app-print-error>
+            </small>
+             <small
+              *ngIf="
+                !roleForm.get('roleName')?.valid &&
+                roleForm.get('roleName')?.touched
+              "
+            >
+              <span style="color: red">
+                Numbers and special characters are not allowed
+              </span>
+            </small>
+<!--
+            <small
+              *ngIf="
+                !roleForm.get('roleName')?.hasError('minlength')"
+            >
+              <span style="color: red">
+                Role Name should be between  3 to 15
+                characters.
+              </span>
+            </small> -->
+          </span>
+        </div>
+        <div *ngIf="roleFormEditable" class="field col-12 md:col-3">
+          <label for="roleName">No of Users</label>
+
+          <span class="p-input-icon-right">
+            <i
+              *ngIf="roleData.totalCount > 0"
+              (click)="onClickEye(roleData.roleName)"
+              class="pi pi-eye"
+            ></i>
+            <input
+              type="text"
+              id="roleName"
+              [value]="roleData.totalCount"
+              pInputText
+              readonly
+              class="p-pInputText-sm editAdditionBox"
+            />
+          </span>
+        </div>
+        <div class="field col-12 md:col-6">
+          <span>
+            <label for="description">Description <span style="color: red;">*</span></label>
+            <textarea
+              type="text"
+              id="description"
+              formControlName="descriptions"
+              pInputTextarea
+              placeholder="Working on..."
+            ></textarea>
+            <small
+              *ngIf="
+                !roleForm.get('descriptions')?.valid &&
+                roleForm.get('descriptions')?.touched
+              "
+            >
+              <span style="color: red">
+                Please enter a brief description with minimum 3 and maximum 200 characters. <br>
+                No special characters are allowed except "." & ",".
+              </span>
+            </small>
+            <!-- <small>
+              <app-print-error
+                [descriptionControl]="roleForm.get('descriptions')"
+              ></app-print-error>
+            </small> -->
+          </span>
+        </div>
+      </div>
+
+      <div class="p-fluid grid">
+        <div class="field col-12 md:col-3">
+          <span>
+            <label for="status">Status</label> <br />
+            <p-inputSwitch
+              required="true"
+              styleClass="status"
+              [(ngModel)]="checked"
+              (onChange)="handleChange($event)"
+              [ngModelOptions]="{ standalone: true }"
+            ></p-inputSwitch>
+            &nbsp;
+            <span style="font-size: large" *ngIf="checked">Active</span>
+            <span style="font-size: large" *ngIf="!checked">InActive</span>
+          </span>
+        </div>
+
+        <div *ngIf="roleFormEditable" class="field col-12 md:col-3">
+          <label for="status">Access Items</label>
+          <span>
+            <input [value]="roleData.accessCount" readonly pInputText />
+          </span>
+        </div>
+      </div>
+
+      <hr style="width: 100%" />
+
+      <div class="access">
+        <h3>Access Management</h3>
+      </div>
+
+      <div class="p-fluid grid">
+        <div class="field col-12 md:col-4">
+          <p-card styleClass="accesscard">
+            <ng-template pTemplate="title">
+              <h3
+                style="
+                  font-weight: bold;
+                  background-color: #9aa4be;
+                  padding: 10px;
+                "
+              >
+                <i class="pi pi-file"></i> Vendor Evaluation Template
+              </h3>
+            </ng-template>
+            <ng-template pTemplate="subtitle">
+              <p-multiSelect
+                [options]="access1"
+                formControlName="vendorTemplateAccess"
+                defaultLabel="Select"
+                optionLabel="access"
+                optionValue="access"
+                [showClear]="true"
+              ></p-multiSelect>
+              <small>
+                <app-print-error
+                  [vendorTemplateAccess]="roleForm.get('vendorTemplateAccess')"
+                ></app-print-error>
+              </small>
+            </ng-template>
+          </p-card>
+        </div>
+        <div class="field col-12 md:col-4">
+          <p-card styleClass="accesscard">
+            <ng-template pTemplate="title">
+              <h3
+                style="
+                  font-weight: bold;
+                  background-color: #9aa4be;
+                  padding: 10px;
+                "
+              >
+                <i class="pi pi-chart-bar"></i> Dashboard
+              </h3>
+            </ng-template>
+            <ng-template pTemplate="subtitle">
+              <p-multiSelect
+                [options]="access2"
+                formControlName="dashboardAccess"
+                defaultLabel="Select"
+                optionLabel="access"
+                optionValue="access"
+                [showClear]="true"
+              ></p-multiSelect>
+              <small>
+                <app-print-error
+                  [dashboardAccess]="roleForm.get('dashboardAccess')"
+                ></app-print-error>
+              </small>
+            </ng-template>
+          </p-card>
+        </div>
+        <div class="field col-12 md:col-4">
+          <p-card styleClass="accesscard">
+            <ng-template pTemplate="title">
+              <h3
+                style="
+                  font-weight: bold;
+                  background-color: #9aa4be;
+                  padding: 10px;
+                "
+              >
+                <i class="pi pi-book"></i> Master Repository
+              </h3>
+            </ng-template>
+            <ng-template pTemplate="subtitle">
+              <p-multiSelect
+                [options]="access3"
+                formControlName="masterRepoAccess"
+                defaultLabel="Select"
+                optionLabel="access"
+                optionValue="access"
+                [showClear]="true"
+              ></p-multiSelect>
+              <small> 
+                <app-print-error [masterRepoAccess]="roleForm.get('masterRepoAccess')">
+                  
+                </app-print-error>
+              </small>
+            </ng-template>
+          </p-card>
+        </div>
+      </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+      <div style="margin-top: 10px">
+        <button
+          pButton
+          icon="pi pi-times"
+          label="Cancel"
+          (click)="onClickCancle()"
+          class="p-button-sm pbuttonclass"
+        ></button>
+        <span *ngIf="!roleFormEditable">
+          <button
+            [disabled]="roleForm.invalid"
+            pButton
+            icon="pi pi-check-circle"
+            label="Save"
+            class="p-button-sm pbuttonclass"
+            (click)="onClickSave()"
+          ></button>
+        </span>
+        <span *ngIf="roleFormEditable">
+          <button
+            pButton
+            [disabled]="roleForm.invalid"
+            icon="pi pi-check-circle"
+            label="Update"
+            class="p-button-sm pbuttonclass"
+            (click)="onClickUpdate()"
+          ></button>
+        </span>
+      </div>
+    </ng-template>
+  </p-dialog>
+</form>
+
+<!-- To upload user Details -->
+<p-dialog
+  [(visible)]="uploadDialog"
+  [breakpoints]="{ '960px': '75vw', '640px': '100vw' }"
+  [style]="{ width: '40vw', margin: '0px 20px' }"
+>
+  <div style="margin-top: 10px">
+    <input
+      style="width: 100%"
+      class="p-inputtext-sm"
+      type="file"
+      pInputText
+      id="dos"
+      name="file"
+      required
+      autofocus
+      (change)="selectFile($event)"
+    />
+  </div>
+  <div style="margin-top: 40px">
+    <button
+      pButton
+      pRipple
+      label="Upload"
+      icon="pi pi-upload"
+      class="p-button-sm pbutton"
+      [disabled]="!selectedFiles"
+      (click)="uploadFile()"
+      style="float: right"
+    ></button>
+  </div>
+</p-dialog>
+
+<div class="roles">
+  <h1>Roles</h1>
+  <hr>
+</div>
+<div *ngIf="viewRoles">
+  <span class="p-input-icon-left">
+    <i class="pi pi-search"></i>
+    <input
+      type="text"
+      pInputText
+      class="p-inputtext-sm"
+      placeholder="Search"
+      (input)="dt.filterGlobal($any($event.target).value, 'contains')"
+    />
+  </span>
+
+  <!-- <button
+    pButton
+    label="Create New Role"
+    icon="pi pi-plus-circle"
+    (click)="onClickAddRole()"
+    class="p-button-sm pbuttonclass"
+  ></button> -->
+
+  <br /><br />
+  <!-- to view all Users -->
+  <div class="card">
+    <p-table
+      styleClass="p-datatable-sm balancesheettable"
+      #dt
+      [value]="allRoles.slice().reverse()"
+      [rows]="5"
+      [paginator]="true"
+      responsiveLayout="scroll"
+      [rowHover]="true"
+      dataKey="id"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [showCurrentPageReport]="true"
+      [globalFilterFields]="[
+        'roleName',
+        'descriptions',
+        'roleStatus'
+      ]"
+    >
+      <ng-template pTemplate="header">
+        <tr class="myTable">
+          <!-- <th></th> -->
+          <th>Role name</th>
+          <th>Description</th>
+          <th>No. of users</th>
+          <th>Access</th>
+          <th>Status</th>
+          <th>Last edit</th>
+          <th>Created on</th>
+          <!-- <th></th> -->
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-role>
+        <!-- <tr (click)="editRole(role)"> -->
+        <tr>
+          <td>{{ role.roleName }}</td>
+          <td>{{ role.descriptions }}</td>
+          <td>{{ role.totalCount }}</td>
+          <td>{{ role.accessCount }}</td>
+
+          <td>
+            <span [class]="getStatusClass( role.roleStatus)">{{ role.roleStatus }}</span>
+          </td>
+          <td>{{ role.editedOn | date : "EEE, dd-MMM yyyy" }}</td>
+          <td>{{ role.createdOn | date : "EEE, dd-MMM yyyy" }}</td>
+          <!-- <td>
+          <button
+            pButton
+            pRipple
+            icon="pi pi-pencil"
+            class="p-button-sm pbuttonclass"
+            (click)="editRole(role.roleId)"
+          ></button>
+        </td> -->
+        </tr>
+      </ng-template>
+      <!-- <ng-template pTemplate="summary">
+        <div class="flex align-items-center justify-content-between">
+          In total there are {{ allRoles ? allRoles.length : 0 }} Roles.
+        </div>
+      </ng-template> -->
+    </p-table>
+  </div>
+</div>
+
+<div class="card" style="margin-top: 10px" *ngIf="viewUser">
+  <label class="headerLabel2"style="margin-left:10px;">
+    <i
+      class="pi pi-chevron-left"
+      style="width: 16px; height: 10px; cursor: pointer"
+      (click)="onClickBack()"
+    ></i>
+    {{ roleName }}
+  </label>
+<br>
+  <span class="p-input-icon-left" >
+    <i class="pi pi-search"></i>
+    <input
+      type="text"
+      pInputText
+      class="p-inputtext-sm"
+      placeholder="Search"
+      (input)="dt.filterGlobal($any($event.target).value, 'contains')"
+    />
+  </span>
+
+ 
+  <br /><br />
+  <p-table
+    styleClass="p-datatable-sm  balancesheettable"
+    #dt
+    [value]="userData"
+    [rows]="5"
+    [paginator]="true"
+    responsiveLayout="scroll"
+    [rowHover]="true"
+    dataKey="id"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [showCurrentPageReport]="true"
+    [globalFilterFields]="[
+    'firstName',
+    'lastName',
+    'roleStatus',
+    'role.roleName',
+    'email',
+    'mobileNumber',
+    'manager',
+    'partner'
+  ]"
+  >
+    <ng-template pTemplate="header">
+      <tr class="myTable">
+        <!-- <th></th> -->
+        <th>Sr No.</th>
+        <th pSortableColumn="firstName">First Name</th>
+        <th pSortableColumn="lastName">Last Name</th>
+        <th pSortableColumn="role.roleName">Role</th>
+        <th pSortableColumn="email">Email ID</th>
+        <th pSortableColumn="mobileNumber">Mobile Number</th>
+        <th pSortableColumn="manager">Manager</th>
+        <th pSortableColumn="partner">Partner</th>
+        <!-- <th></th> -->
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-user && let-i="rowIndex">
+      <tr>
+        <td>{{ i + 1 }}</td>
+        <td>{{ user.firstName }}</td>
+        <td>{{ user.lastName }}</td>
+        <td>{{ user.role.roleName }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.mobileNumber }}</td>
+        <td>{{ user.manager }}</td>
+        <td>{{ user.partner }}</td>
+        <!-- <td>
+          <button
+            pButton
+            pRipple
+            icon="pi pi-pencil"
+            class="p-button-sm pbuttonclass"
+            (click)="editRole(role.roleId)"
+          ></button>
+        </td> -->
+      </tr>
+    </ng-template>
+    <!-- <ng-template pTemplate="summary">
+      <div class="flex align-items-center justify-content-between">
+        In total there are {{ userData ? userData.length : 0 }} Users.
+      </div>
+    </ng-template> -->
+  </p-table>
+</div>
+</span>
+<!-- Notification msg's -->
+<p-toast></p-toast>
+<p-confirmDialog
+  header="Confirmation"
+  icon="pi pi-exclamation-triangle"
+></p-confirmDialog>
+<!-- Spinner -->
+<ng-container *ngIf="isLoading">
+  <div class="spinner"></div>
+  <app-spinner></app-spinner>
+</ng-container>

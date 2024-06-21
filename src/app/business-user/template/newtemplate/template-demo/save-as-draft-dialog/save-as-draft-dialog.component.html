@@ -1,0 +1,20 @@
+<div class="card">
+    <form [formGroup]="saveAsDraftForm">
+        <div class="field">
+            <mat-form-field appearance="fill">
+                <mat-label>Draft Version</mat-label>
+                <input type="tel" matInput formControlName="draftVerion" placeholder="Draft version">
+            </mat-form-field>
+        </div>
+        <div class="field">
+            <mat-form-field class="example-full-width">
+                <mat-label>Draft Tag</mat-label>
+                <input matInput formControlName="draftTag" placeholder="Draft tag">
+              </mat-form-field>
+        </div>
+
+        <section>
+            <button mat-raised-button color="primary" [disabled]="!saveAsDraftForm.valid" (click)="onSubmit()"> Save </button>
+        </section>
+    </form>
+</div>

@@ -1,0 +1,296 @@
+<button
+  pButton
+  type="button"
+  icon="pi pi-plus"
+  class="ui-button-info"
+  [label]="'Add'"
+  appAddnewrow
+  [table]="dt"
+  [newRow]="newRow()"
+></button>
+<br /><br />
+
+<p-table
+  styleClass="p-datatable-gridlines templateTable"
+  responsiveLayout="scroll"
+  #dt
+  [value]="products"
+>
+  <!-- <ng-template pTemplate="caption">
+        Header
+    </ng-template> -->
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Category</th>
+      <th>Weightage</th>
+      <th>Subcategory1</th>
+      <th>Weightage</th>
+      <th>Subcategory2</th>
+      <th>Weightage</th>
+      <th>Subcategory3</th>
+      <th>Weightage</th>
+      <th>Parameter</th>
+      <th>Weightage</th>
+      <th>Max Score</th>
+      <th>Scoring Criteria</th>
+      <th>Action</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-product>
+    <tr [pEditableRow]="product">
+      <td pEditableColumn>
+        <p-cellEditor>
+          <ng-template pTemplate="input">
+            <p-cascadeSelect
+              [options]="countries"
+              optionLabel="name"
+              optionGroupLabel="name"
+              [optionGroupChildren]="['states', 'cities']"
+              [style]="{ width: '10rem' }"
+              appendTo="body"
+              placeholder="Select"
+              [(ngModel)]="product.category"
+            ></p-cascadeSelect>
+          </ng-template>
+          <ng-template pTemplate="output">
+            {{ product.category.name }}
+          </ng-template>
+        </p-cellEditor>
+
+        <button
+          pButton
+          type="button"
+          icon="pi pi-ellipsis-v"
+          class="p-button p-button-outlined menuIcon"
+          [matMenuTriggerFor]="cat_menu"
+        ></button>
+        <mat-menu #cat_menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>edit</mat-icon>
+            <span>Add new category</span>
+          </button>
+
+          <button mat-menu-item>
+            <mat-icon>move_to_inbox</mat-icon>
+            <span>Move to existing category</span>
+          </button>
+        </mat-menu>
+      </td>
+
+      <td>
+        <input pInputText type="text" style="width: 4rem" />
+      </td>
+
+      <td>
+        <div class="grid">
+          <div class="col-10">
+            <p-cascadeSelect
+              [options]="countries"
+              optionLabel="name"
+              optionGroupLabel="name"
+              [optionGroupChildren]="['states', 'cities']"
+              [style]="{ width: '10rem' }"
+              placeholder="Select"
+              appendTo="body"
+            ></p-cascadeSelect>
+          </div>
+          <div class="col-2">
+            <button
+              pButton
+              type="button"
+              icon="pi pi-ellipsis-v"
+              class="p-button p-button-outlined menuIcon"
+              [matMenuTriggerFor]="subcat1_menu"
+            ></button>
+          </div>
+        </div>
+        <mat-menu #subcat1_menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>edit</mat-icon>
+            <span>Add new subcategory</span>
+          </button>
+
+          <button mat-menu-item>
+            <mat-icon>move_to_inbox</mat-icon>
+            <span>Move to existing subcategory</span>
+          </button>
+        </mat-menu>
+      </td>
+
+      <td>
+        <input pInputText type="text" style="width: 4rem" />
+      </td>
+
+      <td>
+        <div class="grid">
+          <div class="col-10">
+            <p-cascadeSelect
+              [options]="countries"
+              optionLabel="name"
+              optionGroupLabel="name"
+              [optionGroupChildren]="['states', 'cities']"
+              [style]="{ width: '10rem' }"
+              placeholder="Select"
+              appendTo="body"
+            ></p-cascadeSelect>
+          </div>
+          <div class="col-2">
+            <button
+              pButton
+              type="button"
+              icon="pi pi-ellipsis-v"
+              class="p-button p-button-outlined menuIcon"
+              [matMenuTriggerFor]="subcat2_menu"
+            ></button>
+          </div>
+        </div>
+
+        <mat-menu #subcat2_menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>edit</mat-icon>
+            <span>Add new subcategory</span>
+          </button>
+
+          <button mat-menu-item>
+            <mat-icon>move_to_inbox</mat-icon>
+            <span>Move to existing subcategory</span>
+          </button>
+        </mat-menu>
+      </td>
+      <td>
+        <input pInputText type="text" style="width: 4rem" />
+      </td>
+
+      <td>
+        <div class="grid">
+          <div class="col-10">
+            <p-cascadeSelect
+              [options]="countries"
+              optionLabel="name"
+              optionGroupLabel="name"
+              [optionGroupChildren]="['states', 'cities']"
+              [style]="{ width: '10rem' }"
+              placeholder="Select"
+              appendTo="body"
+            ></p-cascadeSelect>
+          </div>
+          <div class="col-2">
+            <button
+              pButton
+              type="button"
+              icon="pi pi-ellipsis-v"
+              class="p-button p-button-outlined menuIcon"
+              [matMenuTriggerFor]="subcat3_menu"
+            ></button>
+          </div>
+        </div>
+
+        <mat-menu #subcat3_menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>edit</mat-icon>
+            <span>Add new subcategory</span>
+          </button>
+
+          <button mat-menu-item>
+            <mat-icon>move_to_inbox</mat-icon>
+            <span>Move to existing subcategory</span>
+          </button>
+        </mat-menu>
+      </td>
+
+      <td>
+        <input pInputText type="text" style="width: 4rem" />
+      </td>
+
+      <td>
+        <div class="grid">
+          <div class="col-10">
+            <p-cascadeSelect
+              [options]="countries"
+              optionLabel="name"
+              optionGroupLabel="name"
+              [optionGroupChildren]="['states', 'cities']"
+              [style]="{ width: '10rem' }"
+              placeholder="Select"
+              appendTo="body"
+              editable="true"
+            >
+            </p-cascadeSelect>
+          </div>
+          <div class="col-2">
+            <button
+              pButton
+              type="button"
+              icon="pi pi-ellipsis-v"
+              class="p-button p-button-outlined menuIcon"
+              [matMenuTriggerFor]="para_menu"
+            ></button>
+          </div>
+        </div>
+
+        <mat-menu #para_menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>edit</mat-icon>
+            <span>Add New Parameter</span>
+          </button>
+
+          <button mat-menu-item>
+            <mat-icon>move_to_inbox</mat-icon>
+            <span>Move to existing subcategory</span>
+          </button>
+        </mat-menu>
+      </td>
+
+      <td>
+        <input pInputText type="text" style="width: 4rem" />
+      </td>
+      <td>
+        <input pInputText type="text" style="width: 4rem" />
+      </td>
+      <td>
+        <input pInputText type="text" style="width: 10rem" />
+      </td>
+      <td>
+        <div style="display: inline">
+          <button
+            pButton
+            appAddnewrow
+            [table]="dt"
+            [newRow]="newRow()"
+            icon="pi pi-plus-circle"
+          ></button>
+          &nbsp;
+          <button
+            pButton
+            (click)="onRowcpySave(product)"
+            icon="pi pi-copy"
+          ></button>
+        </div>
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="summary">
+    <div style="text-align: right">
+      <button
+        class="bottomButton"
+        pButton
+        label="Cancel"
+        icon="pi pi-times"
+      ></button>
+      <button
+        class="bottomButton"
+        pButton
+        label="Save as Draft"
+        icon="pi pi-download"
+      ></button>
+      <button
+        class="bottomButton"
+        pButton
+        label="Save"
+        icon="pi pi-check"
+      ></button>
+      <button class="bottomButton" pButton icon="pi pi-chevron-left"></button>
+      <button class="bottomButton" pButton icon="pi pi-chevron-right"></button>
+    </div>
+  </ng-template>
+</p-table>

@@ -1,0 +1,487 @@
+/* ::ng-deep .pbuttonclass {
+  background-color: #d04a02 !important;
+  color: white !important;
+  float: right !important;
+  border: none !important;
+  border-radius: 4px !important ;
+
+}
+
+::ng-deep .picklist {
+  width: 50rem;
+  margin-left: 6rem;
+  margin-top: 1rem;
+}
+
+
+
+.actionButton {
+  padding: 0%;
+  height: 2rem;
+  width: 2rem;
+  border: none;
+  background-color: #d04a02;
+}
+
+.actionButton:hover {
+  padding: 0%;
+  height: 2rem;
+  width: 2rem;
+  border: none;
+  background-color: #d04a02;
+}
+
+.pbuttonclass:hover {
+  background-color: #d04a02;
+  border-color: white;
+}
+
+::ng-deep .pbuttonclass1 {
+  background-color: #d04a02;
+  border-color: white;
+}
+
+.roles,
+h1 {
+  color: #415385;
+  font-size: 34px;
+  
+}
+
+::ng-deep .pbuttonclass2 {
+  background-color: #d04a02;
+  border-color: white;
+  float: right;
+}
+.pbuttonclass2:hover {
+  background-color: #d04a02;
+  color: white;
+  border: none;
+}
+::ng-deep .skillButton1 {
+  background-color: #d04a02;
+  color: white;
+  border: none;
+  margin-top: 30px;
+}
+
+.skillButton1:hover {
+  background-color: #d04a02;
+  color: white;
+  border: none;
+}
+.title,
+h3 {
+  color: #3a3a3a;
+  font-size: 22px;
+  
+  text-align: left;
+  font-weight: bold;
+}
+
+.search {
+  float: right;
+}
+
+.myTable::ng-deep * {
+  background-color: #9aa4be !important;
+  border: 1px solid#9AA4BE !important;
+  height: 10vh;
+}
+
+.pbuttonclass1:hover {
+  background-color: #d04a02;
+  border-color: white;
+}
+::ng-deep .plusIcon {
+  background-color: #415385;
+  border-color: white;
+  margin-top: 10px !important;
+  margin-bottom: 10px;
+}
+.plusIcon:hover {
+  background-color: #415385;
+  border-color: white;
+  margin-top: 10px !important;
+}
+
+::ng-deep .userDialog {
+  background-color: #e68897;
+}
+
+::ng-deep input,
+textarea {
+  margin-top: 10px !important;
+  background-color: #f3f3f3 !important;
+}
+::ng-deep .dropdown {
+  margin-top: 10px !important;
+  background-color: #f3f3f3 !important;
+}
+
+::ng-deep .dropdown {
+  margin-top: 10px !important;
+}
+
+::ng-deep .businessOwner {
+  background-color: #d2d7e2;
+  height: 20vh;
+  padding: 10px;
+  border-radius: 7px;
+  margin-bottom: 10px !important;
+}
+::ng-deep .btn {
+  float: right !important;
+  margin-bottom: 100px !important;
+  margin-top: 20px !important;
+}
+
+::ng-deep .plus_icon {
+  font-size: 1.5rem !important;
+}
+
+tr:nth-child(even) {
+  background-color: #f3f3f3;
+}
+
+::ng-deep .inputbox {
+  padding: 10px !important;
+}
+
+::ng-deep pButton {
+  margin-bottom: 10px !important;
+}
+
+::ng-deep .pbuttonclass1 {
+  background-color: #ffffff;
+  color: #d04a02;
+  border-color: #d04a02;
+  ;
+  margin-bottom: 10px;
+}
+
+::ng-deep .balancesheettable {
+  border-radius: 0px;
+  border: 2px solid #9aa4be !important;
+  overflow: hidden !important;
+  margin-top: 20px !important;
+}
+
+::ng-deep label {
+  font-weight: bold;
+}
+::ng-deep .cardd {
+  margin-top: 50px;
+  box-shadow: none;
+}
+
+::ng-deep .link {
+  cursor: pointer;
+  color: #415385;
+  text-decoration: underline;
+}
+
+::ng-deep .versionCard {
+  background-color: #b3c5ec !important;
+  color: black !important;
+}
+
+::ng-deep .removeButton {
+  margin-top: 2.5rem;
+}
+
+::ng-deep .businessOwnerTable {
+  border-radius: 10px;
+  border: 2px solid #9aa4be !important;
+  overflow: hidden !important;
+}
+::ng-deep .tablerow {
+  height: 2rem !important;
+  padding: 0% !important;
+  margin: 0% !important;
+}
+
+::ng-deep .skillButton {
+  background-color: #d04a02;
+  color: white;
+  border: none;
+}
+
+.skillButton:hover {
+  background-color: #d04a02;
+  color: white;
+  border: none;
+}
+
+.spinner {
+  background-color: rgba(184, 167, 167, 0.2);
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+app-spinner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.thirdTab {
+  margin-bottom: 10px !important;
+} */
+
+.roles,
+h1 {
+  color: #415385;
+  font-size: 26px;
+  
+}
+
+::ng-deep .balancesheettable {
+  border-radius: 0px;
+  border: 2px solid #9aa4be !important;
+  overflow: hidden !important;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 4px;
+}
+
+.spinner {
+  background-color: rgba(184, 167, 167, 0.2);
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+app-spinner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.addVendor {
+  background-color: #817b75;
+  border: none;
+}
+
+.addVendor:hover {
+  background-color: #817b75;
+  border: none;
+}
+
+tr:nth-child(even) {
+  background-color: #f3f3f3;
+}
+
+th {
+  background-color: #9aa4be !important;
+}
+
+.pbuttonclass12 {
+  background-color: #d04a02;
+  color: white;
+  border: none;
+  float: left;
+}
+
+.pbuttonclass12:hover {
+  background-color: #817b75;
+  color: white;
+  border: none;
+}
+
+.pbuttonclass13 {
+  background-color: #817b75;
+  color: white;
+  border: none;
+  float: left;
+}
+
+.pbuttonclass13:hover {
+  background-color: #817b75;
+  color: white;
+  border: none;
+}
+
+
+::ng-deep .editButton11 {
+  background-color: #817b75 !important;
+  color: #f7f7f7 !important;
+  /* margin-top: 8px !important; */
+}
+
+::ng-deep .editButton {
+  border-color: #817b75 !important;
+  color: #817b75 !important;
+  /* margin-top: 8px !important; */
+}
+
+::ng-deep .editButton12 {
+  border-color: #817b75 !important;
+  color: #817b75 !important;
+  /* margin-top: 8px !important; */
+}
+
+::ng-deep .editButton13 {
+  background-color: #817b75 !important;
+  color: #f7f7f7 !important;
+  /* margin-top: 8px !important; */
+}
+
+::ng-deep .editButton14 {
+  border-color: #817b75 !important;
+  color: #817b75 !important;
+  /* margin-top: 8px !important; */
+}
+
+::ng-deep .editButton15 {
+  background-color: #817b75 !important;
+  color: #f7f7f7 !important;
+  /* margin-top: 8px !important; */
+}
+
+::ng-deep .editButton16 {
+  border-color: #817b75 !important;
+  color: #817b75 !important;
+  /* margin-top: 8px !important; */
+}
+
+.title,
+h3 {
+  color: #3a3a3a;
+  font-size: 22px;
+  
+  text-align: left;
+  font-weight: bold;
+  padding: 10px 0px;
+}
+
+label {
+  font-weight: bold;
+}
+
+::ng-deep .input {
+  margin-top: 10px !important;
+  height: 3rem !important;
+}
+
+::ng-deep .picklist {
+  width: 50rem;
+  margin-left: 6rem;
+  margin-top: 1rem;
+}
+
+.pbuttonclass {
+  background-color: #817b75;
+  color: white;
+  border: none;
+}
+
+.pbuttonclass:hover {
+  background-color: #817b75;
+  color: white;
+  border: none;
+}
+
+.pbuttonclassSave {
+  background-color: #817b75;
+  border: none;
+  float: right;
+}
+
+.pbuttonclassSave:hover {
+  background-color: #817b75;
+  border: none;
+}
+
+.btnsForNew {
+  float: right;
+  margin-bottom: 20px;
+}
+
+.firstScreenButton {
+  margin-bottom: 10px !important;
+}
+
+::ng-deep .addLOB1 {
+  border-color: #817b75 !important;
+  color: #817b75 !important;
+ 
+  /* margin-top: 32px !important; */
+}
+
+
+
+.cancelButton {
+  background-color: #d04a02;
+  border: none;
+  float: left;
+}
+
+.cancelButton:hover {
+  background-color: #817b75;
+  border: none;
+}
+
+.okButton {
+  background-color: #817b75 !important;
+  color: white !important;
+  float: right !important;
+  border: none;
+}
+
+.okButton:hover {
+  background-color: #d04a02;
+  color: white;
+  float: right !important;
+  border: none;
+}
+
+.pbuttonclass45 {
+  border-color: #817b75 !important;
+  color: #817b75 !important;
+}
+
+.pbuttonclass46 {
+  border-color: #817b75 !important;
+  color: #817b75 !important;
+}
+
+.pbuttonclass47 {
+  border-color: #817b75 !important;
+  color: #817b75 !important;
+}
+
+.pbuttonclass48 {
+  border-color: #817b75 !important;
+  color: #817b75 !important;
+}
+
+::ng-deep .detagReasonDialog {
+  width: 33% !important;
+  height: 20rem !important;
+}
+
+.reasonArea {
+  width: 100% !important;
+  height: 7rem !important;
+  padding: 30px 10px;
+}
+
+
+.detagReasonDialog {
+  width: 30% !important;
+  height: 20rem !important;
+}

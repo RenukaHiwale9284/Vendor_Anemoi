@@ -1,0 +1,99 @@
+<form [formGroup]="templateForm" autocomplete="off">
+  <p-card styleClass="mainCard">
+    <div class="grid">
+      <div class="col-5">
+        <p-card styleClass="seperateCard1">
+          <div class="contents">
+            <label> Name</label> <br />
+            <input type="text" id="name" formControlName="name" pInputText required/>
+          </div>
+
+          <div class="contents">
+            <label>Description</label><br />
+            <textarea
+            required
+              name=""
+              formControlName="description"
+              id=""
+              cols="50"
+              rows="5"
+              pInputTextarea
+            ></textarea>
+          </div>
+        </p-card>
+      </div>
+
+      <div class="col-7">
+        <p-card styleClass="seperateCard">
+          <ng-template pTemplate="title">
+            <h4 class="para">Option 1</h4>
+          </ng-template>
+          <div class="grid">
+            <div class="col-8 para">
+              <p>Step 1: Download the excel format for master template</p>
+              <br />
+              <p>Step 2: Upload the filled excel sheet</p>
+              <br />
+              <p>Step 3: Click on next to view the master template</p>
+            </div>
+
+            <div class="col-4">
+              <button
+                class="p-button-sm  mr-2 pbuttonclass"
+                icon="pi pi-download"
+                label="Download"
+                pButton
+              ></button>
+              <br />
+              <br />
+              <button
+                class="p-button-sm  mr-2 pbuttonclass"
+                icon="pi pi-upload"
+                label="Upload"
+                pButton
+              ></button
+              ><br />
+            </div>
+          </div>
+        </p-card>
+        &nbsp; &nbsp;
+        <p-card styleClass="seperateCard">
+          <ng-template pTemplate="title">
+            <h4 class="para">Option 2</h4>
+          </ng-template>
+          <p class="para">
+            Click on next to use the blank canvas and create a master template
+          </p>
+        </p-card>
+      </div>
+    </div>
+  </p-card>
+
+  <div style="float: right; margin: 10px 10px">
+    <div style="margin-top: 10px">
+      <button
+        pButton
+        label="Cancel"
+        icon="pi pi-times-circle"
+        class="p-button-sm mr-2 pbuttonclass"
+      ></button>
+      <button
+        pButton
+        label="Save as Draft"
+        icon="pi pi-arrow-circle-down"
+        (click)="onSaveDraft()"
+        [disabled]="!templateForm.valid"
+        class="p-button-sm mr-2 pbuttonclass"
+      ></button>
+
+      <button
+        pButton
+        icon="pi pi-chevron-right"
+        class="p-button-sm mr-2 pbuttonclass"
+        (click)="openNext()"
+      ></button>
+    </div>
+  </div>
+  <br />
+  <br />
+</form>

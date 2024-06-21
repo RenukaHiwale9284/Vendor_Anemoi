@@ -1,0 +1,383 @@
+
+<span>
+<p-progressSpinner *ngIf="!templateDetails"></p-progressSpinner>
+
+<div class="roles">
+  <h1>Templates</h1>
+</div>
+
+<p-tabView style="margin-left: 2rem !important;">
+  <p-tabPanel header="Created by you">
+    <div class="topView">
+    <span class="p-input-icon-left ">
+      <i class="pi pi-search searchIcon"></i>
+      <input
+        type="text"
+        pInputText
+        (input)="dt.filterGlobal(target($event).value, 'contains')"
+        placeholder="Search"
+      />
+    </span>
+    &nbsp;
+    <p-dropdown
+    [options]="createdByYouProjectList"
+    [(ngModel)]="selectedProject"
+    placeholder="Select"
+    optionLabel="projectName"
+    optionValue="projectName"
+    appendTo="body"
+    (onChange)="dt.filterGlobal($any(selectedProject), 'equals')"
+    [showClear]="true"
+    [filter]="true"
+    filterBy="projectName"
+  ></p-dropdown>
+    &nbsp;
+   
+    <button
+      pButton
+      label="Create new template"
+      (click)="onClickAddTemplate()"
+      icon="pi pi-plus-circle"
+      class="createNewButton"
+    ></button>
+  </div>
+<br>
+    <!-- to view all Users -->
+    <div class="card" style="margin-top: 10px">
+      <p-table
+        styleClass="p-datatable-sm balancesheettable"
+        #dt
+        [value]="templateDetails1"
+        [rows]="7"
+        [paginator]="true"
+        responsiveLayout="scroll"
+        [rowHover]="true"
+        dataKey="id"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [showCurrentPageReport]="true"
+        [globalFilterFields]="[
+          'templateDescription.name',
+          'templateDescription.description',
+          'project.projectName',
+          'project.industry'
+        ]"
+      >
+        <ng-template pTemplate="header">
+          <tr class="myTable">
+            <th pSortableColumn="templateDescription.name">Template name</th>
+            <th pSortableColumn="templateDescription.description">Description</th>
+            <th pSortableColumn="project.projectName">Project name</th>
+            <th pSortableColumn="project.industry">Industry/sector</th>
+            <th pSortableColumn="templateDescription.createdOn">Created on</th>
+            <th pSortableColumn="project.status">Status</th>
+            <th >Action</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-templateDetails1>
+          <tr class="anchor-row">
+            <td>{{ templateDetails1.templateDescription.name }}</td>
+            <td>{{ templateDetails1.templateDescription.description }}</td>
+            <td>{{ templateDetails1.project.projectName }}</td>
+            <td>{{ templateDetails1.project.industry }}</td>
+            
+            <td>{{ templateDetails1.templateDescription.createdOn | date : "EEE, dd-MMM yyyy" }}</td>
+            <td>
+              <span [class]="getStatusClass(templateDetails1.status)">{{
+                templateDetails1.status
+              }}</span>
+            </td>
+            <td style="text-align: center">
+              <button
+              pTooltip="Edit"
+              tooltipPosition="top"
+              pButton
+              icon="pi pi-pencil"
+                pButton
+                pRipple
+               
+                class="p-button-sm p-button-outlined newActionButton"
+                (click)="navigateTemplateDetails(templateDetails1.templateId)"
+              ></button>
+            </td>
+          </tr>
+        </ng-template>
+        <!-- <ng-template pTemplate="summary">
+          <div class="flex align-items-center justify-content-between">
+            In total there are
+            {{ templateDetails ? templateDetails.length : 0 }} template.
+          </div>
+        </ng-template> -->
+      </p-table>
+    </div>
+  </p-tabPanel>
+
+  <p-tabPanel header="Sent for review">
+    <div class="topView">
+    <span class="p-input-icon-left">
+      <i class="pi pi-search searchIcon"></i>
+      <input
+        type="text"
+        pInputText
+        (input)="dtCreated.filterGlobal(target($event).value, 'contains')"
+        placeholder="Search"
+      />
+    </span>&nbsp;
+    <p-dropdown
+    [options]="sentForReviewProjects"
+    [(ngModel)]="selectedProject"
+    placeholder="Select"
+    optionLabel="projectName"
+    optionValue="projectName"
+    appendTo="body"
+    (onChange)="dtCreated.filterGlobal($any(selectedProject), 'equals')"
+    [showClear]="true"
+    [filter]="true"
+    filterBy="projectName"
+  ></p-dropdown> &nbsp;
+    <button
+      pButton
+      label="Create new template"
+      (click)="onClickAddTemplate()"
+      icon="pi pi-plus-circle"
+      class="createNewButton"
+    ></button>
+  </div>
+  <br>
+    <!-- to view all Users -->
+    <div class="card" style="margin-top: 10px">
+      <p-table
+        styleClass="p-datatable-sm balancesheettable"
+        #dtCreated
+        [value]="templateDetails"
+        [rows]="7"
+        [paginator]="true"
+        responsiveLayout="scroll"
+        [rowHover]="true"
+        dataKey="id"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [showCurrentPageReport]="true"
+        [globalFilterFields]="[
+          'templateDescription.name',
+          'templateDescription.description',
+          'project.projectName',
+          'templateDescription.status',
+          'templateDescription.createdBy'
+        ]"
+      >
+        <ng-template pTemplate="header">
+          <tr class="myTable">
+            <th pSortableColumn="templateDescription.name">Template name</th>
+            <th pSortableColumn="templateDescription.description">Description</th>
+            <th pSortableColumn="project.projectName">Project name</th>
+            <th pSortableColumn="templateDescription.createdBy">Created by</th>
+            <th pSortableColumn="templateDescription.createdOn">Created on</th>
+            <th pSortableColumn="editedBy">Edited by</th>
+            <th pSortableColumn="editedOn">Edited on</th>
+            <th pSortableColumn="status">Status</th>
+            <th >Action</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-templateDetails>
+          <tr class="anchor-row">
+            <td>{{ templateDetails.templateDescription.name }}</td>
+            <td>{{ templateDetails.templateDescription.description }}</td>
+            <td>{{ templateDetails.project.projectName }}</td>
+            <td>{{ templateDetails.templateDescription.createdBy }}</td>
+            <td>
+              {{
+                templateDetails.templateDescription.createdOn
+                  | date : "EEE, dd-MMM yyyy"
+              }}
+            </td>
+            <td>{{ templateDetails.editedBy }}</td>
+
+           
+            <td>{{ templateDetails.editedOn | date : "EEE, dd-MMM yyyy"}}</td>
+            
+            <td>
+              <span [class]="getStatusClass(templateDetails.status)">{{
+                templateDetails.status
+              }}</span>
+            </td>
+            <td style="text-align: center">
+              <button
+              pTooltip="Edit"
+              tooltipPosition="top"
+              pButton
+              icon="pi pi-pencil"
+                pButton
+                pRipple
+               
+                class="p-button-sm p-button-outlined newActionButton"
+                (click)="navigateTemplateDetails(templateDetails.templateId)"
+              ></button>
+            </td>
+          </tr>
+        </ng-template>
+        <!-- <ng-template pTemplate="summary">
+          <div class="flex align-items-center justify-content-between">
+            In total there are
+            {{ templateDetails ? templateDetails.length : 0 }} template.
+          </div>
+        </ng-template> -->
+      </p-table>
+    </div>
+  </p-tabPanel>
+
+  <p-tabPanel header="Draft templates">
+    <div class="topView">
+    <span class="p-input-icon-left">
+      <i class="pi pi-search searchIcon"></i>
+      <input
+        type="text"
+        pInputText
+        (input)="dtDraft.filterGlobal(target($event).value, 'contains')"
+        placeholder="Search"
+      />
+    </span>
+    &nbsp;
+    <p-dropdown
+    [options]="draftProjects"
+    [(ngModel)]="selectedProjectsData"
+    placeholder="Select"
+    optionLabel="projectName"
+    optionValue="projectName"
+    appendTo="body"
+    (onChange)="dtDraft.filterGlobal($any(selectedProjectsData), 'equals')"
+    [showClear]="true"
+    [filter]="true"
+    filterBy="projectName"
+  ></p-dropdown>
+    <!-- <span style="float: right">
+      <button
+        pButton
+        pRipple
+        icon="pi pi-trash"
+        class="p-button-danger"
+        (click)="deleteSelectedDrafts()"
+        [disabled]="!selectedDrafts || !selectedDrafts.length"
+      ></button>
+    </span> -->
+    <button
+      pButton
+      label="Create new template"
+      (click)="onClickAddTemplate()"
+      icon="pi pi-plus-circle"
+      class="createNewButton"
+    ></button>
+  </div>
+  <br>
+    <!-- to view all Users -->
+    <div class="card" style="margin-top: 10px">
+      <p-table
+        styleClass="p-datatable-sm balancesheettable"
+        #dtDraft
+        [value]="draftTemplateData"
+        [rows]="7"
+        [paginator]="true"
+        responsiveLayout="scroll"
+        [rowHover]="true"
+        dataKey="id"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [showCurrentPageReport]="true"
+        [globalFilterFields]="[
+          'templateDescription.name',
+          'templateDescription.description',
+          'projectDraft.projectName',
+          'templateDescription.status',
+          'draftVerion',
+          'draftTag',
+          'status'
+        ]"
+      >
+        <ng-template pTemplate="header">
+          <tr class="myTable">
+            <th pSortableColumn="templateDescription.name">Template name</th>
+            <th pSortableColumn="projectDraft.projectName">Project name</th>
+            <th pSortableColumn="templateDescription.description">Description</th>
+            <th pSortableColumn="draftVerion">Draft version</th>
+            <th pSortableColumn="draftTag">Draft tag</th>
+            <th pSortableColumn="templateDescription.createdOn">Created on</th>
+            <!-- <th>Status</th> -->
+            <th >Action</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-data>
+          <tr class="anchor-row">
+            <td>
+              {{ data.templateDescription.name }}
+            </td>
+            <td>
+              {{ data.projectDraft.projectName }}
+            </td>
+            <td>
+              {{ data.templateDescription.description }}
+            </td>
+            <td>
+              {{ data.draftVerion }}
+            </td>
+            <td>
+              {{ data.draftTag }}
+            </td>
+            <td>
+              {{
+                data.templateDescription.createdOn | date : "EEE, dd-MMM yyyy"
+              }}
+            </td>
+            <!-- <td>
+              <span [class]="getStatusClass(data.status)">{{
+                data.status
+              }}</span>
+            </td> -->
+            <td>
+              <button
+              pTooltip="Edit"
+              tooltipPosition="top"
+              pButton
+              icon="pi pi-pencil"
+                pButton
+                pRipple
+             
+                class="p-button-sm p-button-outlined newActionButton"
+                (click)="navigateCreateTemplate(data.draftId)"
+              ></button>
+              &nbsp;
+
+              <button
+              style="height: 2rem; width: 1rem;text-align: center;"
+                pTooltip="Delete"
+                tooltipPosition="top"
+                pButton
+                pRipple
+                class="p-button-sm p-button-outlined editButton27"
+                (click)="deleteSelectedDrafts(data.draftId)"
+              ><img src="assets/Icon/delete-fill.svg" style="height: 1rem;margin-left: -.5rem;" alt=""></button>
+            </td>
+          </tr>
+        </ng-template>
+        <!-- <ng-template pTemplate="summary">
+          <div class="flex align-items-center justify-content-between">
+            In total there are
+            {{ draftTemplateData ? draftTemplateData.length : 0 }} templates.
+          </div>
+        </ng-template> -->
+      </p-table>
+    </div>
+  </p-tabPanel>
+</p-tabView>
+</span>
+
+<p-toast></p-toast>
+
+<!-- Spinner -->
+<ng-container *ngIf="isLoading">
+  <div class="spinner"></div>
+  <app-spinner></app-spinner>
+</ng-container>
+
+<!-- Notification msg's -->
+<p-toast></p-toast>
+<p-confirmDialog
+  header="Confirmation"
+  icon="pi pi-exclamation-triangle"
+></p-confirmDialog>

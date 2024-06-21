@@ -1,0 +1,61 @@
+
+<div  class="p-grid">
+    <div class="col-2">
+      <img class="pwcLogo" src="assets/Images/unnamed.png" alt="" />
+    </div>
+    <div class="col-4" class="mainContent">
+      <h2 style="font-weight: 500">Investors Relations Hub</h2>
+      <span style="top: 2rem !important">Sign in into your account</span>
+      <div style="display: flex !important; margin-top: 3rem !important">
+        <p-checkbox
+          [(ngModel)]="checked"
+          [binary]="true"
+          inputId="binary"
+        ></p-checkbox>
+        &nbsp;
+        <span
+          >I accept the <a (click)="onClickTandC()">Terms & conditions</a></span
+        >
+      </div>
+      <div style="margin-top: 2rem">
+        <button
+          [disabled]="!checked"
+          class="loginButton"
+          pButton
+          label="Login"
+          (click)="onClickLogin()"
+        ></button>
+      </div>
+    </div>
+  
+    <div class="col-6">
+      <img
+        class="patternImage"
+        src="assets/Images/loginPageBackground1.png"
+        alt="No image found..!"
+      />
+    </div>
+  </div>
+  
+  <p-dialog [(visible)]="dialog" [modal]="true" styleClass="previewCard">
+    <ng-template pTemplate="header">
+      <h1>Terms and conditions</h1>
+    </ng-template>
+    <ng-template pTemplate="content">
+      <iframe
+        *ngIf="dialog"
+        style="width: 100%; height: 100%"
+        src="assets/Document/VEM_K3_Draft_User T&C.pdf"
+        frameborder="0"
+        title="Terms and Conditions"
+      ></iframe>
+    </ng-template>
+  </p-dialog>
+  <footer  class="footer">
+    <span>
+      © 2024 PwC. All rights reserved. PwC refers to India member firm and may
+      sometimes refer to the PwC network. Each member firm is a separate legal
+      entity. Please see www.pwc.com/structure for further details.</span
+    >
+  </footer>
+  

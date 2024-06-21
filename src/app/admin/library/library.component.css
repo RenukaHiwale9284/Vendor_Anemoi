@@ -1,0 +1,115 @@
+::ng-deep .categoryTable {
+  margin-top: 20px !important;
+  border: 2px solid #9aa4be !important;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 4px;
+}
+
+::ng-deep .pi {
+  font-size: large !important;
+  font-weight: bold;
+}
+tr:nth-child(even) {
+  background-color: #f3f3f3;
+}
+
+.myTable::ng-deep * {
+  background-color: #7b7b7b !important;
+}
+
+::ng-deep .submitButton2 {
+  background-color: #817b75 !important;
+  color: white !important;
+  border: none;
+  margin-left: 10px !important;
+  margin-top: 8px !important;
+}
+::ng-deep .submitButton {
+  background-color: #d04a02 !important;
+  color: white !important;
+  border: none;
+  margin-left: 10px !important;
+  /* margin-top: 8px !important; */
+}
+::ng-deep .submitButton1 {
+  background-color: #7b7b7b !important;
+  color: white !important;
+  border: none;
+  margin-left: 10px !important;
+  /* margin-top: 8px !important; */
+}
+
+h4 {
+  color: #415385;
+  font-size: 26px;
+  font-family: "Helvetica";
+}
+
+/* .actionButton{
+  background-color: #d04a02;
+  border-color: white;
+  font-family: Helvetica;
+  float: left;
+} */
+::ng-deep .actionButton {
+  border-color: #d04a02 !important;
+  color: #d04a02 !important;
+  margin-top: 8px !important;
+  width: 1.5rem !important;
+  height: 2rem !important;
+  vertical-align: middle !important;
+}
+.actionButton:hover{
+  background-color: #d04a02;
+  border-color: white;
+}
+
+::ng-deep .cancleButtons {
+  border-color: #817b75 !important;
+  color: #817b75 !important;
+}
+
+::ng-deep .deleteButton {
+  border-color: #817b75 !important;
+  color: #817b75 !important;
+  margin-top: 8px !important;
+}
+
+::ng-deep .lineItemDropdown {
+  margin-top: 10px !important;
+  width: 100%;
+}
+
+::ng-deep .dropdownValue {
+  height: 2.5rem !important;
+  margin-top: 10px !important;
+  width: 12rem !important;
+}
+
+
+
+.dropdownValue {
+  height: 2.7rem !important;
+}
+
+.spinner {
+  /* backdrop-filter: blur(2px); */
+  background-color: rgba(184, 167, 167, 0.2);
+  content: " ";
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+app-spinner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.myTable[_ngcontent-rnv-c132] * {
+  background-color: #415385 !important;
+}

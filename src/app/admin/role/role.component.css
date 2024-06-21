@@ -1,0 +1,132 @@
+
+::ng-dee .pbuttonclass {
+  background-color: #c2551f;
+  border-color: white;
+}
+
+.pbuttonclass:hover {
+  background-color: #d30628;
+  border-color: white;
+}
+
+::ng-deep .balancesheettable {
+  border-radius: 0px;
+  border: 2px solid #7b7b7b;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 4px;
+  /* overflow: hidden !important; */
+}
+
+.search {
+  float: right;
+}
+
+.roles,
+h1 {
+  color: #415385;
+  font-size: 26px;
+}
+
+.newroles {
+  color: #655959;
+  font-size: 34px;
+  
+}
+::ng-deep .accesscard {
+  background-color: #f3f3f3;
+}
+
+.access,
+h3 {
+  color: #3a3a3a;
+  font-size: 22px;
+  
+  font-weight: bold;
+  padding-top: 5px;
+}
+
+::ng-deep .userDialog {
+  background-color: #e68897;
+}
+
+tr:nth-child(even) {
+  background-color: #f3f3f3;
+}
+
+::ng-deep .pbuttonclass {
+  background-color: #817b75 !important;
+  color: white !important;
+  border: none;
+  float: right !important;
+}
+
+::ng-deep small {
+  color: red !important;
+}
+
+
+.myTable::ng-deep * {
+  background-color: #9aa4be !important;
+}
+
+::ng-deep
+textarea,
+.status {
+  margin-top: 10px !important;
+}
+::ng-deep .status {
+  margin-top: 10px !important;
+}
+
+tr:nth-child(even) {
+  background-color: #f3f3f3;
+}
+
+::ng-deep .noOfUsers {
+  flex-wrap: wrap;
+}
+
+.headerLabel2 {
+  font-size: large;
+  color: #415385;
+}
+
+.spinner {
+    /* backdrop-filter: blur(2px); */
+    background-color: rgba(184, 167, 167, 0.2);
+    content: " ";
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+  }
+  
+  app-spinner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .status-badge {
+    padding: 4px 15px;
+    color: #fff;
+    border-radius: 20px;
+    display: block;
+    width: 100px;
+    text-align: center;
+  }
+  
+  .status-badge-active {
+    background: #2d8531;
+  }
+  
+  .status-badge-pending {
+    background:red;
+  }
+  
+  .status-badge-progress {
+    background: #f7bc0c;
+  }

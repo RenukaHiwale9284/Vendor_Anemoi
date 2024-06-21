@@ -1,0 +1,218 @@
+.bottun-align {
+    position: relative;
+    right: -1px;
+    top: 5px;
+}
+
+/* .sub-category {
+    margin: 10px 50px;
+    border: 2px solid black;
+}
+
+.parameter {
+    margin: 10px 50px;
+    border: 2px solid black;
+} */
+th {
+    text-align: center !important;
+}
+::ng-deep .submitButton {
+    background-color: #d04a02 !important;
+    color: white !important;
+    border: none;
+    margin-left: 10px !important;
+    height: 40px;
+  }
+  ::ng-deep .cancleButton {
+    border-color: #d04a02 !important;
+    color: #d04a02 !important;
+    height: 40px;
+  }
+
+.container-with-scrollbar {
+    position: static !important;
+    top: 0 !important;
+    right: 0 !important;
+    left: 90px !important;
+    width: auto !important;
+    height: 500px !important;
+    overflow: scroll !important;
+    overflow-y: hidden !important;
+  }
+
+.table1{
+    overflow-y:scroll;
+    height:500px;
+    display:block;
+  }
+
+  
+.display {
+    display: contents;
+}
+
+input {
+    width: 6rem;
+}
+
+table thead th {
+    text-align: justify;
+}
+
+.card-header {
+    height: 30px;
+    padding: 30px;
+    border: none;
+}
+
+.left-aligned {
+    float: left;
+}
+
+.right-aligned {
+    float: right;
+}
+
+.clearfix {
+    clear: both;
+}
+
+.standard-button {
+    background-color: #d04a02;
+    color: #f3f3f3;
+    ;
+    font-size: 18px;
+    float: right;
+    border: none;
+}
+
+.standard-theme-button {
+    background-color: #d04a02;
+    color: #f3f3f3;
+    ;
+    font-size: 18px;
+    border: none;
+}
+
+.header-back-button {
+    font-size: 24px;
+    padding: 12px;
+    cursor: pointer;
+}
+
+.header-back-button i {
+    font-size: 20px;
+}
+
+.comment-overlay-panel {
+    max-height: 28rem;
+    overflow: scroll;
+}
+
+.comment-overlay-panel::-webkit-scrollbar {
+    width: 2px;
+}
+
+.comment-overlay-panel::-webkit-scrollbar-track {
+    background: none;
+}
+
+.comment-overlay-panel::-webkit-scrollbar-thumb {
+    background: #afafaf;
+}
+
+.comment-overlay-panel::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    cursor: pointer;
+}
+
+.comment-overlay-panel {
+    scrollbar-width: 10px;
+}
+
+.comment-overlay-panel ul.comments {
+    display: inline-block;
+    list-style: none;
+    padding: 0px;
+    width: 100%;
+}
+
+.comment-overlay-panel ul.comments li {
+    padding: 20px 12px;
+    background: #eeeeee;
+    border-radius: 6px;
+    margin-bottom: 14px;
+}
+
+.comment-overlay-panel ul.comments li.my-reply {
+    margin-left: 3rem;
+    background: #eeeeee;
+}
+
+.comment-overlay-panel ul.comments li.received-reply {
+    margin-right: 3rem;
+    background: #ccc9c9;
+}
+
+.comment-overlay-panel .comment-header {
+    padding: 10px;
+    border: 1px solid #c4c4c4;
+    border-radius: 4px;
+    margin-top: 16px;
+}
+
+.comment-overlay-panel .comment-header span {
+    margin-left: 10px;
+}
+
+.comment-overlay-panel .comment-status {
+    padding: 12px 0px;
+    font-size: 18px;
+    color: #d04a02;
+    cursor: pointer;
+}
+
+.comment-header p {
+    margin-top: 14px;
+}
+
+.p-cascadeselect input {
+    cursor: pointer !important;
+}
+
+button.pbuttonclass {
+    border: 1px solid #d04a02 !important;
+    background: #fff !important;
+    color: #d04a02 !important;
+}
+
+.p-button:enabled:hover,
+.p-button:enabled:focus,
+.p-button:enabled:active {
+    border: 2px solid #d04a02 !important;
+    background: #d04a02 !important;
+    color: #fff !important;
+}
+
+.comment-badge {
+    position: absolute;
+    z-index: 1;
+    top: -16px;
+    left: 0px;
+    cursor: pointer;
+}
+
+.comment-badge>span {
+    background: #d04a02;
+}
+
+::ng-deep .container1{
+    padding: 10px !important;
+}
+
+.scoringCriteria, .header{
+    width: 14rem !important;
+  }
+  .inputBox, .weightage{
+    width: 6rem !important;
+  }

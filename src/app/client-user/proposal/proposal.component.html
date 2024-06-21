@@ -1,0 +1,173 @@
+<div class="roles">
+  <h1>Proposals</h1>
+</div>
+
+<p-tabView>
+  <p-tabPanel header="Proposals per project">
+    <span class="p-input-icon-left">
+      <i class="pi pi-search"></i>
+      <input
+        type="text"
+        pInputText
+        (input)="dt.filterGlobal(target($event).value, 'contains')"
+        class="p-inputtext-sm"
+        placeholder="Search"
+      />
+    </span>
+
+    <span class="input-left-margin">
+      Filter &nbsp;
+      <p-dropdown
+        class="p-inputtext-sm"
+        placeholder="Sector"
+        [options]="sectorOptions"
+        [(ngModel)]="selectedSector"
+        optionLabel="name"
+        optionValue="code"
+      ></p-dropdown>
+    </span>
+
+    <span class="input-left-margin">
+      View &nbsp;
+      <p-dropdown
+        class="p-inputtext-sm"
+        placeholder="All"
+        [options]="viewOptions"
+        [(ngModel)]="selectedView"
+        optionLabel="name"
+        optionValue="code"
+      ></p-dropdown>
+    </span>
+
+    <!-- to view all Users -->
+    <div class="card" style="margin-top: 10px">
+      <p-table
+        styleClass="p-datatable-sm p-datatable-gridlines templateTable"
+        #dt
+        [value]="proposalDetails"
+        [rows]="7"
+        [paginator]="true"
+        responsiveLayout="scroll"
+        [rowHover]="true"
+        dataKey="id"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [showCurrentPageReport]="true"
+        [globalFilterFields]="['projectName', 'description']"
+      >
+        <ng-template pTemplate="header">
+          <tr class="myTable">
+            <th>Project name</th>
+            <th>Description</th>
+            <th>Proposals recieved</th>
+            <th>Review status</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-proposalDetails>
+          <tr
+            class="anchor-row"
+            (click)="navigateProposalDetails(proposalDetails.scorecardId)"
+          >
+            <td>{{ proposalDetails.project.projectName }}</td>
+            <td>{{ proposalDetails.project.description }}</td>
+            <td>{{ proposalDetails.project.proposalCount }}</td>
+            <td>
+              <span [class]="getStatusClass(proposalDetails.status)">{{
+                proposalDetails.status
+              }}</span>
+            </td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+          <div class="flex align-items-center justify-content-between">
+            In total there are
+            {{ proposalDetails ? proposalDetails.length : 0 }} proposal.
+          </div>
+        </ng-template>
+      </p-table>
+    </div>
+  </p-tabPanel>
+
+  <p-tabPanel header="Sent for Review">
+    <span class="p-input-icon-left">
+      <i class="pi pi-search"></i>
+      <input
+        type="text"
+        pInputText
+        (input)="dtSentForReview.filterGlobal(target($event).value, 'contains')"
+        class="p-inputtext-sm"
+        placeholder="Search"
+      />
+    </span>
+
+    <span class="input-left-margin">
+      Filter &nbsp;
+      <p-dropdown
+        class="p-inputtext-sm"
+        placeholder="Sector"
+        [options]="sectorOptions"
+        [(ngModel)]="selectedSector"
+        optionLabel="name"
+        optionValue="code"
+      ></p-dropdown>
+    </span>
+
+    <span class="input-left-margin">
+      View &nbsp;
+      <p-dropdown
+        class="p-inputtext-sm"
+        placeholder="All"
+        [options]="viewOptions"
+        [(ngModel)]="selectedView"
+        optionLabel="name"
+        optionValue="code"
+      ></p-dropdown>
+    </span>
+
+    <!-- to view all Users -->
+    <div class="card" style="margin-top: 10px">
+      <p-table
+        styleClass="p-datatable-sm p-datatable-gridlines templateTable"
+        #dtSentForReview
+        [value]="scorecards"
+        [rows]="7"
+        [paginator]="true"
+        responsiveLayout="scroll"
+        [rowHover]="true"
+        dataKey="id"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [showCurrentPageReport]="true"
+        [globalFilterFields]="['projectName', 'description']"
+      >
+        <ng-template pTemplate="header">
+          <tr class="myTable">
+            <th>Project name</th>
+            <th>Description</th>
+            <th>Proposals recieved</th>
+            <th>Review status</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-proposalDetails>
+          <tr
+            class="anchor-row"
+            (click)="navigateScorcardDetails(proposalDetails.scoreCardId)"
+          >
+            <td>{{ proposalDetails.projectData.projectName }}</td>
+            <td>{{ proposalDetails.projectData.description }}</td>
+            <td>{{ proposalDetails.proposalCount }}</td>
+            <td>
+              <span [class]="getStatusClass(proposalDetails.status)">{{
+                proposalDetails.status
+              }}</span>
+            </td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+          <div class="flex align-items-center justify-content-between">
+            In total there are
+            {{ proposalDetails ? proposalDetails.length : 0 }} proposal.
+          </div>
+        </ng-template>
+      </p-table>
+    </div>
+  </p-tabPanel>
+</p-tabView>

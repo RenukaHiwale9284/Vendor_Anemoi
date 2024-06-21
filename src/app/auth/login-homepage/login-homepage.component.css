@@ -1,0 +1,25 @@
+.container {
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: white;
+  }
+  
+  
+  form{
+    width: 300px;
+  }
+  
+  button{
+    margin: 10px;
+    background-color: #d30628;
+    border: #d30628;
+  }
+  button:hover{
+    margin: 10px;
+    background-color: #d30628 !important;
+    border: #d30628 !important;
+  }

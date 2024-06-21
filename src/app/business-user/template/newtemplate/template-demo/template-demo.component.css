@@ -1,0 +1,155 @@
+.bottun-align {
+  position: relative;
+  right: -1px;
+  top: 5px;
+}
+
+.header-back-button {
+  cursor: pointer;
+}
+.table1 {
+  overflow-y: scroll;
+  height: 500px;
+  display: block;
+}
+
+.container-with-scrollbar {
+  position: static !important;
+  top: 0 !important;
+  right: 0 !important;
+  left: 90px !important;
+  width: auto !important;
+  /* height: 500px !important; */
+  overflow: scroll !important;
+  overflow-y: hidden !important;
+}
+/* .sub-category {
+    margin: 10px 50px;
+    border: 2px solid black;
+}
+
+
+
+
+.parameter {
+    margin: 10px 50px;
+    border: 2px solid black;
+} */
+
+::ng-deep .p-accordion-header * {
+  height: 1rem !important; /* set the desired height */
+}
+
+/* ::ng-deep .cascadeDropdown{
+    height: 2.5rem !important;
+  } */
+.SaveDraftButton {
+  background-color: #d04a02 !important;
+  color: white !important;
+  border-color: #d04a02 !important;
+}
+.SaveDraftButton:hover {
+  border-color: #d04a02 !important ;
+  background-color: #d04a02 !important;
+  color: white !important;
+}
+.display {
+  display: contents;
+}
+
+input {
+  width: 6rem;
+  height: 2.8rem !important;
+}
+
+.template-form table.now-wrap {
+  white-space: nowrap;
+  width: 100%;
+}
+
+.template-form table tbody tr td {
+  width: auto;
+}
+
+.template-form table thead tr th {
+  width: auto;
+}
+
+.template-form table thead th {
+  text-align: justify;
+}
+
+.SaveButton {
+  float: right !important;
+  background-color: #d04a02 !important;
+  border: none;
+}
+
+.inputbox {
+  margin-top: 10px !important;
+}
+
+.scoringCriteria,
+.header {
+  width: 14rem !important;
+  color: black;
+}
+.inputBox,
+.weightage {
+  width: 6rem !important;
+  color: black;
+
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+th{
+  font-size: larger;
+}
+
+.customSubmitButton{
+  float: right;
+  margin-top: 10px;
+  background-color: #d04a02;
+  border: none;
+}
+.customCancelButton{
+  float: left;
+  margin-top: 10px;
+  background-color: #d04a02;
+  border: none
+}
+.customSubmitButton:hover{
+  float: right;
+  margin-top: 10px;
+  background-color: #d04a02 !important;
+  border: none;
+}
+.customCancelButton:hover{
+  float: left;
+  margin-top: 10px;
+  background-color: #d04a02 !important;
+  border: none
+}
+
+.customSubmitButton{
+  float: right;
+  margin-top: 10px;
+}
+.customCancelButton{
+  float: left;
+  margin-top: 10px;
+}
+
+.customDialog{
+  width: 20%;
+}
+
+.customvalueInputBox{
+  width: 100%;
+  padding: 10px;
+}

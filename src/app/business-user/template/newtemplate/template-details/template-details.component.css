@@ -1,0 +1,155 @@
+::ng-deep .mainCard {
+  border: 1px groove #9aa4be !important;
+  position: sticky;
+  scroll-behavior: smooth;
+}
+
+.contents,
+input,
+textarea {
+  margin-top: 10px;
+}
+
+::ng-deep input {
+  /* width: 50% !important; */
+  background-color: #f3f3f3 !important;
+  border: 1px solid #415385 !important;
+}
+
+::ng-deep textarea {
+  width: 80% !important;
+  background-color: #f3f3f3 !important;
+  border: 1px solid #415385 !important;
+}
+
+::ng-deep .pbuttonClass {
+  background-color: #ffffff;
+  color: #817b75;
+  border-color: #817b75;
+  ;
+  margin-bottom: 10px;
+}
+
+::ng-deep .pbuttonclassDownload {
+  background-color: #817b75;
+  color: #ffffff;
+  border: none;
+  margin-bottom: 10px;
+}
+::ng-deep .pbuttonclassUpload {
+  background-color: #817b75;
+  color: #ffffff;
+  border: none;
+  ;
+  margin-bottom: 10px;
+}
+
+.pbuttonclassUpload:hover {
+  background-color: #817b75;
+  border-color: #817b75;
+  ;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+.pbuttonclassDownload:hover {
+  background-color: #817b75;
+  border-color: #817b75;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+.pbuttonClass:hover {
+  background-color: #817b75;
+  border-color: #817b75;
+  ;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.pbuttonClassNext {
+  background-color: #817b75;
+  color: white;
+  border: none;
+  ;
+  margin-bottom: 10px;
+}
+
+.pbuttonClassNext:hover {
+  background-color: #817b75;
+  color: white;
+
+}
+
+.para {
+  font-size: 18px;
+  ;
+}
+
+.myTable::ng-deep * {
+  background-color: #d2d7e2 !important;
+}
+
+::ng-deep .seperateCard {
+  background-color: #f3f3f3;
+  color: #2d2d2d;
+  border: 1px solid #707070;
+  width: auto !important;
+}
+
+/* ::ng-deep .seperateCard1 {
+  border: 1px solid #707070;
+} */
+
+::ng-deep .cardd {
+  margin-top: 50px;
+  display: none;
+}
+
+::ng-deep .dropdown1 {
+  margin-top: 10px !important;
+  width: 80% !important;
+  background-color: #f3f3f3 !important;
+  border: 1px solid #415385 !important;
+  color: black !important;
+  border: 1px solid black;
+}
+
+.inputTextArea {
+  width: 100px;
+}
+
+@keyframes p-progress-spinner-color {
+
+  100%,
+  0% {
+    stroke: #d62d20;
+  }
+
+  40% {
+    stroke: #0057e7;
+  }
+
+  66% {
+    stroke: #008744;
+  }
+
+  80%,
+  90% {
+    stroke: #ffa700;
+  }
+}
+
+.spinnerDiv {
+
+  display: flex;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+.spinner {
+  /* background: #222;
+  color: #fff; */
+  display: inline-block;
+  text-align: center;
+  margin: 10px 10px 0 0;
+  padding: 5px 10px
+}

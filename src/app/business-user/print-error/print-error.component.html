@@ -1,0 +1,253 @@
+<div
+  class="text-danger"
+  *ngIf="
+    roleControl &&
+    roleControl.errors &&
+    (roleControl.dirty || roleControl.touched)
+  "
+>
+  <div *ngIf="roleControl.errors.required">
+    <small>This field is required</small>
+  </div>
+  <!-- <div *ngIf="roleControl.errors.pattern"><small>Alphabets allow only</small> <br>
+                                            <small>This should be between 3 to 15 characters</small></div>
+    -->
+</div>
+
+<div
+  class="text-danger"
+  *ngIf="
+    descriptionControl &&
+    descriptionControl.errors &&
+    (descriptionControl.dirty || descriptionControl.touched)
+  "
+>
+  <div *ngIf="descriptionControl.errors.required">
+    <small>This field is required</small>
+  </div>
+  <!-- <div *ngIf="descriptionControl.errors.minlength">
+    <small
+      >Please enter a Brief Description with minimum 3 and maximum of 200
+      characters. No special characters are allowed except "." and ","
+    </small>
+  </div> -->
+  <div *ngIf="descriptionControl.errors.pattern">
+    <!-- <small
+      >Please enter a Brief Description with minimum 3 and maximum of 200
+      characters. No special characters are allowed except "." and ","
+    </small> -->
+  </div>
+</div>
+
+<div
+  class="text-danger"
+  *ngIf="
+    vendorNameControl &&
+    vendorNameControl.errors &&
+    (vendorNameControl.dirty || vendorNameControl.touched)
+  "
+>
+  <div *ngIf="vendorNameControl.errors.required">
+    <small>This field is required.
+    </small>
+  </div>
+  <div *ngIf="vendorNameControl.errors.pattern">
+    <small>  Atleast 3 letters are required.</small>
+  </div>
+</div>
+<div
+  class="text-danger"
+  *ngIf="
+  projectName &&
+  projectName.errors &&
+    (projectName.dirty || projectName.touched)
+  "
+>
+  <div *ngIf="projectName.errors.required">
+    <small>This field is required.
+    </small>
+  </div>
+  <div *ngIf="projectName.errors.pattern">
+    <small>  Atleast 3 letters are required.</small>
+  </div>
+</div>
+
+<div
+  class="text-danger"
+  *ngIf="
+  projectCode &&
+  projectCode.errors &&
+    (projectCode.dirty || projectCode.touched)
+  "
+>
+  <div *ngIf="projectCode.errors.required">
+    <small>This field is required.
+    </small>
+  </div>
+  <div *ngIf="projectCode.errors.pattern">
+    <small>
+      Special Characters are not allowed.
+    </small>
+  </div>
+</div>
+
+<div
+  class="text-danger"
+  *ngIf="
+  rfpName &&
+  rfpName.errors &&
+    (rfpName.dirty || rfpName.touched)
+  "
+>
+  <div *ngIf="rfpName.errors.required">
+    <small>This field is required.
+    </small>
+  </div>
+  <div *ngIf="rfpName.errors.pattern">
+    <small>  Atleast 3 letters are required.</small>
+  </div>
+</div>
+
+<div
+  class="text-danger"
+  *ngIf="
+  description &&
+  description.errors &&
+    (description.dirty || description.touched)
+  "
+>
+  <div *ngIf="description.errors.required">
+    <small>This field is required.
+    </small>
+  </div>
+  <div *ngIf="description.errors.pattern">
+    <small> Please enter a Brief Description with minimum 3 and maximum of 255
+      characters.</small>
+  </div>
+</div>
+
+
+<!-- <div
+  class="text-danger"
+  *ngIf="
+  firstnameControl &&
+  firstnameControl.errors &&
+    (firstnameControl.dirty || firstnameControl.touched)
+  "
+>
+  <div *ngIf="firstnameControl.errors.required">
+    <small>This field is required. <br>
+      Atleast 3 letters are required.</small>
+  </div>
+  
+</div> -->
+
+<div
+  class="text-danger"
+  *ngIf="spocName && spocName.errors && (spocName.dirty || spocName.touched)"
+>
+  <div *ngIf="spocName.errors.required">
+    <small>This field is required. 
+   </small>
+  </div>
+  <div *ngIf="spocName.errors.pattern">
+    <small>This field required between 3 to 155 characters with no special characters and numericals.</small>
+  </div>
+</div>
+
+
+<div
+  class="text-danger"
+  *ngIf="
+  email && email.errors && (email.dirty || email.touched)
+  "
+>
+  <div *ngIf="email.errors.required">
+    <small>This field is required</small>
+  </div>
+  <div *ngIf="email.errors.pattern">
+    <small
+      >Please enter a valid email.</small
+    >
+  </div>
+</div>
+
+
+<div
+  class="text-danger"
+  *ngIf="
+  clientName && clientName.errors && (clientName.dirty || clientName.touched)
+  "
+>
+  <div *ngIf="clientName.errors.required">
+    <small>This field is required.</small>
+  </div>
+  <div *ngIf="clientName.errors.pattern">
+    <small
+      >Minimum 3 and maximum 155 characters allowed</small
+    >
+  </div>
+</div>
+
+
+<div
+  class="text-danger"
+  *ngIf="
+    contactNumberControl &&
+    contactNumberControl.errors &&
+    (contactNumberControl.dirty || contactNumberControl.touched)
+  "
+>
+  <div *ngIf="contactNumberControl.errors.required">
+    <small>This field is required</small>
+  </div>
+  <div *ngIf="contactNumberControl.errors.pattern">
+    <small
+      >Please enter valid contact number between 3 to 20 digit</small
+    >
+  </div>
+</div>
+
+<div
+  class="text-danger"
+  *ngIf="
+    firstName && firstName.errors && (firstName.dirty || firstName.touched)
+  "
+>
+  <div *ngIf="firstName.errors.required">
+    <small>This field is required</small>
+  </div>
+  <div *ngIf="firstName.errors.pattern">
+    <small>This field required between 3 to 155 characters with no special characters and numericals.</small> <br />
+
+  </div>
+</div>
+
+
+<div
+  class="text-danger"
+  *ngIf="
+  name && name.errors && (name.dirty || name.touched)
+  "
+>
+  <div *ngIf="name.errors.required">
+    <small>This field is required</small>
+  </div>
+  <div *ngIf="name.errors.pattern">
+    <small>This field required between 3 to 155 characters with no special characters and numericals.</small> <br />
+
+  </div>
+</div>
+
+<div
+  class="text-danger"
+  *ngIf="
+    vendorTemplateAccess &&
+    vendorTemplateAccess.errors &&
+    (vendorTemplateAccess.dirty || vendorTemplateAccess.touched)
+  "
+>
+  <div *ngIf="vendorTemplateAccess.errors.required">
+    <small>This field is required</small>
+  </div>
+</div>

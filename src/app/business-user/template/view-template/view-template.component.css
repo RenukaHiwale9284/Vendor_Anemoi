@@ -1,0 +1,379 @@
+.bottun-align {
+  position: relative;
+  right: -1px;
+  top: 5px;
+}
+::ng-deep .submitButton {
+  background-color: #d04a02 !important;
+  color: white !important;
+  border: none;
+  margin-left: 10px !important;
+  height: 40px;
+}
+::ng-deep .cancleButton {
+  border-color: #d04a02 !important;
+  color: #d04a02 !important;
+  height: 40px;
+}
+
+.footer {
+  margin-top: 10px;
+}
+/* .sub-category {
+    margin: 10px 50px;
+    border: 2px solid black;
+}
+
+.parameter {
+    margin: 10px 50px;
+    border: 2px solid black;
+} */
+
+.display {
+  display: contents;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+  overflow-y: scroll;
+  overflow-x: scroll;
+  max-height: 80%;
+}
+/* 
+::ng-deep .pbuttonclass {
+    background-color: #d04a02;
+    color: white;
+     ;
+    font-size: 8px;
+  
+  } */
+
+/* element.style {
+}
+.p-accordion .p-accordion-header:not(.p-highlight):not(.p-disabled):hover .p-accordion-header-link {
+    background: #e9ecef;
+    border-color: #dee2e6;
+    color: #343a40;
+    height: 0px;
+}
+.p-accordion .p-accordion-header:not(.p-disabled) .p-accordion-header-link:focus {
+    outline: 0 none;
+    outline-offset: 0;
+    box-shadow: 0 0 0 0.2rem #bfdbfe;
+}
+.p-accordion .p-accordion-header .p-accordion-header-link {
+    transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
+} */
+::ng-deep .p-accordion-header * {
+  height: 1rem !important; /* set the desired height */
+}
+
+.table1 {
+  overflow-y: scroll;
+  height: 400px;
+  display: block;
+}
+
+.header {
+  height: 50px;
+}
+
+::ng-deep .header1 {
+  margin-left: -10px !important;
+}
+
+/* ::ng-deep .header{
+    height: 10px !important;
+  } */
+input {
+  width: 8rem;
+}
+
+.container-with-scrollbar {
+  position: static !important;
+  top: 0 !important;
+  right: 0 !important;
+  left: 90px !important;
+  width: auto !important;
+  /* height: 500px !important; */
+  overflow: scroll !important;
+  overflow-y: hidden !important;
+}
+
+.scrollable {
+  overflow-x: auto !important;
+  height: 200px !important;
+}
+
+.headerclass {
+  overflow: scroll !important;
+}
+
+table thead th {
+  text-align: center;
+}
+
+.card-header {
+  height: 30px;
+  padding: 30px;
+  border: none;
+}
+
+.left-aligned {
+  float: left;
+}
+
+.right-aligned {
+  float: right;
+}
+
+.clearfix {
+  clear: both;
+}
+
+.standard-button {
+  background-color: #d04a02;
+  color: #f3f3f3;
+  ;
+  font-size: 18px;
+  float: right;
+  border: none;
+}
+
+.header-back-button {
+  font-size: 24px;
+  padding: 12px;
+  cursor: pointer;
+}
+
+.header-back-button i {
+  font-size: 20px;
+}
+
+.comment-overlay-panel {
+  max-height: 28rem;
+  overflow: scroll;
+}
+
+.comment-overlay-panel::-webkit-scrollbar {
+  width: 2px;
+}
+
+.comment-overlay-panel::-webkit-scrollbar-track {
+  background: none;
+}
+
+.comment-overlay-panel::-webkit-scrollbar-thumb {
+  background: #afafaf;
+}
+
+.comment-overlay-panel::-webkit-scrollbar-thumb:hover {
+  background: #555;
+  cursor: pointer;
+}
+
+.comment-overlay-panel {
+  scrollbar-width: 10px;
+}
+
+.comment-overlay-panel ul.comments {
+  display: inline-block;
+  list-style: none;
+  padding: 0px;
+  width: 100%;
+}
+
+.comment-overlay-panel ul.comments li {
+  padding: 20px 12px;
+  background: #eeeeee;
+  border-radius: 6px;
+  margin-bottom: 14px;
+}
+
+.comment-overlay-panel ul.comments li.my-reply {
+  margin-left: 3rem;
+  background: #eeeeee;
+}
+
+.comment-overlay-panel ul.comments li.received-reply {
+  margin-right: 3rem;
+  background: #ccc9c9;
+}
+
+.comment-overlay-panel .comment-header {
+  padding: 10px;
+  border: 1px solid #c4c4c4;
+  border-radius: 4px;
+  margin-top: 16px;
+}
+
+.comment-overlay-panel .comment-header span {
+  margin-left: 10px;
+}
+
+.comment-overlay-panel .comment-status {
+  padding: 12px 0px;
+  font-size: 18px;
+  color: #d04a02;
+  cursor: pointer;
+}
+
+.comment-header p {
+  margin-top: 14px;
+}
+
+.p-cascadeselect input {
+  cursor: pointer !important;
+}
+
+button.pbuttonclass {
+  border: 2px solid #d04a02 !important;
+  background: #ffffff !important;
+  color: #d04a02 !important;
+  zoom: 70%;
+}
+button.pbuttonclass67 {
+  /* border: 2px solid #d04a02 !important; */
+  background: #d04a02 !important;
+  color: #ffffff !important;
+  zoom: 70%;
+}
+
+.p-button:enabled:hover,
+.p-button:enabled:focus,
+.p-button:enabled:active {
+  border: 2px solid #d04a02 !important;
+  background: #d04a02 !important;
+  color: #fff !important;
+}
+
+.comment-badge {
+  position: absolute;
+  z-index: 1;
+  top: -16px;
+  left: 0px;
+  cursor: pointer;
+}
+
+.template {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+  overflow-y: scroll;
+  max-height: 80%;
+}
+
+::ng-deep .container1 {
+  padding: 10px !important;
+  height: auto !important;
+  border-radius: 0%;
+  border: 1px solid #afafaf;
+}
+
+table {
+  overflow-x: scroll !important;
+}
+
+.spinner {
+  /* backdrop-filter: blur(2px); */
+  background-color: rgba(184, 167, 167, 0.2);
+  content: " ";
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+app-spinner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.scoringCriteria,
+.header {
+  width: 14rem !important;
+  /* margin-left: 10px !important; */
+}
+.inputBox,
+.weightage {
+  width: 8rem !important;
+  margin-left: 10px !important;
+}
+
+.fixed-height {
+  height: 300px;
+  overflow-y: scroll;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+table {
+    border-collapse: collapse;
+    /* width: 100%; */
+  }
+  
+  th {
+    /* border: 1px solid black; */
+    padding: 0px 8.7px;
+  }
+  
+  /* th {
+    background-color: lightgray;
+  } */
+
+  .customSubmitButton{
+    float: right;
+    margin-top: 10px;
+    background-color: #d04a02;
+    border: none;
+  }
+  .customCancelButton{
+    float: left;
+    margin-top: 10px;
+    background-color: #d04a02;
+    border: none
+  }
+  .customSubmitButton:hover{
+    float: right;
+    margin-top: 10px;
+    background-color: #d04a02 !important;
+    border: none;
+  }
+  .customCancelButton:hover{
+    float: left;
+    margin-top: 10px;
+    background-color: #d04a02 !important;
+    border: none
+  }
+
+  .customSubmitButton{
+    float: right;
+    margin-top: 10px;
+  }
+  .customCancelButton{
+    float: left;
+    margin-top: 10px;
+  }
+
+  .customDialog{
+    width: 20%;
+  }
+
+  .customvalueInputBox{
+    width: 100%;
+    padding: 10px;
+  }

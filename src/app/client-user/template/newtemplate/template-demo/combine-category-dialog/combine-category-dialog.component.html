@@ -1,0 +1,16 @@
+<div class="box-padding">
+    <form [formGroup]="combineDataForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+        <mat-label>Choose one</mat-label>
+        <mat-select formControlName="fieldName">
+            <mat-option *ngFor="let row of data.input.newData" [value]="row.name">{{row.name}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <section>
+        <button mat-raised-button color="primary" [disabled]="!combineDataForm.valid">
+            {{ data.input.operation == 'parameter' ? 'Move' : 'Combine' }}
+        </button>
+    </section>
+    </form>
+</div>

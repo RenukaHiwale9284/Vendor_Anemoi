@@ -1,0 +1,52 @@
+::ng-deep .mainCard {
+  border: 1px groove #9aa4be !important;
+}
+
+.contents,
+input,
+textarea {
+  margin-top: 10px;
+}
+
+::ng-deep input,
+textarea {
+  background-color: #f3f3f3 !important;
+  border: 1px solid #415385 !important;
+}
+
+::ng-deep .pbuttonclass {
+  background-color: #ffffff;
+  color: #d04a02;
+  border-color: #d04a02;
+  ;
+  margin-bottom: 10px;
+}
+
+.pbuttonclass:hover {
+  background-color: #d04a02;
+  border-color: #d04a02;
+   ;
+  margin-bottom: 10px;
+}
+.para {
+  font-size: 18px;
+  ;
+}
+
+.myTable::ng-deep * {
+  background-color: #d2d7e2 !important;
+}
+
+::ng-deep .seperateCard {
+  background-color: #f3f3f3;
+  color: #2d2d2d;
+  border: 1px solid #707070;
+}
+
+::ng-deep .seperateCard1 {
+  border: 1px solid #707070;
+}
+
+::ng-deep .cardd{
+  margin-top: 50px;
+}

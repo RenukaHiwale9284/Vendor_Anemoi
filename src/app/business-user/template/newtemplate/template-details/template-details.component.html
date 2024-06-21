@@ -1,0 +1,274 @@
+<form [formGroup]="templateForm" autocomplete="off">
+  <h1 *ngIf="heading" style="color: #415385; font-size: 25px">
+    Create new template
+  </h1>
+  <h1 *ngIf="!heading" style="color: #415385; font-size: 25px">
+    Template details
+  </h1>
+  <p-card styleClass="mainCard">
+    <div class="grid">
+      <div class="col-5">
+        <div styleClass="seperateCard1">
+          <div class="contents">
+            <label> Name <span style="color: red">*</span></label> <br />
+            <span>
+                <input
+                  type="text"
+                  id="name"
+                  formControlName="name"
+                  pInputText
+                  [value]="templateForm.value.name"
+                  required
+                  placeholder="Enter Template Name"
+                  [readOnly]="isDraftRedirect"
+                  style="width: 80%"
+                /><br />
+              <small style="color: red; font-size: 16px">
+                <app-print-error
+                  [name]="templateForm.get('name')"
+                ></app-print-error>
+              </small>
+              <!-- <small
+            *ngIf="
+              !templateForm.get('name')?.valid &&
+              templateForm.get('name')?.touched
+            "
+          >
+            <span style="color: red">This field is required. <br>
+              Atleast 3 Characters are required. </span>
+          </small> -->
+            </span>
+          </div>
+
+          <div class="contents">
+            <label>Projects <span style="color: red">*</span></label
+            ><br />
+            <span>
+             
+           
+
+             
+
+              <p-dropdown
+                styleClass="dropdown1"
+                [options]="projects"
+                placeholder="Select"
+                optionLabel="projectName"
+                formControlName="projectName"
+                [required]="true"
+                [readonly]="isDraftRedirect"
+                (onChange)="onSelectProject()"
+                [(ngModel)]="selectedProject"
+                [filter]="true"
+                filterBy="projectName"
+              ></p-dropdown>
+              <br />
+              <span
+                *ngIf="templateExist"
+                style="font-style: italic; color: red"
+              >
+                Template has been already created for Selected project, <br />
+                Please select another one
+              </span>
+              <small
+                *ngIf="
+                  !templateForm?.get('projectName')?.valid &&
+                  templateForm?.get('projectName')?.touched
+                "
+              >
+                <span style="color: red"
+                  >This field is required.
+                  <!-- <br />
+                  Atleast 3 Characters are
+                  required -->
+                </span>
+              </small>
+            </span>
+          </div>
+
+          <div class="contents">
+            <label>Description <span style="color: red">*</span></label
+            ><br />
+            <span>
+              <textarea
+                required
+                name=""
+                formControlName="description"
+                id=""
+                rows="3"
+                [value]="templateForm.value.description"
+                pInputTextarea
+                placeholder="Enter Description"
+                required
+                [autoResize]="true"
+                [readOnly]="isDraftRedirect"
+                class="inputTextArea"
+              ></textarea>
+              <br />
+              <small style="color: red; font-size: 16px">
+                <app-print-error
+                  [description]="templateForm?.get('description')"
+                ></app-print-error>
+              </small>
+              <small
+                *ngIf="
+                  !templateForm?.get('description')?.valid &&
+                  templateForm?.get('description')?.touched
+                "
+              >
+                <span style="color: red">
+                  Minimum 3 and maximum 155 characters allowed
+                </span>
+              </small>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-7" *ngIf="templateForm?.valid || templateExist">
+        <p-card styleClass="seperateCard">
+          <ng-template pTemplate="title">
+            <h4 class="para">Option 1</h4>
+          </ng-template>
+          <div class="grid">
+            <div class="col-8 para">
+              <p>Step 1: Download the excel format for master template</p>
+              <br />
+              <p>Step 2: Upload the filled excel sheet</p>
+              <br />
+              <p>Step 3: Click on next to view the master template</p>
+            </div>
+
+            <div class="col-4">
+              <button
+                class="p-button-sm mr-2 pbuttonclassDownload"
+                icon="pi pi-download"
+                label="Download"
+                (click)="downloadMasterTemplate()"
+                pButton
+                [disabled]="
+                  !templateForm.valid || templateExist || !editableUploadDoc
+                "
+              ></button>
+              <br />
+              <br />
+              <button
+                class="p-button-sm mr-2 pbuttonclassUpload"
+                icon="pi pi-upload"
+                (click)="uploadTemplate()"
+                label="Upload"
+                pButton
+                [disabled]="
+                  !templateForm.valid || templateExist || !editableUploadDoc
+                "
+              ></button
+              ><br />
+            </div>
+          </div>
+        </p-card>
+        &nbsp; &nbsp;
+        <p-card styleClass="seperateCard">
+          <ng-template pTemplate="title">
+            <h4 class="para">Option 2</h4>
+          </ng-template>
+          <p class="para">
+            Click on next to use the blank canvas and create a master template
+          </p>
+        </p-card>
+      </div>
+    </div>
+  </p-card>
+
+  <div style="float: right; margin: 10px 10px">
+    <div style="margin-top: 10px">
+      <button
+        pButton
+        label="Cancel"
+        icon="pi pi-times-circle"
+        class="p-button-sm mr-2 pbuttonClass"
+        (click)="onClickCancel()"
+      ></button>
+      <span *ngIf="!isDraftRedirect">
+        <!-- <button
+          pButton
+          label="Save as Draft"
+          icon="pi pi-arrow-circle-down"
+          (click)="onSaveDraft()"
+          [disabled]="!templateForm.valid"
+          class="p-button-sm mr-2 pbuttonclass"
+        ></button> -->
+      </span>
+      <button
+        pTooltip="Next"
+        tooltipPosition="top"
+        pButton
+        icon="pi pi-chevron-right"
+        class="p-button-sm mr-2 pbuttonClassNext"
+        (click)="openNext()"
+        [disabled]="!templateForm.valid || templateExist"
+        
+      ></button>
+    </div>
+  </div>
+  <br />
+  <!-- <p-card class="cardd"></p-card> -->
+  <br />
+</form>
+<!-- 
+<span *ngIf="spinner" class="spinner">
+<p-progressSpinner></p-progressSpinner>
+</span> -->
+<p-dialog [visible]="uploadProposal" [modal]="true" [closable]="false">
+  <label
+    style="padding: 10px !important; font-size: medium; font-weight: bold"
+    for=""
+    >Upload Template</label
+  >
+  <br />
+  <input
+    class="p-inputtext-sm padding"
+    type="file"
+    pInputText
+    id="dos"
+    name="file"
+    formControlName="file"
+    required
+    autofocus
+    style="width: 100%"
+    (change)="selectFile1($event)"
+    #inputFile
+    placeholder="select proposal"
+    accept=".xlsx"
+  />
+
+  <button
+    style="
+      float: left;
+      border: none;
+      background-color: #d04a02;
+      margin-top: 10px !important;
+    "
+    pButton
+    label="Cancel"
+    (click)="onClickCancelUpload()"
+  ></button>
+  <button
+    [disabled]="!uploadMasterTemplateButton"
+    style="
+      float: right;
+      background-color: #d04a02;
+      border: none;
+      margin-top: 10px !important;
+    "
+    pButton
+    label="Upload"
+    (click)="onClickUploadMasterTemplate()"
+  ></button>
+</p-dialog>
+
+<!-- notifications -->
+<p-toast></p-toast>
+<p-confirmDialog
+  header="Confirmation"
+  icon="pi pi-exclamation-triangle"
+></p-confirmDialog>

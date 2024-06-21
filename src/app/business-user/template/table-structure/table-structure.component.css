@@ -1,0 +1,25 @@
+::ng-deep .bottomButton {
+  margin: 10px !important;
+}
+
+::ng-deep dropdown {
+  overflow: auto !important;
+  overflow-wrap: auto !important;
+}
+
+ng-deep .templateTable {
+  overflow: visible !important;
+  overflow-wrap: visible !important;
+}
+
+::ng-deep .dropdown{
+    display: inline-table !important;
+}
+
+::ng-deep .menuIcon{
+    border: none !important;
+}
+::ng-deep .menuIcon:hover{
+    color: none !important;
+    background-color: none !important;
+}

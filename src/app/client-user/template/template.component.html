@@ -1,0 +1,95 @@
+<span>
+
+<div class="roles">
+  <h1>Templates</h1>
+</div>
+<div>
+  <span class="p-input-icon-left">
+    <i class="pi pi-search"></i>
+    <input
+      style="height: 45px"
+      type="text"
+      pInputText
+      (input)="dt.filterGlobal(target($event).value, 'contains')"
+      class="p-inputtext-sm"
+      placeholder="Search"
+    />
+  </span>
+  
+  &nbsp;
+  <p-dropdown
+  styleClass="dropdown"
+    [options]="projectList1"
+    [(ngModel)]="selectedProject"
+    placeholder="Select"
+    optionLabel="projectName"
+    optionValue="projectName"
+    appendTo="body"
+    (onChange)="dt.filterGlobal($any(selectedProject), 'equals')"
+    [showClear]="true"
+    [filter]="true"
+    filterBy="projectName"
+  ></p-dropdown>
+</div>
+<!-- to view all Users -->
+<div class="card" style="margin-top: 10px">
+  <p-table
+    styleClass="p-datatable-sm p-datatable-gridlines templateTable"
+    #dt
+    [value]="templateDetails"
+    [rows]="7"
+    [paginator]="true"
+    responsiveLayout="scroll"
+    [rowHover]="true"
+    dataKey="id"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [showCurrentPageReport]="true"
+    [globalFilterFields]="[
+      'templateDescription.name',
+      'templateDescription.description',
+      'project.projectName',
+      'status'
+    ]"
+  >
+    <ng-template pTemplate="header">
+      <tr class="myTable">
+        <th pSortableColumn="templateDescription.name">Template name</th>
+        <th pSortableColumn="templateDescription.description">Description</th>
+        <th pSortableColumn="project.projectName">Project name</th>
+        <th pSortableColumn="status">Status</th>
+        <th>Action</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-templateDetails>
+      <tr class="anchor-row">
+        <td>{{ templateDetails.templateDescription.name }}</td>
+        <td>{{ templateDetails.templateDescription.description }}</td>
+        <td>{{ templateDetails.project.projectName }}</td>
+        <td>
+          <span [class]="getStatusClass(templateDetails.status)">{{
+            templateDetails.status
+          }}</span>
+        </td>
+        <td>
+          <button
+            pTooltip="Edit"
+            tooltipPosition="top"
+            pButton
+            icon="pi pi-pencil"
+            pButton
+            pRipple
+            class="p-button-sm p-button-outlined newActionButton"
+            (click)="navigateTemplateDetails(templateDetails.templateId)"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+    <!-- <ng-template pTemplate="summary">
+      <div class="flex align-items-center justify-content-between">
+        In total there are
+        {{ templateDetails ? templateDetails.length : 0 }} template.
+      </div>
+    </ng-template> -->
+  </p-table>
+</div>
+</span>

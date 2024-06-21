@@ -1,0 +1,569 @@
+/* @font-face {
+  font-family: YourFontFamily;
+  src: url(src/assets/Fonts/HelveticaNeueLTW01-55Roman.ttf) format("opentype");
+}
+
+* {
+  font-family: YourFontFamily;
+} */
+
+.container {
+  width: 100%;
+  position: static;
+  height: auto;
+  /* Add this line to prevent horizontal scrolling */
+  overflow-x: hidden;
+  font-family: HelveticaNeue !important;
+}
+
+::ng-deep .title {
+  text-align: center;
+  justify-content: center;
+  height: auto;
+  position: relative;
+  float: left;
+  width: 100%;
+  margin: 0;
+}
+
+.nav-pane {
+  background: #f2f2f2;
+  scroll-behavior: auto;
+}
+
+.newnav-pane {
+  background: #f2f2f2;
+  scroll-behavior: auto;
+}
+
+.user {
+  align-items: center;
+  background-color: white;
+  padding: 10px;
+  font-size: larger;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
+
+i {
+  color: white;
+}
+
+.nav-buttons {
+  background-color: #f2f2f2;
+  color: #7d7d7d;
+  font-size: 20px;
+}
+
+ul {
+  list-style: none;
+}
+
+.listItem {
+  padding: 10px;
+  color: white;
+  font-size: larger;
+}
+
+.listItem1 {
+  padding: 10px;
+  color: white;
+  font-size: larger;
+}
+::ng-deep .leftpanel {
+  height: 100%;
+  position: static;
+  float: left;
+  width: 100%;
+  display: flex;
+}
+
+::ng-deep .newleftpanel {
+  height: 100%;
+  position: absolute;
+  float: right;
+  width: 100%;
+  display: flex;
+}
+
+::ng-deep .toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0%;
+  padding: 0%;
+  height: 12vh;
+  width: 100%;
+  color: black;
+  background-color: #f2f2f2;
+}
+
+::ng-deep .cardData {
+  color: black;
+  background-color: #dddddd;
+  height: 3.5rem;
+  width: 102% !important;
+  margin-top: -10px !important;
+}
+
+span {
+  margin: 0%;
+  padding: 0%;
+  margin-right: 5px;
+  color: white;
+}
+
+.title1 {
+  margin-left: 5px !important;
+  color: #252525;
+  font-size: x-large !important;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: gray;
+  color: white;
+  text-align: center;
+}
+
+.menuButton {
+  text-decoration: none;
+  width: 100%;
+  background-color: #eb8c00;
+  border: 0mm;
+  color: black;
+}
+
+@media screen and (max-width: 662px) {
+  ::ng-deep img {
+    display: none;
+  }
+  ::ng-deep .userData {
+    display: none;
+  }
+}
+
+a {
+  color: #7c7c7c;
+}
+
+i {
+  color: #7c7c7c;
+  font-size: x-large;
+  margin-bottom: 5px;
+}
+
+.logo-container {
+  display: flex;
+  position: fixed;
+  align-items: center;
+  bottom: 0;
+  left: 0;
+  margin-bottom: 10px;
+}
+.logo {
+  background: #fff;
+  text-align: center;
+  width: 3rem;
+  min-width: 3rem;
+  border-radius: 0.313rem;
+  padding: 0.313rem;
+  font-size: 24px;
+  font-weight: 900;
+  cursor: pointer;
+  border: none;
+}
+
+.logo-text {
+  margin-left: 1.5rem;
+  font-size: 22px;
+  font-weight: 700;
+  color: #7d7d7d;
+}
+
+.btn-close {
+  margin-left: auto;
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-color: transparent;
+  border: none;
+}
+.fa-times {
+  color: #7d7d7d;
+  font-size: 22px;
+}
+
+.sidenav-collapsed {
+  width: 16.5625rem;
+}
+
+.collapseIcon {
+  font-size: 22px;
+  width: 2rem;
+  min-width: 2rem;
+  /* margin: 0 0rem 0 1rem; */
+  /* text-align: center; */
+}
+
+.pages-trimmed {
+  margin-left: 16.5625rem;
+}
+
+.pages-md-screen {
+  margin-left: 4rem;
+}
+
+::ng-deep .toggleIcon {
+  flex-wrap: wrap;
+  font-size: 22px;
+  width: 2rem;
+  min-width: 2rem;
+  margin: 0 0.5rem;
+  text-align: center;
+}
+
+::ng-deep .collapse {
+  color: #7d7d7d;
+  font-size: 22px;
+}
+
+::ng-deep .blank {
+  margin-top: 10vh !important ;
+}
+:host::ng-deep .logo1 * {
+  color: black !important;
+  margin: 1rem 0rem !important;
+}
+
+::ng-deep .invisibaleCard {
+  border: none;
+  box-shadow: none;
+}
+
+::ng-deep .topOptions {
+  margin: 1rem !important;
+  color: black !important;
+  font-size: 20px;
+  padding: 0px 10px;
+  font-size: x-large !important;
+}
+.topOptions i.notifyIcon {
+  font-size: 25px !important;
+  margin-top: 10px !important;
+}
+
+::ng-deep .options {
+  margin: 1rem 0.5rem 1rem 1rem !important;
+}
+
+::ng-deep .profileIcon {
+  border-radius: 50%;
+  background-color: #7b7b7b;
+  padding: 8px 8px !important;
+  margin-top: -2px !important;
+  font-size: xx-large !important;
+  height: 2.3rem;
+}
+
+.notify {
+  font-size: larger;
+  padding: 0.5rem !important;
+}
+
+::ng-deep .matMenu {
+  max-width: 500px !important;
+  height: 20rem !important;
+}
+::ng-deep .notificationPanel2 {
+  background-color: white !important;
+  color: black !important;
+  border: 1px solid black;
+  width: 35% !important;
+  height: 40%;
+  overflow: auto !important;
+}
+
+.notifyIcon:hover {
+  background-color: #f2f2f2 !important;
+  color: #7c7c7c;
+}
+
+.footer-section {
+  position: relative;
+  float: right;
+  margin-bottom: 2%;
+}
+.clearIcon {
+  padding: 0%;
+  height: 20px !important;
+  width: 20px;
+}
+
+::ng-deep .notificationPanel {
+  background-color: white !important;
+  color: black !important;
+  border: 1px solid black;
+}
+
+::ng-deep .clearAllButton {
+  color: red !important;
+  padding: 10px !important;
+  font-size: larger !important;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.sidenav {
+  position: absolute;
+  background: #dddddd;
+  transition: all 0.5s ease;
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  width: 5rem;
+  margin-top: 3.5rem;
+  height: 150%;
+  top: -10px !important;
+}
+
+.logo-container {
+  bottom: 0;
+}
+.logo {
+  background-color: #fff;
+  text-align: center;
+  width: 3rem;
+  min-width: 3rem;
+  border-radius: 0.313rem;
+  padding: 0.313rem;
+  font-size: 24px;
+  font-weight: 900;
+  cursor: pointer;
+  border: none;
+}
+
+.logo-text {
+  margin-left: 1.5rem;
+  font-size: 24px;
+  font-weight: 700;
+  color: #7c7c7c;
+}
+
+.btn-close {
+  margin-left: auto;
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-color: transparent;
+  border: none;
+}
+
+.fa-times {
+  color: #fff;
+  font-size: 24px;
+}
+
+.sidenav-collapse {
+  width: 16.5635rem;
+}
+
+.sidenav-nav {
+  list-style: none;
+  padding: 0.938rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: calc(100% - 3.64rem);
+  cursor: pointer;
+}
+
+.sidenav-nav-item {
+  width: 100%;
+  margin-bottom: 0.625rem;
+}
+
+.sidenav-nav-link {
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  height: 3rem;
+  color: #7c7c7c;
+  text-decoration: none;
+  /* border-radius: 0.625rem; */
+  transition: all 0.3s ease;
+}
+
+.sidenav-link-icon {
+  font-size: 22px;
+  width: 2rem;
+  min-width: 2rem;
+  margin: 0 0.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+.sidenav-link-text {
+  width: 76px;
+  height: 30px;
+  font-size: x-large;
+  margin-left: 1.5rem;  
+  margin-top: 5px;
+  border-radius: 0.625rem;
+  transition: all 0.3s ease;
+  color: #000000;
+}
+
+.sidenav-nav-item:hover {
+  color: #000;
+}
+.sidenav-nav-link:hover {
+  background-color: #7b7b7b;
+  color: #000;
+}
+
+.pages11 {
+  position: relative;
+  float: left;
+  /*  height: 90vh; */
+  /* flex: 1; */
+  /* overflow-x: hidden; */
+  /* padding: 10px; */
+  /* margin-left: 90px !important; */
+
+  width: calc(100% - 4rem);
+  height: auto;
+  margin-left: 5rem;
+  /* margin-bottom: 10vh !important; */
+  /* z-index: 0; */
+  /* position: relative; */
+  /* top: 0; */
+  transition: all 0.8s ease;
+  background: white;
+  padding: 1rem 3rem 1rem 2rem;
+
+  /* overflow-x: hidden; */
+  /* overflow-y: auto; */
+  /* height: 100vh; */
+  /* margin-left: 5rem; */
+  /* margin-bottom: 10vh !important; */
+  /* z-index: 0; */
+  /* position: relative; */
+  /* top: 0; */
+  transition: all 0.8s ease;
+  /* background: white; */
+  /* padding: 1rem 1rem; */
+}
+
+.pages-trimmed {
+  width: calc(100% - 16.5625rem);
+  margin-left: 16.5625rem;
+}
+
+.pages-md-screen {
+  width: calc(100% - 4rem);
+  margin-left: 4rem;
+}
+
+.active {
+  background-color: #415385;
+}
+
+.active .sidenav-link-icon,
+.active .sidenav-link-text {
+  filter: brightness(4.5);
+}
+
+.navbar {
+  width: calc(100%-4.5rem);
+  height: 4rem;
+  background-color: #f2f2f2;
+}
+
+/* .logoImage{
+  float: left;
+  zoom: 90%;
+  margin-top:30px !important;
+  margin-left: 10px;
+
+}
+
+
+.title1 {
+  margin-left: 8px !important;
+  color: #252525;
+  font-size: 1.1rem !important;
+  margin-top: 18px !important;
+} */
+.logoImage{
+  float: left;
+  padding-bottom: 2rem;
+  margin-left: 20px;
+  margin-top: 8px;
+  padding-top: 5px;
+
+}
+
+.title1 {
+  margin-left: 10.5px !important;
+  color: #252525;
+  font-size: 22px !important;
+  margin-top: 16px !important;
+}
+
+.pbadgeIcon{
+  position: absolute;
+  margin-bottom: 2rem !important;
+}
+.notification-icon {
+  position: relative;
+  margin-top: -10px;
+}
+
+.notification-count {
+  position: absolute;
+  top: -10px;
+  right: -20px;
+  background-color: #7b7b7b;
+  color: white;
+  border-radius: 50%;
+  padding: 3px 10px;
+  font-size: 12px;
+}
+.inside,
+.outside {
+  border: none;
+  margin-left: 0.5rem;
+  margin-right: 0.7rem;
+  cursor: pointer;
+  background-color: #dddddd;
+}
+.outside {
+  transform: scaleX(-1);
+}
+
+.activeRoute,
+.active {
+  background-color: #7b7b7b;
+  color: white;
+}
+.inactiveRoute {
+  background-color: #7c7c7c;
+}
+
+.activeRoute .sidenav-link-icon,
+.activeRoute .sidenav-link-text {
+  filter: brightness(4.5);
+}
+
+.collapse {
+  font-size: x-large;
+}

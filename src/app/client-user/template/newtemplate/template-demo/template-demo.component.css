@@ -1,0 +1,68 @@
+.bottun-align {
+    position: relative;
+    right: -1px;
+    top: 5px;
+}
+
+
+
+.container-with-scrollbar {
+    position: static !important;
+    top: 0 !important;
+    right: 0 !important;
+    left: 90px !important;
+    width: auto !important;
+    height: 500px !important;
+    overflow: scroll !important;
+    overflow-y: hidden !important;
+  }
+/* .sub-category {
+    margin: 10px 50px;
+    border: 2px solid black;
+}
+
+.parameter {
+    margin: 10px 50px;
+    border: 2px solid black;
+} */
+
+.display {
+    display: contents;
+}
+
+input {
+    width: 6rem;
+}
+
+.template-form table.now-wrap {
+    white-space: nowrap;
+    width: 100%;
+}
+
+
+.template-form table tbody tr td {
+    width: auto;
+}
+
+.template-form table thead tr th {
+    width: auto;
+}
+
+.template-form table thead th {
+    text-align: justify;
+}
+
+.SaveButton{
+    float: right !important;
+    background-color: #D04A02 !important;
+    border: none;
+}
+
+.scoringCriteria, .header{
+    width: 14rem !important;
+  }
+  .inputBox, .weightage{
+    width: 6rem !important;
+  }
+
+  

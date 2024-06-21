@@ -1,0 +1,192 @@
+/* .roles,
+h1 {
+  color: #415385;
+  font-size: 34px;
+  
+}
+
+.search {
+  float: right;
+}
+
+
+.myTable::ng-deep * {
+  background-color: #9aa4be !important;
+}
+
+::ng-deep .projectDropdown{ 
+  height: 2.9rem !important;
+  width: 15rem !important;
+  margin-top: 10px !important;
+}
+
+::ng-deep dropdown {
+  overflow-y: auto !important;
+  overflow-wrap: auto !important;
+}
+
+ng-deep .templateTable {
+  overflow-y: visible !important;
+  overflow-wrap: visible !important;
+}
+
+.actionButton{
+  background-color: #d04a02;
+  border-color: white;
+  ;
+  float: left;
+}
+.actionButton:hover{
+  background-color: #d04a02;
+  border-color: white;
+}
+
+.status-badge {
+  padding:4px 15px;
+  color: #fff;
+  border-radius: 20px;
+  display: block;
+  width: 126px;
+  text-align: center;
+}
+
+.status-badge-success {
+  background: #2d8531;
+}
+
+.status-badge-pending {
+  background: #D04A02;
+}
+
+.status-badge-progress {
+  background: #f7bc0c;
+}
+
+.anchor-row {
+  cursor: pointer;
+}
+
+.tab-header {
+  width: 250px;
+}
+
+.input-left-margin {
+    margin-left: 20px;
+}
+
+.roles{
+  margin-top: 20px;
+}
+
+.searchIcon{
+  margin-top: 0px;
+}
+
+
+input{
+  margin-top: 20px;
+}
+
+.spinner {
+  background-color: rgba(184, 167, 167, 0.2);
+  content: " ";
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+app-spinner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+} */
+
+::ng-deep .editButton21 {
+  border-color: #d04a02 !important;
+  color: #d04a02 !important;
+  margin-top: 8px !important;
+}
+::ng-deep .editButton22 {
+  border-color: #d04a02 !important;
+  color: #d04a02 !important;
+  margin-top: 8px !important;
+}
+::ng-deep .editButton23 {
+  background-color: #d04a02 !important;
+  color: #ffffff !important;
+  margin-top: 8px !important;
+}
+::ng-deep .editButton24 {
+  border-color: #d04a02 !important;
+  color: #d04a02 !important;
+  margin-top: 8px !important;
+}
+
+.roles,h1{
+  color: #415385;
+  font-size: 26px;
+  
+}
+
+.topView{
+  margin-top: 10px;
+}
+
+.createNewButton{
+  background-color: #d04a02;
+  border: none;
+  float: right;
+}
+.createNewButton:hover{
+  background-color: #d04a02;
+  border: none;
+}
+
+::ng-deep .balancesheettable {
+  border-radius: 0px;
+  border: 2px solid #9aa4be !important;
+  overflow: hidden !important;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 4px;
+}
+
+tr:nth-child(even) {
+  background-color: #f3f3f3;
+}
+th{
+  background-color: #9aa4be !important;
+}
+
+.actionButton{
+  background-color: #d04a02;
+  border: none;
+}
+.actionButton:hover{
+  background-color: #d04a02;
+  border: none;
+}
+
+.status-badge {
+  padding: 4px 15px;
+  color: #fff;
+  border-radius: 20px;
+  display: block;
+  width: 126px;
+  text-align: center;
+}
+
+.status-badge-success {
+  background: #2d8531;
+}
+
+.status-badge-pending {
+  background: #D04A02;
+}
+
+.status-badge-progress {
+  background: #f7bc0c;
+}

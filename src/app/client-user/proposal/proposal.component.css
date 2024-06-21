@@ -1,0 +1,57 @@
+.roles,
+h1 {
+  color: #415385;
+  font-size: 34px;
+  
+}
+
+.search {
+  float: right;
+}
+
+.myTable::ng-deep * {
+  background-color: #d2d7e2 !important;
+}
+
+::ng-deep dropdown {
+  overflow-y: auto !important;
+  overflow-wrap: auto !important;
+}
+
+ng-deep .templateTable {
+  overflow-y: visible !important;
+  overflow-wrap: visible !important;
+}
+
+.status-badge {
+  padding: 8px 20px;
+  color: #fff;
+  border-radius: 20px;
+  display: block;
+  width: 126px;
+  text-align: center;
+}
+
+.status-badge-success {
+  background: #2d8531;
+}
+
+.status-badge-pending {
+  background: #D04A02;
+}
+
+.status-badge-progress {
+  background: #f7bc0c;
+}
+
+.anchor-row {
+  cursor: pointer;
+}
+
+.tab-header {
+  width: 250px;
+}
+
+.input-left-margin {
+    margin-left: 20px;
+}

@@ -1,0 +1,14 @@
+<div
+  class="mainPage"
+>
+  <input
+    type="email"
+    pInputText
+    placeholder="Email-Id"
+    [(ngModel)]="loginEmailId"
+    style="width: 20rem !important;"
+    class="emailBox"
+  />
+  <br />
+  <br />
+  <button pButton label="Submit" (click)="getUserInfo(loginEmailId)" style="text-align: center; width: 100%;"></button>

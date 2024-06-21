@@ -1,0 +1,928 @@
+<h1 style="color: #415385; font-size: 25px">Templates</h1>
+<p-card *ngIf="loadView" styleClass="container1">
+  <ng-template pTemplate="header">
+    <div class="left-aligned">
+      <p for="Back button" class="header-back-button" (click)="onClickBack()">
+        <i class="pi pi-chevron-left"></i>
+        {{ selectedTemplateData.templateDescription.name }}
+      </p>
+    </div>
+    <!-- <div class="right-aligned">
+      <button
+        pButton
+        label="Download Template"
+        icon="pi pi-download"
+        class="p-button-sm pbuttonclass standard-button"
+      ></button>
+      <button
+        pButton
+        label="Share Template"
+        icon="pi pi-send"
+        class="p-button-sm pbuttonclass standard-button"
+        style="margin-right: 20px"
+        (click)="openShareOverlay2($event)"
+      ></button>
+      <p-overlayPanel #shareOverlay [style]="{ width: '500px' }">
+        <ng-template pTemplate>
+          <div class="comment-overlay-panel">
+            <p-tabView>
+              <p-tabPanel header="Client"  >
+                <ul *ngFor="let i of roleNames;let j =index ">
+
+               <li  style=" list-style-type: none;"><p-checkbox name="groupname" [value]="i.email" [(ngModel)]="selectedValue" (click)="onChecks()"></p-checkbox> &nbsp;{{i.email}} </li>
+                </ul>
+
+               </p-tabPanel>
+           
+                 <p-tabPanel header="Team">
+                  <ul *ngFor="let i of projectNames;let l =index ">
+                    <li  style=" list-style-type: none;"><p-checkbox name="groupname" [value]="i.businessUser" [(ngModel)]="selectedValue" (click)="onChecks()"></p-checkbox> &nbsp;{{i.businessUser}} </li>
+                  
+                  </ul>
+                </p-tabPanel>
+                <div class="footer">
+                  <button
+                  class="p-button-outlined cancleButton"
+                  style="float: left"
+                  pButton
+                  label="Cancel"
+                ></button>
+
+                <button
+                class="submitButton"
+                style="float: right"
+                pButton
+                icon="pi pi-send"
+                label="Send"
+              ></button>
+                </div>
+            </p-tabView>
+          </div>
+        </ng-template>
+      </p-overlayPanel>
+    </div> -->
+    <div class="clearfix"></div>
+  </ng-template>
+
+  <form [formGroup]="templateForm">
+    <div formArrayName="category" class="container-with-scrollbar">
+      <table style="width: 100%">
+        <thead>
+          <tr>
+            <table>
+              <tr>
+                <th class="header">Category</th>
+                <th class="weightage">Weightage</th>
+                <table style="width: 100%">
+                  <tr>
+                    <th class="header">Primary sub-category</th>
+                    <th class="weightage">Weightage</th>
+
+                    <table style="width: 100%">
+                      <tr>
+                        <th class="header">Secondary sub-category</th>
+                        <th class="weightage">Weightage</th>
+                        <table style="width: 100%">
+                          <tr>
+                            <th class="header">Tertiary sub-category</th>
+                            <th class="weightage">Weightage</th>
+                            <table style="width: 100%">
+                              <tr>
+                                <th class="header">Parameter</th>
+                                <th class="weightage">Weightage</th>
+                                <th class="weightage">Max score</th>
+                                <th class="header">Scoring criteria</th>
+                              </tr>
+                            </table>
+                          </tr>
+                        </table>
+                      </tr>
+                    </table>
+                  </tr>
+                </table>
+              </tr>
+            </table>
+          </tr>
+        </thead>
+        <tbody class="table1">
+          <table>
+            <tr
+              *ngFor="
+                let category of getCategoryControls().controls;
+                let i = index
+              "
+            >
+              <p-accordion>
+                <p-accordionTab [selected]="true">
+                  <ng-template pTemplate="header">
+                    <div class="header1">
+                      {{ category.value.name }} ({{ category.value.weightage }})
+                    </div>
+                  </ng-template>
+                  <div
+                    style="overflow-x: auto; overflow-x: hidden; height: 20rem"
+                  >
+                    <table style="margin-top: 20px">
+                      <tr>
+                        <div [formGroupName]="i" class="display">
+                          <td style="width: 50%">
+                            <div style="position: relative">
+                              <p-badge
+                                *ngIf="category.value.badgeCount > 0"
+                                [value]="category.value.badgeCount"
+                                class="comment-badge"
+                                (click)="
+                                  openViewCommentOverlay(
+                                    $event,
+                                    category.value.nodeId
+                                  )
+                                "
+                                severity="warning"
+                              ></p-badge>
+                              <p-cascadeSelect
+                                [disabled]="access.dropdown.disabled"
+                                id="username"
+                                formControlName="name"
+                                [options]="categoriesData"
+                                optionLabel="name"
+                                optionValue="name"
+                                optionGroupLabel="name"
+                                [optionGroupChildren]="['states', 'cities']"
+                                [style]="{ width: '14rem' }"
+                                placeholder="Select"
+                                appendTo="body"
+                              >
+                              </p-cascadeSelect>
+                              <div
+                                *ngIf="
+                                  category.value.badgeCount <= 0 &&
+                                  selectedTemplateData.status != 'Done'
+                                "
+                              >
+                                <button
+                                  class="bottun-align"
+                                  mat-icon-button
+                                  [matMenuTriggerFor]="cat"
+                                  aria-label="Example icon-button with a menu"
+                                >
+                                  <mat-icon>more_vert</mat-icon>
+                                </button>
+
+                                <mat-menu #cat="matMenu">
+                                  <button
+                                    mat-menu-item
+                                    (click)="
+                                      openViewCommentOverlay(
+                                        $event,
+                                        category.value.nodeId,
+                                        'new'
+                                      )
+                                    "
+                                  >
+                                    <mat-icon>bookmark</mat-icon>
+                                    <span>Raise the issue</span>
+                                  </button>
+                                </mat-menu>
+                              </div>
+                            </div>
+                          </td>
+                          <td style="width: 50%">
+                            <div>
+                              <input
+                                readonly
+                                pInputText
+                                type="text"
+                                class="form-control"
+                                formControlName="weightage"
+                              />
+                            </div>
+                          </td>
+                          <!-- subcategory Start-->
+                          <div formArrayName="subcategory">
+                            <table style="width: 100%">
+                              <tr
+                                *ngFor="
+                                  let subCategory of getSubCategoryControls(i)
+                                    .controls;
+                                  let j = index
+                                "
+                              >
+                                <div [formGroupName]="j" class="display">
+                                  <td style="width: 50%">
+                                    <div style="position: relative">
+                                      <p-badge
+                                        *ngIf="subCategory.value.badgeCount > 0"
+                                        [value]="subCategory.value.badgeCount"
+                                        class="comment-badge"
+                                        (click)="
+                                          openViewCommentOverlay(
+                                            $event,
+                                            subCategory.value.nodeId
+                                          )
+                                        "
+                                        severity="warning"
+                                      ></p-badge>
+                                      <p-cascadeSelect
+                                        [disabled]="access.dropdown.disabled"
+                                        id="subcategoryname"
+                                        formControlName="subcategoryname"
+                                        [options]="categoriesData"
+                                        optionLabel="name"
+                                        optionValue="name"
+                                        optionGroupLabel="name"
+                                        [optionGroupChildren]="[
+                                          'states',
+                                          'cities'
+                                        ]"
+                                        [style]="{ width: '14rem' }"
+                                        placeholder="Select"
+                                        appendTo="body"
+                                      >
+                                      </p-cascadeSelect>
+                                      <div
+                                        *ngIf="
+                                          subCategory.value.badgeCount <= 0 &&
+                                          selectedTemplateData.status != 'Done'
+                                        "
+                                      >
+                                        <button
+                                          class="bottun-align"
+                                          mat-icon-button
+                                          [matMenuTriggerFor]="cat"
+                                          aria-label="Example icon-button with a menu"
+                                        >
+                                          <mat-icon>more_vert</mat-icon>
+                                        </button>
+
+                                        <mat-menu #cat="matMenu">
+                                          <button
+                                            mat-menu-item
+                                            (click)="
+                                              openViewCommentOverlay(
+                                                $event,
+                                                subCategory.value.nodeId,
+                                                'new'
+                                              )
+                                            "
+                                          >
+                                            <mat-icon>bookmark</mat-icon>
+                                            <span>Raise the issue</span>
+                                          </button>
+                                        </mat-menu>
+                                      </div>
+                                    </div>
+                                  </td>
+                                  <td style="width: 50%">
+                                    <div>
+                                      <input
+                                        readonly
+                                        pInputText
+                                        type="text"
+                                        class="form-control"
+                                        formControlName="weightage"
+                                      />
+                                    </div>
+                                  </td>
+                                  <!-- subcategoryTwo Start -->
+                                  <div formArrayName="subcategoryTwo">
+                                    <table style="width: 100%">
+                                      <tr
+                                        *ngFor="
+                                          let subCategoryTwo of getSubCategoryTwoControls(
+                                            i,
+                                            j
+                                          ).controls;
+                                          let k = index
+                                        "
+                                      >
+                                        <div
+                                          [formGroupName]="k"
+                                          class="display"
+                                        >
+                                          <td>
+                                            <div style="position: relative">
+                                              <p-badge
+                                                *ngIf="
+                                                  subCategoryTwo.value
+                                                    .badgeCount > 0
+                                                "
+                                                [value]="
+                                                  subCategoryTwo.value
+                                                    .badgeCount
+                                                "
+                                                class="comment-badge"
+                                                (click)="
+                                                  openViewCommentOverlay(
+                                                    $event,
+                                                    subCategoryTwo.value.nodeId
+                                                  )
+                                                "
+                                                severity="warning"
+                                              ></p-badge>
+                                              <p-cascadeSelect
+                                                [disabled]="
+                                                  access.dropdown.disabled
+                                                "
+                                                id="subcategoryname"
+                                                formControlName="subcategoryname"
+                                                [options]="categoriesData"
+                                                optionLabel="name"
+                                                optionValue="name"
+                                                optionGroupLabel="name"
+                                                [optionGroupChildren]="[
+                                                  'states',
+                                                  'cities'
+                                                ]"
+                                                [style]="{ width: '14rem' }"
+                                                placeholder="Select"
+                                                appendTo="body"
+                                              >
+                                              </p-cascadeSelect>
+                                              <div
+                                                *ngIf="
+                                                  subCategoryTwo.value
+                                                    .badgeCount <= 0 &&
+                                                  selectedTemplateData.status !=
+                                                    'Done'
+                                                "
+                                              >
+                                                <button
+                                                  class="bottun-align"
+                                                  mat-icon-button
+                                                  [matMenuTriggerFor]="cat"
+                                                  aria-label="Example icon-button with a menu"
+                                                >
+                                                  <mat-icon>more_vert</mat-icon>
+                                                </button>
+
+                                                <mat-menu #cat="matMenu">
+                                                  <button
+                                                    mat-menu-item
+                                                    (click)="
+                                                      openViewCommentOverlay(
+                                                        $event,
+                                                        subCategoryTwo.value
+                                                          .nodeId,
+                                                        'new'
+                                                      )
+                                                    "
+                                                  >
+                                                    <mat-icon
+                                                      >bookmark</mat-icon
+                                                    >
+                                                    <span>Raise the issue</span>
+                                                  </button>
+                                                </mat-menu>
+                                              </div>
+                                            </div>
+                                          </td>
+                                          <td>
+                                            <div>
+                                              <input
+                                                readonly
+                                                pInputText
+                                                type="text"
+                                                class="form-control"
+                                                formControlName="weightage"
+                                              />
+                                            </div>
+                                          </td>
+                                          <!-- Start subcategoryThree -->
+                                          <div formArrayName="subcategoryThree">
+                                            <table style="width: 100%">
+                                              <tr
+                                                *ngFor="
+                                                  let subCategoryThree of getSubCategoryThreeControls(
+                                                    i,
+                                                    j,
+                                                    k
+                                                  ).controls;
+                                                  let l = index
+                                                "
+                                              >
+                                                <div
+                                                  [formGroupName]="l"
+                                                  class="display"
+                                                >
+                                                  <td>
+                                                    <div
+                                                      style="position: relative"
+                                                    >
+                                                      <p-badge
+                                                        *ngIf="
+                                                          subCategoryThree.value
+                                                            .badgeCount > 0
+                                                        "
+                                                        [value]="
+                                                          subCategoryThree.value
+                                                            .badgeCount
+                                                        "
+                                                        class="comment-badge"
+                                                        (click)="
+                                                          openViewCommentOverlay(
+                                                            $event,
+                                                            subCategoryThree
+                                                              .value.nodeId
+                                                          )
+                                                        "
+                                                        severity="warning"
+                                                      ></p-badge>
+                                                      <p-cascadeSelect
+                                                        [disabled]="
+                                                          access.dropdown
+                                                            .disabled
+                                                        "
+                                                        id="subcategoryname"
+                                                        formControlName="subcategoryname"
+                                                        [options]="
+                                                          categoriesData
+                                                        "
+                                                        optionLabel="name"
+                                                        optionValue="name"
+                                                        optionGroupLabel="name"
+                                                        [optionGroupChildren]="[
+                                                          'states',
+                                                          'cities'
+                                                        ]"
+                                                        [style]="{
+                                                          width: '14rem'
+                                                        }"
+                                                        placeholder="Select"
+                                                        appendTo="body"
+                                                      >
+                                                      </p-cascadeSelect>
+                                                      <div
+                                                        *ngIf="
+                                                          subCategoryThree.value
+                                                            .badgeCount <= 0 &&
+                                                          selectedTemplateData.status !=
+                                                            'Done'
+                                                        "
+                                                      >
+                                                        <button
+                                                          class="bottun-align"
+                                                          mat-icon-button
+                                                          [matMenuTriggerFor]="
+                                                            cat
+                                                          "
+                                                          aria-label="Example icon-button with a menu"
+                                                        >
+                                                          <mat-icon
+                                                            >more_vert</mat-icon
+                                                          >
+                                                        </button>
+
+                                                        <mat-menu
+                                                          #cat="matMenu"
+                                                        >
+                                                          <button
+                                                            mat-menu-item
+                                                            (click)="
+                                                              openViewCommentOverlay(
+                                                                $event,
+                                                                subCategoryThree
+                                                                  .value.nodeId,
+                                                                'new'
+                                                              )
+                                                            "
+                                                          >
+                                                            <mat-icon
+                                                              >bookmark</mat-icon
+                                                            >
+                                                            <span
+                                                              >Raise the
+                                                              issue</span
+                                                            >
+                                                          </button>
+                                                        </mat-menu>
+                                                      </div>
+                                                    </div>
+                                                  </td>
+                                                  <td>
+                                                    <div>
+                                                      <input
+                                                        readonly
+                                                        pInputText
+                                                        type="text"
+                                                        class="form-control"
+                                                        formControlName="weightage"
+                                                      />
+                                                    </div>
+                                                  </td>
+                                                  <!-- parameter Start-->
+                                                  <div
+                                                    formArrayName="parameter"
+                                                  >
+                                                    <table style="width: 100%">
+                                                      <tr
+                                                        *ngFor="
+                                                          let parameter of getParameterControls(
+                                                            i,
+                                                            j,
+                                                            k,
+                                                            l
+                                                          ).controls;
+                                                          let m = index
+                                                        "
+                                                      >
+                                                        <div
+                                                          [formGroupName]="m"
+                                                        >
+                                                          <td>
+                                                            <div
+                                                              style="
+                                                                position: relative;
+                                                              "
+                                                            >
+                                                              <p-badge
+                                                                *ngIf="
+                                                                  parameter
+                                                                    .value
+                                                                    .badgeCount >
+                                                                  0
+                                                                "
+                                                                [value]="
+                                                                  parameter
+                                                                    .value
+                                                                    .badgeCount
+                                                                "
+                                                                class="comment-badge"
+                                                                (click)="
+                                                                  openViewCommentOverlay(
+                                                                    $event,
+                                                                    parameter
+                                                                      .value
+                                                                      .nodeId
+                                                                  )
+                                                                "
+                                                                severity="warning"
+                                                              ></p-badge>
+                                                              <p-cascadeSelect
+                                                                [disabled]="
+                                                                  access
+                                                                    .dropdown
+                                                                    .disabled
+                                                                "
+                                                                id="parametername"
+                                                                formControlName="parametername"
+                                                                [options]="
+                                                                  categoriesData
+                                                                "
+                                                                optionLabel="name"
+                                                                optionValue="name"
+                                                                optionGroupLabel="name"
+                                                                [optionGroupChildren]="[
+                                                                  'states',
+                                                                  'cities'
+                                                                ]"
+                                                                [style]="{
+                                                                  width: '14rem'
+                                                                }"
+                                                                placeholder="Select"
+                                                                appendTo="body"
+                                                              >
+                                                              </p-cascadeSelect>
+                                                              <div
+                                                                *ngIf="
+                                                                  parameter
+                                                                    .value
+                                                                    .badgeCount <=
+                                                                    0 &&
+                                                                  selectedTemplateData.status !=
+                                                                    'Done'
+                                                                "
+                                                              >
+                                                                <button
+                                                                  class="bottun-align"
+                                                                  mat-icon-button
+                                                                  [matMenuTriggerFor]="
+                                                                    cat
+                                                                  "
+                                                                  aria-label="Example icon-button with a menu"
+                                                                >
+                                                                  <mat-icon
+                                                                    >more_vert</mat-icon
+                                                                  >
+                                                                </button>
+
+                                                                <mat-menu
+                                                                  #cat="matMenu"
+                                                                >
+                                                                  <button
+                                                                    mat-menu-item
+                                                                    (click)="
+                                                                      openViewCommentOverlay(
+                                                                        $event,
+                                                                        parameter
+                                                                          .value
+                                                                          .nodeId,
+                                                                        'new'
+                                                                      )
+                                                                    "
+                                                                  >
+                                                                    <mat-icon
+                                                                      >bookmark</mat-icon
+                                                                    >
+                                                                    <span
+                                                                      >Raise the
+                                                                      issue</span
+                                                                    >
+                                                                  </button>
+                                                                </mat-menu>
+                                                              </div>
+                                                            </div>
+                                                          </td>
+                                                          <td>
+                                                            <div>
+                                                              <input
+                                                                readonly
+                                                                pInputText
+                                                                type="text"
+                                                                class="form-control"
+                                                                formControlName="weightage"
+                                                              />
+                                                            </div>
+                                                          </td>
+                                                          <td>
+                                                            <div>
+                                                              <input
+                                                                readonly
+                                                                pInputText
+                                                                type="text"
+                                                                class="form-control"
+                                                                id="maxschore"
+                                                                formControlName="maxschore"
+                                                              />
+                                                            </div>
+                                                          </td>
+
+                                                          <td>
+                                                            <div
+                                                              formArrayName="schoringcriteria"
+                                                            >
+                                                              <table
+                                                                style="
+                                                                  width: 100%;
+                                                                "
+                                                              >
+                                                                <tr
+                                                                  *ngFor="
+                                                                    let scoringCriteria of getScoringCriteriaControls(
+                                                                      i,
+                                                                      j,
+                                                                      k,
+                                                                      l,
+                                                                      m
+                                                                    ).controls;
+                                                                    let n = index
+                                                                  "
+                                                                >
+                                                                  <div
+                                                                    [formGroupName]="
+                                                                      n
+                                                                    "
+                                                                  >
+                                                                    <td>
+                                                                      <div
+                                                                        style="
+                                                                          position: relative;
+                                                                        "
+                                                                      >
+                                                                        <p-badge
+                                                                          *ngIf="
+                                                                            scoringCriteria
+                                                                              .value
+                                                                              .badgeCount >
+                                                                            0
+                                                                          "
+                                                                          [value]="
+                                                                            scoringCriteria
+                                                                              .value
+                                                                              .badgeCount
+                                                                          "
+                                                                          class="comment-badge"
+                                                                          (click)="
+                                                                            openViewCommentOverlay(
+                                                                              $event,
+                                                                              scoringCriteria
+                                                                                .value
+                                                                                .nodeId
+                                                                            )
+                                                                          "
+                                                                          severity="warning"
+                                                                        ></p-badge>
+                                                                        <input
+                                                                          readonly
+                                                                          pInputText
+                                                                          type="text"
+                                                                          class="form-control header"
+                                                                          id="criteriaValue"
+                                                                          formControlName="criteriaValue"
+                                                                        />
+                                                                        <div
+                                                                          *ngIf="
+                                                                            scoringCriteria
+                                                                              .value
+                                                                              .badgeCount <=
+                                                                              0 &&
+                                                                            selectedTemplateData.status !=
+                                                                              'Done'
+                                                                          "
+                                                                        >
+                                                                          <button
+                                                                            class="bottun-align"
+                                                                            mat-icon-button
+                                                                            [matMenuTriggerFor]="
+                                                                              cat
+                                                                            "
+                                                                            aria-label="Example icon-button with a menu"
+                                                                          >
+                                                                            <mat-icon
+                                                                              >more_vert</mat-icon
+                                                                            >
+                                                                          </button>
+
+                                                                          <mat-menu
+                                                                            #cat="matMenu"
+                                                                          >
+                                                                            <button
+                                                                              mat-menu-item
+                                                                              (click)="
+                                                                                openViewCommentOverlay(
+                                                                                  $event,
+                                                                                  scoringCriteria
+                                                                                    .value
+                                                                                    .nodeId,
+                                                                                  'new'
+                                                                                )
+                                                                              "
+                                                                            >
+                                                                              <mat-icon
+                                                                                >bookmark</mat-icon
+                                                                              >
+                                                                              <span
+                                                                                >Raise
+                                                                                the
+                                                                                issue</span
+                                                                              >
+                                                                            </button>
+                                                                          </mat-menu>
+                                                                        </div>
+                                                                      </div>
+                                                                    </td>
+                                                                  </div>
+                                                                </tr>
+                                                              </table>
+                                                            </div>
+                                                          </td>
+                                                        </div>
+                                                      </tr>
+                                                    </table>
+                                                  </div>
+                                                  <!-- parameter End -->
+                                                </div>
+                                              </tr>
+                                            </table>
+                                          </div>
+                                          <!-- End subcategoryThree -->
+                                        </div>
+                                      </tr>
+                                    </table>
+                                  </div>
+                                  <!-- subcategoryTwo End -->
+                                </div>
+                              </tr>
+                            </table>
+                          </div>
+                          <!-- subcategory End-->
+                        </div>
+                      </tr>
+                    </table>
+                  </div>
+                </p-accordionTab>
+              </p-accordion>
+            </tr>
+          </table>
+        </tbody>
+      </table>
+    </div>
+  </form>
+
+  <ng-template pTemplate="footer">
+    <p-overlayPanel #viewCommentOverlay [style]="{ width: '350px' }">
+      <ng-template pTemplate>
+        <p-progressSpinner *ngIf="!viewComment"></p-progressSpinner>
+        <div class="comment-overlay-panel" *ngIf="viewComment">
+          <div class="comment-overlay-panel-header">
+            <span>{{ commentData.comments.length }}</span> Comments
+          </div>
+          <div class="comment-overlay-panel-content">
+            <div class="comment-header">
+              <p-badge
+                [value]="getUserCommentBadge(commentData.userId)"
+                size="large"
+                severity="success"
+              ></p-badge>
+              <span>{{ commentData.userId }}</span>
+              <p>{{ commentData.issueText }}</p>
+              <!-- <div
+                *ngIf="commentData.caseStatus == 'Pending'"
+                class="comment-status"
+                (click)="onMarkResolved()"
+              >
+                <i class="pi pi-check-circle" style="font-size: 18px"></i>
+                <span>Mark Resolved</span>
+              </div> -->
+            </div>
+            <ul class="comments">
+              <li
+                *ngFor="let comment of commentData.comments"
+                [class]="getCommentClass(comment.userId)"
+              >
+                {{ comment.commentText }}
+              </li>
+            </ul>
+          </div>
+          <div class="comment-overlay-panel-footer" #commentInput>
+            <form [formGroup]="commentForm">
+              <span
+                class="p-input-icon-right"
+                style="display: block"
+                *ngIf="
+                  commentData.caseStatus == 'Pending' &&
+                  selectedTemplateData.status != 'Done'
+                "
+              >
+                <i
+                  class="pi pi-send"
+                  style="color: #d04a02; cursor: pointer"
+                  (click)="postComment()"
+                ></i>
+                <input
+                  type="text"
+                  formControlName="comment"
+                  pInputText
+                  style="width: 100%"
+                  placeholder="Type Reply here"
+                  (keyup)="postComment($event, true)"
+                />
+              </span>
+
+              <div
+                [style]="{ 'text-align': 'center' }"
+                *ngIf="issueType == 'new'"
+              >
+                <textarea
+                  rows="5"
+                  cols="29"
+                  pInputTextarea
+                  [autoResize]="true"
+                  formControlName="description"
+                  (keyup)="setCommentData()"
+                ></textarea>
+                <p-divider></p-divider>
+                <button
+                  [disabled]="commentForm.invalid"
+                  pButton
+                  pRipple
+                  type="button"
+                  label="Raise Issue"
+                  class="p-button-raised standard-theme-button"
+                  (click)="postComment()"
+                ></button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </ng-template>
+    </p-overlayPanel>
+
+    <div class="right-aligned">
+      <button
+        [disabled]="selectedTemplateData.status == 'Done'"
+        pButton
+        label="Approve"
+        icon="pi pi-check-circle"
+        class="p-button-sm pbuttonclass standard-button"
+        (click)="onClickApprove()"
+      ></button>
+      <button
+        pButton
+        label="Cancel"
+        icon="pi pi-times-circle"
+        class="p-button-sm pbuttonclass standard-button"
+        style="margin-right: 20px"
+        (click)="onClickCancel()"
+      ></button>
+    </div>
+    <div class="clearfix"></div>
+  </ng-template>
+</p-card>
+<p-divider></p-divider>
+
+<!-- Notification msg's -->
+<p-toast></p-toast>
+<p-confirmDialog
+  header="Confirmation"
+  icon="pi pi-exclamation-triangle"
+></p-confirmDialog>

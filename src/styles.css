@@ -1,0 +1,252 @@
+/* You can add global styles to this file, and also import other style files */
+
+@font-face {
+  font-family: "HelveticaNeue";
+  src: url(assets/Fonts/HelveticaNeueLTW01-55Roman.ttf) format("truetype");
+}
+
+/* * {
+  font-family: HelveticaNeue !important;
+} */
+
+.p-button-label,
+input,
+.p-inputtext,
+.title,
+a,
+h1,
+h2,
+h3,
+h4,
+p,
+div,
+th,
+td,
+label,
+small,
+ul,
+li {
+  font-family: HelveticaNeue !important;
+}
+
+
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  width: 100% !important;
+  font-family: HelveticaNeue !important;
+  /* background-color: #f2f2f2; */
+}
+
+/* span,label,h1,h2,h3,h4,div{
+  
+  font-family: HelveticaNeue !important;
+} */
+
+/* .p-picklist .p-picklist-header * {
+    background: #317eca;
+    color: #343a40;
+    border: 1px solid #dee2e6;
+    padding: 0.5rem !important;
+    margin: 0rem !important;
+    border-bottom: 0 none;
+} */
+.p-picklist-buttons {
+  color: #ffffff;
+  /* background: #3bf65b ; */
+  /* border: 1px solid #d04a02 !important; */
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s,
+    box-shadow 0.2s;
+  border-radius: 6px;
+}
+
+.p-picklist .p-picklist-buttons .p-button {
+  margin-bottom: 0.5rem !important;
+  width: 2rem !important;
+  height: 2rem !important;
+  padding: 10px !important;
+  background-color: #12cca4 !important;
+  border: 1px solid #02d07a !important;
+}
+
+.p-inputswitch.p-inputswitch-checked .p-inputswitch-slider {
+  background: #7b7b7b !important;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s,
+    box-shadow 0.2s;
+  border-radius: 30px !important;
+}
+
+::ng-deep .p-inputswitch.p-inputswitch-checked :hover {
+  background: #b8b4b2 !important;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s,
+    box-shadow 0.2s;
+  border-radius: 30px !important;
+}
+
+.p-table {
+  width: 100% !important;
+  scroll-behavior: smooth !important;
+}
+
+.p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
+  background: #ffffff !important;
+  border-color: #d04a02 !important;
+  color: #d04a02 !important;
+}
+
+.p-picklist .p-picklist-header {
+  /* background: #f8f9fa;
+    color: #343a40; */
+  border: 1px solid #dee2e6;
+  padding: 0.65rem !important;
+  border-bottom: 0 none;
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
+}
+
+.p-picklist .p-picklist-filter-container {
+  padding: 0.35rem !important;
+  background: #ffffff;
+  border: 1px solid #dee2e6;
+  border-bottom: 0 none;
+}
+
+.p-picklist .p-picklist-filter-container .p-picklist-filter-input {
+  padding: 0.55rem !important;
+}
+
+.p-picklist .p-picklist-list .p-picklist-item {
+  padding: 0.5rem !important;
+  margin: 0px 0px !important;
+  border: 0 none;
+  /* color: #495057;
+    background: transparent; */
+  transition: box-shadow 0.2s;
+}
+
+.p-picklist .p-picklist-buttons .p-button {
+  margin-bottom: 0.5rem !important;
+  width: 2rem !important;
+  height: 2rem !important;
+  padding: 10px !important;
+}
+
+.p-datatable {
+  position: relative !important;
+  padding: 0% !important;
+
+  font-family: HelveticaNeue !important;
+  /* zoom: 80% !important; */
+}
+
+.p-tabview .p-tabview-panels {
+  background: #ffffff;
+  padding: 0.25rem !important;
+  border: 0 none;
+  /* color: #495057; */
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+.p-accordion .p-accordion-content {
+  padding: 0.25rem !important;
+  border: 1px solid #dee2e6;
+  background: #ffffff;
+  /* color: #495057; */
+  border-top: 0;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+.customMenu {
+  width: 300px;
+  /* Adjust the width value as needed */
+}
+
+.p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
+  background: #ffffff;
+  border-color: #d04a02 !important;
+  color: #d04a02 !important;
+}
+
+.p-picklist-buttons {
+  color: #ffffff;
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s,
+    box-shadow 0.2s;
+  border-radius: 6px;
+}
+
+.p-picklist .p-picklist-buttons .p-button {
+  margin-bottom: 0.5rem !important;
+  width: 2rem !important;
+  height: 2rem !important;
+  padding: 10px !important;
+  background-color: #ffffff !important;
+  border: 1px solid #817b75 !important;
+  color: #817b75 !important;
+}
+
+.p-tabmenu .p-tabmenu-nav .p-menuitem-text {
+  color: #d04a02 !important;
+}
+
+.p-tabmenu .p-tabmenu-nav {
+  border-color: #d04a02 !important;
+}
+
+.p-button.p-button-sm {
+  border: 1px solid #817b75 !important;
+}
+
+.p-datatable .p-datatable-thead>tr>th {
+  background-color: #7b7b7b !important;
+  color: white !important;
+  font-weight: 500 !important;
+}
+
+.p-sortable-column-icon {
+  background-color: #415385 !important;
+  color: white !important;
+}
+
+::ng-deep .myTable[_ngcontent-tul-c132] * {
+  background-color: #415385 !important;
+}
+
+.p-tabview .p-tabview-nav {
+  margin-left: 5px !important;
+}
+
+.p-tabview .p-tabview-nav li .p-tabview-nav-link {
+  padding: 1.25rem 18px 1.25rem 0px !important;
+}
+
+.p-badge {
+  background-color: #415385 !important;
+  color: #f2f2f2 !important;
+}
+
+.p-tabmenu .p-tabmenu-nav {
+  width: fit-content !important;
+}
+
+.p-tabview .p-tabview-nav {
+  width: fit-content !important;
+}
+
+.newActionButton {
+  border-color: #d04a02 !important;
+  color: #d04a02 !important;
+  margin-top: 8px !important;
+  width: 1.5rem !important;
+  height: 2rem !important;
+  vertical-align: middle !important;
+}

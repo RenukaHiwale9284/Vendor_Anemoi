@@ -1,0 +1,336 @@
+<button
+  pButton
+  type="button"
+  icon="pi pi-plus"
+  class="ui-button-info"
+  [label]="'Add'"
+  appAddnewrow
+  [table]="dt"
+  [newRow]="newRow()"
+></button>
+
+<!-- <p-treeSelect [(ngModel)]="selectedNode" [options]="nodes1" placeholder="Select Item"></p-treeSelect> -->
+
+<div class="card">
+  <p-table
+    #dt
+    [value]="products2"
+    dataKey="id"
+    editMode="row"
+    styleClass="p-datatable-gridlines"
+    responsiveLayout="scroll"
+    scrollHeight="100vh"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Category</th>
+        <th>Weightage</th>
+        <th>Sub-category 1</th>
+        <th>Weightage</th>
+        <th>Sub-category 2</th>
+        <th>Weightage</th>
+        <th>Sub-category 3</th>
+        <th>Weightage</th>
+        <th>Parameter</th>
+        <th>Weightage</th>
+        <th>Max Score</th>
+        <th>Scoring Criteria</th>
+        <th style="width: 8rem"></th>
+      </tr>
+    </ng-template>
+    <ng-template
+      pTemplate="body"
+      let-product
+      let-editing="editing"
+      let-ri="rowIndex"
+    >
+      <tr [pEditableRow]="product">
+        <td pEditableColumn>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <!-- <p-dropdown [options]="category" [editable]="true" [(ngModel)]="product.category" [style]="{'width':'100%'}"></p-dropdown>
+                                
+                                <p-treeSelect [options]="nodes1"  [(ngModel)]="selectedNode" (onNodeSelect)="handleFromCountry()"  placeholder="Select category" [style]="{'width':'100%'}"></p-treeSelect> -->
+
+                                
+              <p-cascadeSelect
+                [(ngModel)]="product.category"
+                [options]="countries"
+                optionLabel="name"
+                optionGroupLabel="name"
+                [optionGroupChildren]="['states', 'cities']"
+                [style]="{ minWidth: '4rem' }"
+                placeholder="Select"
+              ></p-cascadeSelect>
+            </ng-template>
+
+            <ng-template pTemplate="output">
+              {{ product.category.name }}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+
+        <td pEditableColumn>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input
+                pInputText
+                type="text"
+                [(ngModel)]="product.catagoryWeightage"
+                style="width: 4rem"
+              />
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{ product.catagoryWeightage }}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td pEditableColumn>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <p-cascadeSelect
+                [(ngModel)]="product.subcategory1"
+                [options]="countries"
+                optionLabel="name"
+                optionGroupLabel="name"
+                [optionGroupChildren]="['states', 'cities']"
+                [style]="{ minWidth: '4rem' }"
+                placeholder="Select"
+              ></p-cascadeSelect>
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{ product.subcategory1.name }}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+
+        <td pEditableColumn>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input
+                pInputText
+                type="text"
+                [(ngModel)]="product.subcatagory1Weightage"
+                style="width: 4rem"
+              />
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{ product.subcatagory1Weightage }}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+
+        <td>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <p-cascadeSelect
+                [(ngModel)]="product.subcategory2"
+                [options]="countries"
+                optionLabel="name"
+                optionGroupLabel="name"
+                [optionGroupChildren]="['states', 'cities']"
+                [style]="{ minWidth: '4rem' }"
+                placeholder="Select"
+              ></p-cascadeSelect>
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{ product.subcategory2.name }}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+
+        <td pEditableColumn>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input
+                pInputText
+                type="text"
+                [(ngModel)]="product.subcatagory2Weightage"
+                style="width: 4rem"
+              />
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{ product.subcatagory2Weightage }}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+
+        <td>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <p-cascadeSelect
+                [(ngModel)]="product.subcategory3"
+                [options]="countries"
+                optionLabel="name"
+                optionGroupLabel="name"
+                [optionGroupChildren]="['states', 'cities']"
+                [style]="{ minWidth: '4rem' }"
+                placeholder="Select"
+              ></p-cascadeSelect>
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{ product.subcategory3.name }}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td pEditableColumn>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input
+                pInputText
+                type="text"
+                [(ngModel)]="product.subcatagory3Weightage"
+                style="width: 4rem"
+              />
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{ product.subcatagory3Weightage }}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+
+        <td pEditableColumn>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <p-cellEditor>
+                <ng-template pTemplate="input">
+                  <p-cascadeSelect
+                    [(ngModel)]="product.parameter"
+                    [options]="countries"
+                    optionLabel="name"
+                    optionGroupLabel="name"
+                    [optionGroupChildren]="['states', 'cities']"
+                    [style]="{ minWidth: '4rem' }"
+                    placeholder="Select"
+                  ></p-cascadeSelect>
+                </ng-template>
+                <ng-template pTemplate="output">
+                  {{ product.parameter.name }}
+                </ng-template>
+              </p-cellEditor>
+            </ng-template>
+          </p-cellEditor>
+        </td>
+
+        <!-- <td>
+                        <button #btn type="button" pButton icon="pi pi-ellipsis-v" label="" (click)="menu.toggle($event)"></button>
+                        <p-tieredMenu #menu [model]="items" [popup]="true"></p-tieredMenu>
+                    </td> -->
+
+        <td pEditableColumn>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input
+                pInputText
+                type="text"
+                [(ngModel)]="product.weightage"
+                style="width: 4rem"
+              />
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{ product.weightage }}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td pEditableColumn>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input
+                pInputText
+                type="text"
+                [(ngModel)]="product.maxschore"
+                style="width: 4rem"
+              />
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{ product.maxschore }}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td pEditableColumn>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <p-dropdown
+                [options]="criteria"
+                [editable]="true"
+                [(ngModel)]="product.schoringcriteria"
+                [style]="{ width: '10rem' }"
+              ></p-dropdown>
+
+              <!-- <p-treeSelect [options]="nodes1"  [(ngModel)]="selectedNode" (onNodeSelect)="handleFromCountry()"  placeholder="Select category" [style]="{'width':'100%'}"></p-treeSelect> -->
+            </ng-template>
+
+            <ng-template pTemplate="output">
+              {{ product.schoringcriteria }}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td style="text-align: center">
+          <button
+            *ngIf="!editing"
+            pButton
+            pRipple
+            type="button"
+            pInitEditableRow
+            icon="pi pi-pencil"
+            (click)="onRowEditInit(product)"
+            class="p-button-rounded p-button-text"
+          ></button>
+          <button
+            *ngIf="editing"
+            pButton
+            pRipple
+            type="button"
+            pSaveEditableRow
+            icon="pi pi-save"
+            (click)="onRowAddSave(product)"
+            class="p-button-rounded p-button-text p-button-success p-mr-2"
+          ></button>
+          <!-- <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow icon="pi pi-times" (click)="onRowEditCancel(product, ri)" class="p-button-rounded p-button-text p-button-danger"></button>
+                        <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow icon="pi pi-check" (click)="onRowEditSave(product)" class="p-button-rounded p-button-text p-button-success p-mr-2"></button>
+                        <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow icon="pi pi-copy" (click)="onRowcpySave(product)" class="p-button-rounded p-button-text p-button-success p-mr-2"></button>
+
+                        <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow icon="pi pi pi-ellipsis-v" (click)="onRowmoveAsNewCat(product)" class="p-button-rounded p-button-text p-button-danger p-mr-2"></button>
+                        
+                        <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow icon="pi pi-trash" (click)="onRowDelete(product)" class="p-button-rounded p-button-text p-button-danger p-mr-2"></button> -->
+
+          <!-- <button *ngIf="editing" type="button" pButton pRipple icon="pi pi-bars" (click)="menu.toggle($event)"></button>
+                        <p-menu #menu [popup]="true" [model]="items"></p-menu> -->
+
+          <!-- Angular material -->
+          <button
+            *ngIf="editing"
+            mat-icon-button
+            [matMenuTriggerFor]="menu"
+            aria-label="Example icon-button with a menu"
+          >
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="onRowEditSave(product)">
+              <mat-icon>edit</mat-icon>
+              <span>Edit</span>
+            </button>
+
+            <button mat-menu-item (click)="onRowcpySave(product)">
+              <mat-icon>file_copy</mat-icon>
+              <span>copy anather row</span>
+            </button>
+
+            <button mat-menu-item (click)="onRowDelete(product)">
+              <mat-icon>delete</mat-icon>
+              <span>delete</span>
+            </button>
+
+            <button mat-menu-item (click)="onRowmoveAsNewCat(product)">
+              <mat-icon>move_to_inbox</mat-icon>
+              <span>Move parameter as New Category</span>
+            </button>
+          </mat-menu>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<p-toast></p-toast>

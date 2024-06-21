@@ -1,0 +1,25 @@
+<div class="card">
+    <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+        <!-- <div class="field">
+            <mat-form-field appearance="fill">
+                <mat-label>Select Type</mat-label>
+                <mat-select matInput formControlName="type">
+                    <mat-option *ngFor="let row of data.categoriesData" [value]="row.id">{{row.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div> -->
+        <div class="field">
+            <mat-form-field class="example-full-width">
+                <mat-label>Enter value</mat-label>
+                <input matInput formControlName="fieldValue" placeholder="Enter custom value">
+                <mat-error>
+                  Please enter a valid email address
+                </mat-error>
+              </mat-form-field>
+        </div>
+
+        <section>
+            <button mat-raised-button color="primary" [disabled]="!editForm.valid"> Add </button>
+        </section>
+    </form>
+</div>
