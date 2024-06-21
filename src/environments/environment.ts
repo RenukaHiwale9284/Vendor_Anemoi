@@ -31,7 +31,7 @@ export const environment = {
   redirect_url: 'http://localhost:4200',
   scope: 'openid',
   grant_type: 'authorization_code',
-  secret: 'MEq6SgAGzRknnq5QLKWZ',
+  decret: 'MEq6SgAGzRknnq5QLKWZ',
   access_token: 'https://login-stg.pwc.com/openam/oauth2/access_token',
   user_info: 'https://login-stg.pwc.com/openam/oauth2/userinfo',
 
@@ -42,7 +42,7 @@ export const environment = {
   reportId : '96eed3cd-2ff3-441e-9b2b-e3afb3b674e8',
   tenant_id : '513294a0-3e20-41b2-a970-6d30bf1546fa',
   clientId : 'cb7b6024-65ea-46ee-b37b-5902f06eddc2',
-  clientSecret : 't768Q~Dl8kWj9Zb8mkihE6t.X3DpTGGR5CRtycuw',
+  clientdecret : 't768Q~Dl8kWj9Zb8mkihE6t.X3DpTGGR5CRtycuw',
   powerbiScope: 'openid',
   username: '',
   resource: 'https://analysis.windows.net/powerbi/api',

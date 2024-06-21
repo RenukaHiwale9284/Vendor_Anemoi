@@ -33,7 +33,7 @@ export const environment = {
 
 
 
-  
+
   url1:'#{BACKEND_URL}#/api',
   url:'#{BACKEND_URL}#/api',
 
@@ -45,7 +45,7 @@ export const environment = {
   redirect_url: '#{IDAM_REDIRECT_URL}#',
   scope: '#{IDAM_SCOP}#',
   grant_type: '#{IDAM_GRANT_TYPE}#',
-  secret: '#{IDAM_SECRET}#',
+  decret: '#{IDAM_SECRET}#',
   access_token: '#{IDAM_ACCESS_TOKEN}#',
   user_info: '#{IDAM_USER_INFO}#',
 
@@ -54,7 +54,7 @@ export const environment = {
   reportId : '#{PB_REPORT_ID}#',
   tenant_id : '#{PB_TENANT_ID}#',
   clientId : '#{PB_CLIENT_ID}#',
-  clientSecret : '#{PB_CLIENT_SECRET}#',
+  clientdecret : '#{PB_CLIENT_SECRET}#',
   powerbiScope: '#{PB_SCOP}#',
   username: '',
   resource: '#{PB_RESOURCE}#',
